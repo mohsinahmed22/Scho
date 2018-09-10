@@ -16,7 +16,7 @@ ob_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Admin <?php echo STORE_NAME; ?></title>
+    <title>Admin <?php echo PORTAL_NAME; ?></title>
 
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@ ob_start();
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.php" class="site_title"><span><?php echo STORE_NAME; ?></span></a>
+                    <a href="index.php" class="site_title"><span><?php echo PORTAL_NAME; ?></span></a>
                 </div>
 
                 <div class="clearfix"></div>

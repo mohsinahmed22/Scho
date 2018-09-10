@@ -7,10 +7,10 @@ $Allsettings = $settings->AssignSetting($settings->getAllSettings());
 
 
 // Store Information
-define ('STORE_NAME', $Allsettings['store_name']);
-define ('STORE_PHONE', $Allsettings['store_phone']);
-define ('STORE_URL', $Allsettings['store_url']);
-define ('STORE_EMAIL', $Allsettings['store_email']);
-define ('STORE_address', $Allsettings['store_address']);
+define ('PORTAL_NAME', $Allsettings['portal_name']);
+define ('PORTAL_PHONE', $Allsettings['portal_phone']);
+define ('PORTAL_URL', $Allsettings['portal_url']);
+define ('PORTAL_EMAIL', $Allsettings['portal_email']);
+define ('PORTAL_address', $Allsettings['portal_address']);
 
 
