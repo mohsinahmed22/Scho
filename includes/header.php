@@ -76,7 +76,7 @@
         </div>
 
         <!-- Header Search Panel -->
-        <div class="header_search_container">
+       <!-- <div class="header_search_container">
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -94,7 +94,7 @@
 
                 </div>
             </div>
-        </div>
+        </div>-->
     </header>
 
     <!-- Menu -->

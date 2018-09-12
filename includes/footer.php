@@ -2,7 +2,7 @@
 <!-- Footer -->
 
 <footer class="footer">
-    <div class="footer_background" style="background-image:url(images/footer_background.png)"></div>
+    <div class="footer_background" style="/*background-image:url(images/footer_background.png)*/"></div>
     <div class="container">
         <div class="row footer_row">
             <div class="col">
@@ -15,7 +15,7 @@
                             <div class="footer_section footer_about">
                                 <div class="footer_logo_container">
                                     <a href="#">
-                                        <div class="footer_logo_text">Unic<span>at</span></div>
+                                        <div class="footer_logo_text"><span></span></div>
                                     </a>
                                 </div>
                                 <div class="footer_about_text">
@@ -40,9 +40,9 @@
                                 <div class="footer_title">Contact Us</div>
                                 <div class="footer_contact_info">
                                     <ul>
-                                        <li>Email: Info.deercreative@gmail.com</li>
-                                        <li>Phone:  +(88) 111 555 666</li>
-                                        <li>40 Baria Sreet 133/2 New York City, United States</li>
+                                        <li>Email: kpsguide@gmail.com</li>
+                                        <li>Phone:  +(92) 000 000 0000</li>
+                                        <li>None</li>
                                     </ul>
                                 </div>
                             </div>
@@ -56,14 +56,14 @@
                                 <div class="footer_title">Contact Us</div>
                                 <div class="footer_links_container">
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="#">Features</a></li>
-                                        <li><a href="courses.html">Courses</a></li>
-                                        <li><a href="#">Events</a></li>
-                                        <li><a href="#">Gallery</a></li>
-                                        <li><a href="#">FAQs</a></li>
+                                        <li><a href="index.php">Home</a></li>
+                                        <li><a href="about.php">About</a></li>
+                                        <li><a href="contact.php">Contact</a></li>
+                                        <li><a href="blog.php">Blog</a></li>
+                                        <li><a href="schools.php">Schools</a></li>
+                                        <li><a href="downloads.php">Downloads</a></li>
+                                        <li><a href="teachers.php">Teachers</a></li>
+                                        <li><a href="jobs.php">School Jobs</a></li>
                                     </ul>
                                 </div>
                             </div>
