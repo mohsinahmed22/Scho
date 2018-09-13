@@ -2038,12 +2038,88 @@ section
 /*********************************
 15. Page Layout
 *********************************/
-.search {width: 100%; margin-top: 130px; }
+.search, .kpsg-register {width: 100%; margin-top: 130px; }
 .top_header { background:#15314E; color: #ccc; padding: 20px 0 0; min-height: 120px; width: 100%; }
 .top_header h1 {color:#ccc; font-size:34px; }
 .top_header_sub {background: #0d2034; min-height: 60px; padding: 15px 0; color: #ccc;}
 .top_header_sub  a:link, .top_header_sub  a:visited {color: #a1e373;}
 .top_header_sub  a:active, .top_header_sub  a:active {color:white;}
+
+
+
+
+/*********************************
+16. Search Layout
+*********************************/
 .title-cont {min-height: 100px;}
 .table-search-section td {height: 70px;}
 .search-results-section{margin-bottom: 20px;}
+
+
+/*********************************
+17. Register  / login Layout
+*********************************/
+.register-bg {min-height: 700px; background: #ffc80a; position: relative; }
+.register-box {min-height: 200px; max-width: 900px; min-height: 400px; padding: 20px; background: #fff; margin: 0 auto; border-radius: 20px; border: 10px solid #e9ae0b;
+	vertical-align: middle; }
+.register-info {background: #333333; color:#fff; min-height: 100px; padding: 30px 0;}
+.register-info p {color:#eee;}
+.register-info p span {color:#a1e373;}
+.register-heading:after{background:red; height:300px; width: 100%; position: absolute; bottom:0; z-index: 10;}
+.register-heading {background: #A7B548; padding: 30px 0 ; position: relative; margin-bottom: 20px;}
+.login-btn {width: 100%; background: #0d2034; border-color: #0d2034; }
+.register-box input{margin: 20px 0 ;}
+#regForm {
+	background-color: #ffffff;
+	margin: 0px auto;
+	font-family: Raleway;
+	padding: 20px;
+	width: 100%;
+	min-width: 300px;
+}
+
+.register-box  input {
+	padding: 10px;
+	width: 100%;
+	font-size: 17px;
+	font-family: Raleway;
+	border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+
+.register-box input.invalid {
+	background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {display: none;}
+
+
+
+#prevBtn {
+	background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbbbbb;
+	border: none;
+	border-radius: 50%;
+	display: inline-block;
+	opacity: 0.5;
+}
+
+.step.active {
+	opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+	background-color: #4CAF50;
+}
+
+

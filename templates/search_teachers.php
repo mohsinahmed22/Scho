@@ -50,7 +50,7 @@ include '../includes/header.php'; ?>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-8search-results-section">
+                    <div class="col-sm-8 search-results-section">
                         <table width="100%" class="table-search-section table table table-responsive table-bordered table-hover table-striped">
                             <thead>
                             <tr class="text-center center-block">
@@ -62,19 +62,22 @@ include '../includes/header.php'; ?>
 s                            </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($schools as $school):?>
+                            <?php foreach ($tutors as $tutor):?>
                                 <tr class="">
-                                    <td><?php echo $tutors->tutor_avatar ;?></td>
-                                    <td><h2><?php echo $tutors->tutor_name;?></h2>
-                                        <?php echo $tutors->tutor_description?>
+                                    <td><?php echo $tutor->tutor_avatar ;?></td>
+                                    <td><h2><?php echo $tutor->tutor_name;?></h2>
+                                        <?php echo $tutor->tutor_description?>
                                     </td>
-                                    <td><?php echo $tutors->tutor_area ;?></td>
-                                    <td><?php echo $tutors->job_status ;?></td>
-                                    <td><?php echo $tutors->tutor_tuition_avail;?></td>
+                                    <td><?php echo $tutor->tutor_area ;?></td>
+                                    <td><?php echo $tutor->job_status ;?></td>
+                                    <td><?php echo $tutor->tutor_tuition_avail;?></td>
                                 </tr>
                             <?php endforeach;?>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="col-sm-4">
+
                     </div>
 
                 </div>

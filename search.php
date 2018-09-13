@@ -22,9 +22,13 @@ if(isset($_POST['keyword_srch'])){
 
     }elseif ($_POST['search_type'] == 'parenting'){
         $template = new Templates('templates/search_downloads.php');
+        $template->downloads = $search->search_all_downloads();
+        $template->posts = $search->search_all_posts();
+        $template->keyword = $_POST['keyword_srch'];
 
     }else{
         $template = new Templates('templates/search.php');
+
     }
 
 }
