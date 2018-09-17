@@ -65,7 +65,7 @@ class User
     public function register($data){
         $this->db
             ->query("INSERT INTO users 
-                      (username, password, first_name, last_name, email, phone, role, address, is_active)
+                      (password, first_name, last_name, email, user_type, is_active)
                        VALUE (:username,:password, :first_name, :last_name , :email , :phone, :role, :address, :is_active )");
         $this->db->bind(':username', $data['username']);
         $this->db->bind(':password', $data['password']);

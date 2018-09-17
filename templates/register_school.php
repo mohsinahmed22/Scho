@@ -24,8 +24,10 @@ include '../includes/header.php'; ?>
                     <div class="register-box">
                         <div class="row">
                             <div class="col-sm-12">
-                                <form id="regForm" action="register.php" method="post">
+                                <form id="regForm" action="/action_page.php">
                                     <h1>Register:</h1>
+
+
                                     <!-- One "tab" for each step in the form: -->
                                     <div class="tab school_account_info"><h4>Account Information:</h4>
                                         <input placeholder="First name..." oninput="this.className = ''" name="first_name">
