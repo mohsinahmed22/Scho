@@ -65,64 +65,104 @@ class User
     public function register($data){
         $this->db
             ->query("INSERT INTO users 
-                      (password, first_name, last_name, email, user_type, is_active)
-                       VALUE (:username,:password, :first_name, :last_name , :email , :phone, :role, :address, :is_active )");
-        $this->db->bind(':username', $data['username']);
+                      (password, first_name, last_name, email, user_type)
+                       VALUE (:password, :first_name, :last_name , :email, :user_type)");
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':first_name', $data['first_name']);
         $this->db->bind(':last_name', $data['last_name']);
         $this->db->bind(':email', $data['email']);
-        $this->db->bind(':phone', $data['phone']);
-        $this->db->bind(':role', $data['role']);
-        $this->db->bind(':address', $data['address']);
-        $this->db->bind(':is_active', $data['is_active']);
+        $this->db->bind(':user_type', $data['user_type']);
 //        $this->db->bind(':', $data['']);
-
         if($this->db->execute()){
-            return true;
+            $data['uid'] = $this->register_user_id();
+            if($data['user_type'] == 'school'){
+                 if($this->register_school($data)){
+                     return true;
+                 }else{
+                     return false;
+                 }
+
+            }elseif($data['user_type'] == 'teacher'){
+                $this->register_teacher($data);
+
+            }elseif($data['user_type'] == 'parent'){
+                $this->register_parents($data);
+            }
+
+
         }else{
             return false;
         }
     }
 
-
-
-    /**
-     * Select Add New User
-     * @param $data
-     * @return bool
-     */
-    public function update($data){
+    public function register_school($data){
         $this->db
-            ->query("UPDATE users SET 
-                           username = :username,
-                           password = :password,
-                           first_name = :first_name,
-                           last_name  = :last_name,
-                           email = :email,
-                           phone = :phone,
-                           role = :role,
-                           address = :address,
-                           is_active = :is_active 
-                           where id = :id
-                      ");
-        $this->db->bind(':id', $data['id']);
-        $this->db->bind(':username', $data['username']);
-        $this->db->bind(':password', $data['password']);
-        $this->db->bind(':first_name', $data['first_name']);
-        $this->db->bind(':last_name', $data['last_name']);
-        $this->db->bind(':email', $data['email']);
-        $this->db->bind(':phone', $data['phone']);
-        $this->db->bind(':role', $data['role']);
-        $this->db->bind(':address', $data['address']);
-        $this->db->bind(':is_active', $data['is_active']);
-//        $this->db->bind(':', $data['']);
+            ->query("INSERT INTO school_profile (
+                      user_id,
+                      school_name, 
+                      school_phone,
+                      school_email,
+                      school_address,
+                      school_fb_link,
+                      school_twitter_link,
+                      school_website_link,
+                      school_city,
+                      school_area,
+                      school_description,
+                      school_mont_system,
+                      school_type,
+                      school_special_child,
+                      school_main_campus,
+                      school_branches,
+                      school_grade,
+                      school_enrolled_students,
+                      ) VALUE (
+                      :uid
+                      :school_name, 
+                      :school_phone,
+                      :school_email,
+                      :school_address,
+                      :school_fb_link,
+                      :school_twitter_link,
+                      :school_website_link,
+                      :school_city,
+                      :school_area,
+                      :school_description,
+                      :school_mont_system,
+                      :school_type,
+                      :school_special_child,
+                      :school_main_campus,
+                      :school_branches,
+                      :school_grade,
+                      :school_enrolled_students,
+                       )");
+        $this->db->bind(':uid', $data['uid']);
+        $this->db->bind(':school_name', $data['school_name']);
+        $this->db->bind(':school_phone', $data['school_phone']);
+        $this->db->bind(':school_email', $data['school_email']);
+        $this->db->bind(':school_address', $data['school_address']);
+        $this->db->bind(':school_fb_link', $data['school_fb_link']);
+        $this->db->bind(':school_twitter_link', $data['school_twitter_link']);
+        $this->db->bind(':school_city', $data['school_city']);
+        $this->db->bind(':school_area', $data['school_area']);
+        $this->db->bind(':school_description', $data['school_description']);
+        $this->db->bind(':school_mont_system', $data['school_mont_system']);
+        $this->db->bind(':school_type', $data['school_type']);
+        $this->db->bind(':school_special_child', $data['school_special_child']);
+        $this->db->bind(':school_main_campus', $data['school_main_campus']);
+        $this->db->bind(':school_branches', $data['school_branches']);
+        $this->db->bind(':school_grade', $data['school_grade']);
+        $this->db->bind(':school_enrolled_students', $data['school_enrolled_students']);
+
         if($this->db->execute()){
-            return true;
+            return $this->register_user_id();
+
         }else{
             return false;
         }
+
     }
+
 
 
     /**
@@ -220,4 +260,8 @@ class User
     }
 
 
+
+     public function register_user_id(){
+        return $this->db->last_insert_id();
+    }
 }

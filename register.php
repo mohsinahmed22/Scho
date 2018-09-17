@@ -15,7 +15,21 @@ if(isset($_GET['school'])){
 }elseif(isset($_GET['parenting'])){
     $template = new Templates('templates/register_parents.php');
 }elseif(isset($_POST)){
+    if($_POST['user_type'] == 'school'){
+        $user = new User();
+        if($user->register($_POST)){
+            $uid = $user->register_user_id();
+        }
+    }elseif($_POST['user_type'] == 'teacher'){
+
+    }else{
+
+    }
+
+
     $template = new Templates('templates/thankyou.php');
+
+
 
 }
 

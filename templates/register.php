@@ -37,6 +37,7 @@ include '../includes/header.php'; ?>
                                         <p><small>Email address should be your login id</small></p>
                                         <input placeholder="Password..." oninput="this.className = ''" name="password" type="password">
                                         <p><small></small></p>
+                                        <input name="user_type" value="school" type="hidden">
                                     </div>
                                     <div class="tab school_info"><h4>School Information:</h4>
                                         <input placeholder="School name..." oninput="this.className = ''" name="school_name">
