@@ -54,9 +54,9 @@ include '../includes/header.php'; ?>
                                         <p><small>Example: Add school detail description..</small></p>
                                         <hr>
                                         <span class="chck-box-format">
-                                            <input oninput="this.className = ''" name="school_special_child" type="checkbox" class="checkbox-inline"> <label><strong>Specail Child</strong></label>
-                                            <input oninput="this.className = ''" name="school_main_campus" type="checkbox"> <label><strong>Is this main Campus?</strong></label>
-                                            <input oninput="this.className = ''" name="school_branches" type="checkbox"> <label><strong>Is there any School Branches?</strong></label>
+                                            <input oninput="this.className = ''" name="school_special_child" type="checkbox" class="checkbox-inline" value="1"> <label><strong>Special Child</strong></label>
+                                            <input oninput="this.className = ''" name="school_main_campus" type="checkbox" value="1"> <label><strong>Is this main Campus?</strong></label>
+                                            <input oninput="this.className = ''" name="school_branches" type="checkbox" value="1"> <label><strong>Is there any School Branches?</strong></label>
                                         </span>
                                     </div>
                                     <div class="tab school_address"><h4>School Address:</h4>

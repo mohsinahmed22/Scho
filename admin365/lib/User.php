@@ -116,8 +116,11 @@ class User
                       school_branches,
                       school_grade,
                       school_enrolled_students,
-                      ) VALUE (
-                      :uid
+                      school_avatar,
+                      school_cover,
+                      school_profile_status
+                      ) VALUES (
+                      :uid,
                       :school_name, 
                       :school_phone,
                       :school_email,
@@ -135,6 +138,10 @@ class User
                       :school_branches,
                       :school_grade,
                       :school_enrolled_students,
+                      :school_avatar,
+                      :school_cover,
+                      :school_profile_status
+                      
                        )");
         $this->db->bind(':uid', $data['uid']);
         $this->db->bind(':school_name', $data['school_name']);
@@ -143,6 +150,7 @@ class User
         $this->db->bind(':school_address', $data['school_address']);
         $this->db->bind(':school_fb_link', $data['school_fb_link']);
         $this->db->bind(':school_twitter_link', $data['school_twitter_link']);
+        $this->db->bind(':school_website_link', $data['school_website_link']);
         $this->db->bind(':school_city', $data['school_city']);
         $this->db->bind(':school_area', $data['school_area']);
         $this->db->bind(':school_description', $data['school_description']);
@@ -153,6 +161,9 @@ class User
         $this->db->bind(':school_branches', $data['school_branches']);
         $this->db->bind(':school_grade', $data['school_grade']);
         $this->db->bind(':school_enrolled_students', $data['school_enrolled_students']);
+        $this->db->bind(':school_avatar', 'aa');
+        $this->db->bind(':school_cover', 'aa');
+        $this->db->bind(':school_profile_status', 'aa');
 
         if($this->db->execute()){
             return $this->register_user_id();
