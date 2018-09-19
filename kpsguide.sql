@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2018 at 03:08 PM
+-- Generation Time: Sep 19, 2018 at 11:17 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -33,6 +33,26 @@ CREATE TABLE `downloads` (
   `download_title` varchar(255) DEFAULT NULL,
   `download_file` varchar(255) DEFAULT NULL,
   `download_tags` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `parents_profile`
+--
+
+CREATE TABLE `parents_profile` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `parents_name` varchar(255) DEFAULT NULL,
+  `parents_phone` varchar(255) DEFAULT NULL,
+  `parents_intersted_in` varchar(255) DEFAULT NULL,
+  `parents_kids` varchar(255) DEFAULT NULL,
+  `parents_profile_status` varchar(255) DEFAULT NULL,
+  `parents_gender` varchar(255) DEFAULT NULL,
+  `parents_city` varchar(255) DEFAULT NULL,
+  `parents_area` varchar(255) DEFAULT NULL,
+  `parents_description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -131,28 +151,22 @@ CREATE TABLE `school_profile` (
   `school_description` text,
   `school_mont_system` varchar(255) DEFAULT NULL,
   `school_type` varchar(255) DEFAULT NULL,
-  `school_special_child` int(2) DEFAULT '0',
-  `school_main_campus` int(2) DEFAULT '0',
-  `school_branches` int(2) DEFAULT '0',
+  `school_special_child` varchar(255) DEFAULT '0',
+  `school_main_campus` varchar(255) DEFAULT '0',
+  `school_branches` varchar(255) DEFAULT '0',
   `school_cover` varchar(255) DEFAULT NULL,
   `school_avatar` varchar(255) DEFAULT NULL,
-  `school_profile_status` varchar(255) DEFAULT NULL
+  `school_profile_status` varchar(255) DEFAULT NULL,
+  `school_grade` varchar(255) DEFAULT NULL,
+  `school_enrolled_students` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `seeker_profile`
+-- Dumping data for table `school_profile`
 --
 
-CREATE TABLE `seeker_profile` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `seeker_phone` varchar(255) DEFAULT NULL,
-  `seeker_intersted_in` varchar(255) DEFAULT NULL,
-  `seeker_kids` varchar(255) DEFAULT NULL,
-  `seeker_profile_status` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `school_profile` (`id`, `user_id`, `school_name`, `school_phone`, `school_email`, `school_address`, `school_fb_link`, `school_twitter_link`, `school_website_link`, `school_city`, `school_area`, `school_description`, `school_mont_system`, `school_type`, `school_special_child`, `school_main_campus`, `school_branches`, `school_cover`, `school_avatar`, `school_profile_status`, `school_grade`, `school_enrolled_students`) VALUES
+(1, 16, 'KPSG', 'aa', 'aa', 'aaa', 'aa', 'aa', NULL, 'karachi', 'Clifton', NULL, 'aaa', 'new', NULL, NULL, NULL, 'aa', 'aa', 'aa', 'aa', 'aa');
 
 -- --------------------------------------------------------
 
@@ -165,6 +179,17 @@ CREATE TABLE `settings` (
   `setting_name` varchar(255) DEFAULT NULL,
   `setting_value` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `setting_name`, `setting_value`) VALUES
+(1, 'portal_name', 'KPSG - Karachi Parents School Guide'),
+(2, 'portal_phone', '000 000 0000'),
+(3, 'portal_url', NULL),
+(4, 'portal_email', 'kpsguide@gmail.com'),
+(5, 'portal_address', 'none');
 
 -- --------------------------------------------------------
 
@@ -179,13 +204,17 @@ CREATE TABLE `tutors_profile` (
   `tutor_job_status` varchar(255) DEFAULT NULL,
   `tutor_dob` varchar(255) DEFAULT NULL,
   `tutor_city` varchar(255) DEFAULT NULL,
-  `tutor_address` varchar(255) DEFAULT NULL,
+  `tutor_tuition_avail` varchar(255) DEFAULT NULL,
   `tutor_facebook_link` varchar(255) DEFAULT NULL,
   `tutor_linkedin` varchar(255) DEFAULT NULL,
   `tutor_description` text,
   `tutor_cover` varchar(255) DEFAULT NULL,
   `tutor_avatar` varchar(255) DEFAULT NULL,
-  `tutor_profile_status` varchar(255) DEFAULT NULL
+  `tutor_profile_status` varchar(255) DEFAULT NULL,
+  `tutor_area` varchar(255) DEFAULT NULL,
+  `tutor_phone` varchar(255) DEFAULT NULL,
+  `tutor_home_tuition_availablity` varchar(255) DEFAULT NULL,
+  `tutor_gender` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -201,8 +230,16 @@ CREATE TABLE `users` (
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `user_type` int(6) DEFAULT NULL
+  `user_type` varchar(255) DEFAULT 'parents',
+  `join_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `user_type`, `join_date`) VALUES
+(16, NULL, 'test', 'mohsin', 'ahmed', 'ahmed.mohsin98@gmail.com', 'school', '2018-09-19 07:10:04');
 
 -- --------------------------------------------------------
 
@@ -226,6 +263,13 @@ ALTER TABLE `downloads`
   ADD PRIMARY KEY (`id`),
   ADD KEY `downloads_posts_id_fk` (`posts_id`),
   ADD KEY `downloads_users_id_fk` (`user_id`);
+
+--
+-- Indexes for table `parents_profile`
+--
+ALTER TABLE `parents_profile`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `seeker_profile_users_id_fk` (`user_id`);
 
 --
 -- Indexes for table `posts`
@@ -270,13 +314,6 @@ ALTER TABLE `school_profile`
   ADD KEY `school_profile_users_id_fk` (`user_id`);
 
 --
--- Indexes for table `seeker_profile`
---
-ALTER TABLE parents_profile
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `seeker_profile_users_id_fk` (`user_id`);
-
---
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
@@ -293,8 +330,7 @@ ALTER TABLE `tutors_profile`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `users_users_type_id_fk` (`user_type`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users_type`
@@ -310,6 +346,11 @@ ALTER TABLE `users_type`
 -- AUTO_INCREMENT for table `downloads`
 --
 ALTER TABLE `downloads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `parents_profile`
+--
+ALTER TABLE `parents_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `posts`
@@ -335,17 +376,12 @@ ALTER TABLE `school_jobs`
 -- AUTO_INCREMENT for table `school_profile`
 --
 ALTER TABLE `school_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `seeker_profile`
---
-ALTER TABLE parents_profile
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tutors_profile`
 --
@@ -355,7 +391,7 @@ ALTER TABLE `tutors_profile`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `users_type`
 --
@@ -371,6 +407,12 @@ ALTER TABLE `users_type`
 ALTER TABLE `downloads`
   ADD CONSTRAINT `downloads_posts_id_fk` FOREIGN KEY (`posts_id`) REFERENCES `posts` (`id`),
   ADD CONSTRAINT `downloads_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `parents_profile`
+--
+ALTER TABLE `parents_profile`
+  ADD CONSTRAINT `seeker_profile_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `posts`
@@ -410,22 +452,10 @@ ALTER TABLE `school_profile`
   ADD CONSTRAINT `school_profile_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `seeker_profile`
---
-ALTER TABLE parents_profile
-  ADD CONSTRAINT `seeker_profile_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
 -- Constraints for table `tutors_profile`
 --
 ALTER TABLE `tutors_profile`
   ADD CONSTRAINT `tutors_profile_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_users_type_id_fk` FOREIGN KEY (`user_type`) REFERENCES `users_type` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
