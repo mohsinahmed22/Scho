@@ -272,7 +272,7 @@ ALTER TABLE `school_profile`
 --
 -- Indexes for table `seeker_profile`
 --
-ALTER TABLE `seeker_profile`
+ALTER TABLE parents_profile
   ADD PRIMARY KEY (`id`),
   ADD KEY `seeker_profile_users_id_fk` (`user_id`);
 
@@ -339,7 +339,7 @@ ALTER TABLE `school_profile`
 --
 -- AUTO_INCREMENT for table `seeker_profile`
 --
-ALTER TABLE `seeker_profile`
+ALTER TABLE parents_profile
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `settings`
@@ -412,7 +412,7 @@ ALTER TABLE `school_profile`
 --
 -- Constraints for table `seeker_profile`
 --
-ALTER TABLE `seeker_profile`
+ALTER TABLE parents_profile
   ADD CONSTRAINT `seeker_profile_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --

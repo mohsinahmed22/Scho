@@ -21,7 +21,9 @@ if(isset($_GET['school'])){
             $uid = $user->register_user_id();
         }
     }elseif($_POST['user_type'] == 'teacher'){
-
+        if($user->register($_POST)){
+            $uid = $user->register_user_id();
+        }
     }else{
 
     }
