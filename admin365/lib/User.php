@@ -65,8 +65,8 @@ class User
     public function register($data){
         $this->db
             ->query("INSERT INTO users 
-                      (password, first_name, last_name, email, user_type)
-                       VALUE (:password, :first_name, :last_name , :email, :user_type)");
+                      (password, first_name, last_name, email, user_type, join_date)
+                       VALUE (:password, :first_name, :last_name , :email, :user_type, NOW())");
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':first_name', $data['first_name']);
         $this->db->bind(':last_name', $data['last_name']);
@@ -83,18 +83,28 @@ class User
                  }
 
             }elseif($data['user_type'] == 'teacher'){
-                $this->register_teacher($data);
+                if($this->register_teacher($data)){
+                    return true;
+                }else{
+                    return false;
+                }
 
             }elseif($data['user_type'] == 'parent'){
-                $this->register_parents($data);
+                if($this->register_parents($data)){
+                    return true;
+                }else{
+                    return false;
+                }
             }
-
-
         }else{
             return false;
         }
     }
 
+    /**
+     * @param $data
+     * @return bool|string
+     */
     public function register_school($data){
         $this->db
             ->query("INSERT INTO school_profile (
@@ -174,6 +184,114 @@ class User
 
     }
 
+    /**
+     * @param $data
+     * @return bool|string
+     */
+    public function register_teacher($data){
+        $this->db
+            ->query("INSERT INTO tutors_profile (
+                      user_id,
+                      tutor_name, 
+                      tutor_phone,
+                      tutor_gender,
+                      tutor_facebook_link,
+                      tutor_linkedin,
+                      tutor_city,
+                      tutor_area,
+                      tutor_description,
+                      tutor_job_status,
+                      tutor_tuition_avail,
+                      tutor_home_tuition_availablity
+                      ) VALUES (
+                      :uid,
+                      :tutor_name, 
+                      :tutor_phone,
+                      :tutor_gender,
+                      :tutor_facebook_link,
+                      :tutor_linkedin,
+                      :tutor_city,
+                      :tutor_area,
+                      :tutor_description,
+                      :tutor_job_status,
+                      :tutor_tuition_avail,
+                      :tutor_home_tuition_availablity
+                      
+                       )");
+        $this->db->bind(':uid', $data['uid']);
+        $this->db->bind(':tutor_name', $data['tutor_name']);
+        $this->db->bind(':tutor_phone', $data['tutor_phone']);
+        $this->db->bind(':tutor_gender', $data['tutor_gender']);
+        $this->db->bind(':tutor_facebook_link', $data['tutor_facebook_link']);
+        $this->db->bind(':tutor_linkedin', $data['tutor_linkedin']);
+        $this->db->bind(':tutor_city', $data['tutor_city']);
+        $this->db->bind(':tutor_area', $data['tutor_area']);
+        $this->db->bind(':tutor_description', $data['tutor_description']);
+        $this->db->bind(':tutor_job_status', $data['tutor_job_status']);
+        $this->db->bind(':tutor_tuition_avail', $data['tutor_tuition_avail']);
+        $this->db->bind(':tutor_home_tuition_availablity', $data['tutor_home_tuition_availablity']);
+        $this->db->bind(':tutor_avatar', 'aa');
+        $this->db->bind(':tutor_cover', 'aa');
+        $this->db->bind(':tutor_profile_status', 'aa');
+
+        if($this->db->execute()){
+            return $this->register_user_id();
+
+        }else{
+            return false;
+        }
+
+    }
+
+    /**
+     * @param $data
+     * @return bool|string
+     */
+    public function register_parents($data){
+        $this->db
+            ->query("INSERT INTO parents_profile (
+                      user_id,
+                      parents_name, 
+                      parents_phone,
+                      parents_gender,
+                      parents_intersted_in,
+                      parents_kids,
+                      parents_profile_status,
+                      parents_city,
+                      parents_area,
+                      parents_description
+                      ) VALUES (
+                      :uid,
+                      :parents_name, 
+                      :parents_phone,
+                      :parents_gender,
+                      :parents_intersted_in,
+                      :parents_kids,
+                      :parents_profile_status,
+                      :parents_city,
+                      :parents_area,
+                      :parents_description
+                      
+                       )");
+        $this->db->bind(':uid', $data['uid']);
+        $this->db->bind(':parents_name', $data['parents_name']);
+        $this->db->bind(':parents_phone', $data['parents_phone']);
+        $this->db->bind(':parents_gender', $data['parents_gender']);
+        $this->db->bind(':parents_intersted_in', $data['parents_intersted_in']);
+        $this->db->bind(':parents_kids', $data['parents_kids']);
+        $this->db->bind(':parents_profile_status', $data['parents_profile_status']);
+        $this->db->bind(':parents_city', $data['parents_city']);
+        $this->db->bind(':parents_area', $data['parents_area']);
+        $this->db->bind(':parents_description', $data['parents_description']);
+
+        if($this->db->execute()){
+            return $this->register_user_id();
+
+        }else{
+            return false;
+        }
+
+    }
 
 
     /**
