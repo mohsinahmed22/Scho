@@ -21,56 +21,51 @@ include '../includes/header.php'; ?>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="register-box">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p>Don't have an account? <strong><a href="#">Sign up</a></strong></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <script>
-                                        var finished_rendering = function() {
-                                            console.log("finished rendering plugins");
-                                            var spinner = document.getElementById("spinner");
-                                            spinner.removeAttribute("style");
-                                            spinner.removeChild(spinner.childNodes[0]);
-                                        }
-                                        FB.Event.subscribe('xfbml.render', finished_rendering);
-                                    </script>
-                                    <div id="spinner"
-                                         style="
-                                            background: #4267b2;
-                                            border-radius: 5px;
-                                            color: white;
-                                            height: 60px;
-                                            text-align: center;
-                                            width: 100%;">
-                                        Loading
-                                        <div
-                                                class="fb-login-button"
-                                                data-max-rows="1"
-                                                data-size="XLarge"
-                                                data-button-type="continue_with KPSG"
-                                                data-use-continue-as="true"
 
-                                        ></div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row">
-                                <div class="col-sm-12 text-center">
-                                    <p style="margin: 20px 0 0"><strong>OR <br/>
-                                            Log in with your email</strong></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
+
+                                <div class="col-sm-6">
+                                    <h3><i class="fa fa-key"></i> Account Login</h3>
+                                    <hr/>
                                     <form action="register.php" class="login-form for" method="post">
-                                        <input type="text" class="form-control" placeholder="Username" required="required">
-                                        <input type="password" class="form-control" placeholder="Password" required="required">
-                                        <button type="submit" name='login_form' class="btn btn-primary btn-lg login-btn">Login </button>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="text" class="form-control" placeholder="Username" required="required" style="margin-bottom:20px">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="password" class="form-control" placeholder="Password" required="required"  style="margin-bottom:20px">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <button type="submit" name='login_form' class="btn btn-primary btn-lg login-btn">Login </button> <span class="pull-right"><a href="forget-password.php">Forget your password?</a></span>
+                                            </div>
+                                        </div>
                                     </form>
+                                    <hr/>
+                                    <a href="register.php?school" class="btnReg regSchool">Register as School</a>
+                                    <a href="register.php?teachers" class="btnReg regTeacher">Register as Teacher</a>
+                                    <a href="register.php?parenting" class="btnReg regParent">Register as Parent</a>
+
                                 </div>
+                                <div class="col-sm-6 info-login">
+                                    <h3><i class="fa fa-search"></i> Find School</h3>
+                                    <p>Find School in your area</p>
+                                    <h3><i class="fa fa-certificate"></i> Find Teachers</h3>
+                                    <p>Find Better Teacher and post jobs.</p>
+                                    <h3><i class="fa fa-envelope"></i> Weekly newsletter</h3>
+                                    <p>Get our best articles, worksheets and more delivered weekly.</p>
+                                    <h3><i class="fa fa-heart"></i>  Follow schools</h3>
+                                    <p>Find better School for your childrens</p>
+                                    <h3><i class="fa fa-comment"></i>  Write reviews</h3>
+                                    <p>Help other parents find a great school by sharing your experiences.</p>
+
+
+
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -2067,9 +2067,9 @@ section
 .register-info p span {color:#a1e373;}
 .register-heading:after{background:red; height:300px; width: 100%; position: absolute; bottom:0; z-index: 10;}
 .register-heading {background: #A7B548; padding: 30px 0 ; position: relative; margin-bottom: 20px;}
-.login-btn {width: 100%; background: #0d2034; border-color: #0d2034; }
-.register-box input, .register-box select,.register-box textarea{margin: 20px 0 0 ;}
-.register-box p {margin: 0;}
+.login-btn {background: #0d2034; border-color: #0d2034; }
+.register-box input, .register-box select,.register-box textarea{margin: 0px 0 0 ;}
+.register-box p {margin: 5px 0;}
 #regForm {
 	background-color: #ffffff;
 	margin: 0px auto;
@@ -2081,12 +2081,12 @@ section
 
 .register-box  input, .register-box  select, .register-box  textarea {
 	padding: 10px;
-	width: 100%;
+	/*width: 100%;*/
 	font-size: 17px;
 	font-family: Raleway;
 	border: 1px solid #aaaaaa;
 }
-
+.form-control {color: #1ba40c;}
 /* Mark input boxes that gets an error on validation: */
 
 .register-box input.invalid {
@@ -2095,12 +2095,6 @@ section
 
 /* Hide all steps by default: */
 .tab {display: none;}
-
-
-
-#prevBtn {
-	background-color: #bbbbbb;
-}
 
 /* Make circles that indicate the steps of the form: */
 .step {
@@ -2128,3 +2122,10 @@ section
 .chck-box-format label{margin-right: 30px;}
 .register-box .school_survey textarea{ margin: 0 0 20px  !important;	}
 .register-box .school_survey p{margin: 10px 0;}
+.regSchool{background: #03afd2; }
+.regTeacher{background: #bf519e; }
+.regParent{background: #7eb34b; }
+.btnReg {color:#fff; display: block; width:100%; border-radius: 8px; text-align: left; padding: 10px; font-size:20px; text-transform: uppercase; font-weight: bolder; margin: 10px 0 ;}
+.btnReg:hover{color:#fff;}
+.btnReg span {font-size:12px;  text-transform: capitalize; line-height: 1px; font-weight: lighter;}
+.info-login p{font-size:16px; margin-bottom: 20px;}

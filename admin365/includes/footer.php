@@ -39,6 +39,7 @@
 <script src="assets/js/jquery.flot.orderBars.js"></script>
 <script src="assets/js/jquery.flot.spline.min.js"></script>
 <script src="assets/js/flot.curvedlines/curvedLines.js"></script>
+
 <!-- Custom Theme Scripts -->
 <script src="assets/js/custom.js"></script>
 </body>

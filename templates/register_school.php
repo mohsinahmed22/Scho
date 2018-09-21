@@ -25,15 +25,22 @@ include '../includes/header.php'; ?>
                         <div class="row">
                             <div class="col-sm-12">
                                 <form id="regForm" action="/action_page.php">
-                                    <h1>Register:</h1>
+                                    <h1>School Registration:</h1>
 
 
                                     <!-- One "tab" for each step in the form: -->
                                     <div class="tab school_account_info"><h4>Account Information:</h4>
-                                        <input placeholder="First name..." oninput="this.className = ''" name="first_name">
-                                        <p><small></small></p>
-                                        <input placeholder="Last name..." oninput="this.className = ''" name="last_name">
-                                        <p><small></small></p>
+                                                                               <div class="row">
+                                            <div class="col">
+                                                <input placeholder="First name..." oninput="this.className = ''" name="first_name" class="form-control">
+                                                <p><small></small></p>
+                                            </div>
+                                            <div class="col">
+                                                <input placeholder="Last name..." oninput="this.className = ''" name="last_name" class="form-control">
+                                                <p><small></small></p>
+                                            </div>
+                                        </div>
+
                                         <hr>
                                         <input placeholder="E-mail..." oninput="this.className = ''" name="email">
                                         <p><small>Email address should be your login id</small></p>

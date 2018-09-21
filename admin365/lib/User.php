@@ -65,13 +65,18 @@ class User
     public function register($data){
         $this->db
             ->query("INSERT INTO users 
-                      (password, first_name, last_name, email, user_type, join_date)
-                       VALUE (:password, :first_name, :last_name , :email, :user_type, NOW())");
-        $this->db->bind(':password', $data['password']);
+                      (password, first_name, last_name, email, user_type, join_date, rate_us, hear_about_us, why_to_join, how_to_improve, testimonials)
+                       VALUE (:password, :first_name, :last_name , :email, :user_type, NOW(), :rate_us, :hear_about_us, :why_to_join, :how_to_improve, :testimonials)");
+        $this->db->bind(':password', md5($data['password']));
         $this->db->bind(':first_name', $data['first_name']);
         $this->db->bind(':last_name', $data['last_name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':user_type', $data['user_type']);
+        $this->db->bind(':rate_us', $data['rate_us']);
+        $this->db->bind(':hear_about_us', $data['hear_about_us']);
+        $this->db->bind(':why_to_join', $data['why_to_join']);
+        $this->db->bind(':how_to_improve', $data['how_to_improve']);
+        $this->db->bind(':testimonials', $data['testimonials']);
 //        $this->db->bind(':', $data['']);
         if($this->db->execute()){
             $data['uid'] = $this->register_user_id();
@@ -193,46 +198,65 @@ class User
             ->query("INSERT INTO tutors_profile (
                       user_id,
                       tutor_name, 
-                      tutor_phone,
-                      tutor_gender,
+                      tutor_job_status,
+                      tutor_city,
                       tutor_facebook_link,
                       tutor_linkedin,
-                      tutor_city,
-                      tutor_area,
                       tutor_description,
-                      tutor_job_status,
-                      tutor_tuition_avail,
-                      tutor_home_tuition_availablity
+                      tutor_area,
+                      tutor_phone,
+                      tutor_where_to_teach,
+                      tutor_gender,
+                      tutor_age,
+                      tutor_experience,
+                      tutor_tuition_timing,
+                      tutor_cnic,
+                      tutor_resume
                       ) VALUES (
                       :uid,
                       :tutor_name, 
-                      :tutor_phone,
-                      :tutor_gender,
+                      :tutor_job_status,
+                      :tutor_city,
                       :tutor_facebook_link,
                       :tutor_linkedin,
-                      :tutor_city,
-                      :tutor_area,
                       :tutor_description,
-                      :tutor_job_status,
-                      :tutor_tuition_avail,
-                      :tutor_home_tuition_availablity
+                      :tutor_area,
+                      :tutor_phone,
+                      :tutor_where_to_teach,
+                      :tutor_gender,
+                      :tutor_age,
+                      :tutor_experience,
+                      :tutor_tuition_timing,
+                      :tutor_cnic,
+                      :tutor_resume
                       
                        )");
         $this->db->bind(':uid', $data['uid']);
-        $this->db->bind(':tutor_name', $data['tutor_name']);
-        $this->db->bind(':tutor_phone', $data['tutor_phone']);
-        $this->db->bind(':tutor_gender', $data['tutor_gender']);
+        $this->db->bind(':tutor_name', $data['first_name'] . " " . $data['last_name'] );
+        $this->db->bind(':tutor_job_status', $data['tutor_job_status']);
+        $this->db->bind(':tutor_city', $data['tutor_city']);
         $this->db->bind(':tutor_facebook_link', $data['tutor_facebook_link']);
         $this->db->bind(':tutor_linkedin', $data['tutor_linkedin']);
-        $this->db->bind(':tutor_city', $data['tutor_city']);
-        $this->db->bind(':tutor_area', $data['tutor_area']);
         $this->db->bind(':tutor_description', $data['tutor_description']);
-        $this->db->bind(':tutor_job_status', $data['tutor_job_status']);
-        $this->db->bind(':tutor_tuition_avail', $data['tutor_tuition_avail']);
-        $this->db->bind(':tutor_home_tuition_availablity', $data['tutor_home_tuition_availablity']);
-        $this->db->bind(':tutor_avatar', 'aa');
-        $this->db->bind(':tutor_cover', 'aa');
-        $this->db->bind(':tutor_profile_status', 'aa');
+        $this->db->bind(':tutor_area', $data['tutor_area']);
+        $this->db->bind(':tutor_phone', $data['tutor_phone']);
+        $this->db->bind(':tutor_where_to_teach', implode(', ', $data['tutor_where_to_teach']));
+        $this->db->bind(':tutor_gender', $data['tutor_gender']);
+        $this->db->bind(':tutor_age', $data['tutor_age']);
+        $this->db->bind(':tutor_experience', $data['tutor_experience']);
+        $this->db->bind(':tutor_tuition_timing', $data['tutor_tuition_timing']);
+        $this->db->bind(':tutor_cnic', $data['tutor_cnic']);
+        //Upload Resume
+        if($this->resumeupload()){
+            $data['tutor_cv'] = $_FILES["tutor_cv"]["name"];
+        }
+        $this->db->bind(':tutor_resume', $data['tutor_cv']);
+
+
+
+//        $this->db->bind(':tutor_avatar', 'aa');
+//        $this->db->bind(':tutor_cover', 'aa');
+//        $this->db->bind(':tutor_profile_status', 'aa');
 
         if($this->db->execute()){
             return $this->register_user_id();
@@ -254,22 +278,22 @@ class User
                       parents_name, 
                       parents_phone,
                       parents_gender,
-                      parents_intersted_in,
-                      parents_kids,
+                      parents_facebook_link,
                       parents_profile_status,
                       parents_city,
                       parents_area,
+                      parents_age,
                       parents_description
                       ) VALUES (
                       :uid,
                       :parents_name, 
                       :parents_phone,
                       :parents_gender,
-                      :parents_intersted_in,
-                      :parents_kids,
+                      :parents_facebook_link,
                       :parents_profile_status,
                       :parents_city,
                       :parents_area,
+                      :parents_age,
                       :parents_description
                       
                        )");
@@ -277,8 +301,8 @@ class User
         $this->db->bind(':parents_name', $data['parents_name']);
         $this->db->bind(':parents_phone', $data['parents_phone']);
         $this->db->bind(':parents_gender', $data['parents_gender']);
-        $this->db->bind(':parents_intersted_in', $data['parents_intersted_in']);
-        $this->db->bind(':parents_kids', $data['parents_kids']);
+        $this->db->bind(':parents_age', $data['parents_age']);
+        $this->db->bind(':parents_facebook_link', $data['parents_facebook_link']);
         $this->db->bind(':parents_profile_status', $data['parents_profile_status']);
         $this->db->bind(':parents_city', $data['parents_city']);
         $this->db->bind(':parents_area', $data['parents_area']);
@@ -389,8 +413,53 @@ class User
     }
 
 
-
+    /**
+     * @return string
+     */
      public function register_user_id(){
         return $this->db->last_insert_id();
     }
+
+
+    /*
+      * Upload Teacher Resume
+      */
+    public function resumeupload(){
+        $allowedExts = array("gif", "jpeg", "jpg", "png", 'pdf', 'doc', 'docx');
+        $temp = explode(".", $_FILES["tutor_cv"]["name"]);
+        $extension = end($temp);
+        if ((($_FILES["tutor_cv"]["type"] == "image/gif")
+                || ($_FILES["tutor_cv"]["type"] == "image/jpeg")
+                || ($_FILES["tutor_cv"]["type"] == "image/jpg")
+                || ($_FILES["tutor_cv"]["type"] == "application/pdf")
+                || ($_FILES["tutor_cv"]["type"] == "application/msword")
+                || ($_FILES["tutor_cv"]["type"] == "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+                || ($_FILES["tutor_cv"]["type"] == "image/x-png")
+                || ($_FILES["tutor_cv"]["type"] == "image/png"))
+            && ($_FILES["tutor_cv"]["size"] < 100000)
+            && in_array($extension, $allowedExts)) {
+            if ($_FILES["tutor_cv"]["error"] > 0) {
+                header("Location: register.php");
+            } else {
+                $date = date('d-m-y');
+                if (!file_exists('resume/'. $date)) {
+                    mkdir('resume/'. $date, 0777, true);
+                }
+                if (file_exists("resume/$date/kpsg_" .  $date . "_" . $_FILES["tutor_cv"]["name"])) {
+                    header("Location: register.php?error");
+                } else {
+                    $date = date('d-m-y');
+                    if (!file_exists('resume/'. $date)) {
+                        mkdir('resume/'. $date, 0777, true);
+                    }
+                    move_uploaded_file($_FILES["tutor_cv"]["tmp_name"],
+                        "resume/$date/kpsg_" .  $date . "_". $_FILES["tutor_cv"]["name"]);
+                    return true;
+                }
+            }
+        } else {
+            redirect('register.php', 'Invalid File Type!', 'error');
+        }
+    }
+
 }
