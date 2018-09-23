@@ -6,7 +6,16 @@
  * Time: 11:38 AM
  */
 include '../includes/header.php'; ?>
-
+<style>
+    /* Note: Try to remove the following lines to see the effect of CSS positioning */
+    .affix {
+        top: 100px;
+        z-index: 2 !important;
+        position: fixed;
+    }
+    footer{position: relative;
+        z-index: 10;}
+</style>
 <div class="home kpsg-schools">
     <div class="top_header">
         <div class="container">
@@ -86,9 +95,79 @@ include '../includes/header.php'; ?>
                     </ul>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-2">Heading</div>
-                <div class="col-sm-6">aaa</div>
+            <div class="row school-main school-enve" >
+                <div class="col-sm-2" >
+                    <div class="head"  data-spy="affix" data-offset-top="480" data-offset-bototm="700">
+                        <h3>Environment</h3>
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class="container-info">
+                        <h4><i class="fa fa-graduation-cap"></i> General information<br/><small style="font-weight: 200;">Detail information about school, faculty, availablity and comfortablity etc.</small></h4>
+                        <div class="container-box">
+
+                            <div class="unclaimed-message">
+                                <ul style="list-style:circle; padding-left:10px;"><li><strong>Are you an administrator at this school?</strong>
+                                        Claim your school’s profile to edit general information and share what makes your school unique.
+                                        <a href="#">Learn more</a>.</li>
+                                    <li><strong>Are you a parent or student at this school?</strong>
+                                        <a href="#">Encourage school administrators</a> to claim this school’s profile.</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-info">
+                        <h4><i class="fa fa-graduation-cap"></i> General information<br/><small style="font-weight: 200;">Detail information about school, faculty, availablity and comfortablity etc.</small></h4>
+                        <div class="container-box">
+
+                            <div class="unclaimed-message">
+                                <ul style="list-style:circle; padding-left:10px;"><li><strong>Are you an administrator at this school?</strong>
+                                        Claim your school’s profile to edit general information and share what makes your school unique.
+                                        <a href="#">Learn more</a>.</li>
+                                    <li><strong>Are you a parent or student at this school?</strong>
+                                        <a href="#">Encourage school administrators</a> to claim this school’s profile.</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">aaa</div>
+            </div>
+
+            <div class="row school-main school-enve" >
+                <div class="col-sm-2" >
+                    <div class="head"  data-spy="affix" data-offset-top="1480" >
+                        <h3>Environmenaaaaat</h3>
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class="container-info">
+                        <h4><i class="fa fa-graduation-cap"></i> General information<br/><small style="font-weight: 200;">Detail information about school, faculty, availablity and comfortablity etc.</small></h4>
+                        <div class="container-box">
+
+                            <div class="unclaimed-message">
+                                <ul style="list-style:circle; padding-left:10px;"><li><strong>Are you an administrator at this school?</strong>
+                                        Claim your school’s profile to edit general information and share what makes your school unique.
+                                        <a href="#">Learn more</a>.</li>
+                                    <li><strong>Are you a parent or student at this school?</strong>
+                                        <a href="#">Encourage school administrators</a> to claim this school’s profile.</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-info">
+                        <h4><i class="fa fa-graduation-cap"></i> General information<br/><small style="font-weight: 200;">Detail information about school, faculty, availablity and comfortablity etc.</small></h4>
+                        <div class="container-box">
+
+                            <div class="unclaimed-message">
+                                <ul style="list-style:circle; padding-left:10px;"><li><strong>Are you an administrator at this school?</strong>
+                                        Claim your school’s profile to edit general information and share what makes your school unique.
+                                        <a href="#">Learn more</a>.</li>
+                                    <li><strong>Are you a parent or student at this school?</strong>
+                                        <a href="#">Encourage school administrators</a> to claim this school’s profile.</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-sm-4">aaa</div>
             </div>
         </div>
@@ -96,6 +175,8 @@ include '../includes/header.php'; ?>
 </div>
 
 <?php  include "../includes/footer.php";?>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script>
     $('#aa').popover();
 </script>

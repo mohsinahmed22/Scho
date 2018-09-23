@@ -2040,7 +2040,7 @@ section
 *********************************/
 .search, .kpsg-register, .kpsg-schools {width: 100%; margin-top: 130px; }
 .top_header { background:#15314E; color: #ccc; padding: 20px 0 0; min-height: 120px; width: 100%; }
-.top_header h1 {color:#ccc; font-size:34px; }
+.top_header h1 {color:#fff; font-size:34px; }
 .top_header_sub {background: #0d2034; min-height: 60px; padding: 15px 0; color: #ccc;}
 .top_header_sub  a:link, .top_header_sub  a:visited {color: #a1e373;}
 .top_header_sub  a:active, .top_header_sub  a:active {color:white;}
@@ -2162,3 +2162,17 @@ h1 span a:link,h1 span a:visited  {font-size:16px; font-weight: 300;  }
 .btnReg:hover{color:#fff;}
 .btnReg span {font-size:12px;  text-transform: capitalize; line-height: 1px; font-weight: lighter;}
 .info-login p{font-size:16px; margin-bottom: 20px;}
+.school-main {padding-top:50px;}
+
+
+.container-info{background: #F6F9FA;
+    min-height: 300px;
+    padding: 4%;    margin-bottom: 30px;}
+.container-info h3{margin-bottom:20px;}
+.container-box{ background: #fff; border:1px solid #ddd; min-height: 200px;
+    padding: 4%; margin-top:30px;}
+.unclaimed-message{border-top:1px dotted #ccc; padding-top:20px; margin-top:20px;}
+.home.kpsg-schools{
+    height: 100%;
+    min-height: 1000px;}
+h1,h2,h3,h4,h5,h5{font-family: 'Open Sans';}
