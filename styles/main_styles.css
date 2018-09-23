@@ -53,7 +53,7 @@ body
 	font-size: 14px;
 	font-weight: 400;
 	background: #FFFFFF;
-	color: #a5a5a5;
+	color: #333;
 }
 div
 {
@@ -74,7 +74,7 @@ p
 	font-size: 14px;
 	line-height: 1.85;
 	font-weight: 400;
-	color: #76777a;
+	color: #333;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
@@ -2038,7 +2038,7 @@ section
 /*********************************
 15. Page Layout
 *********************************/
-.search, .kpsg-register {width: 100%; margin-top: 130px; }
+.search, .kpsg-register, .kpsg-schools {width: 100%; margin-top: 130px; }
 .top_header { background:#15314E; color: #ccc; padding: 20px 0 0; min-height: 120px; width: 100%; }
 .top_header h1 {color:#ccc; font-size:34px; }
 .top_header_sub {background: #0d2034; min-height: 60px; padding: 15px 0; color: #ccc;}
@@ -2047,7 +2047,8 @@ section
 
 
 
-
+a:link, a:visited{ transition: color .2s  }
+a:hover, a:active{ transition: color .2s; text-decoration: underline;}
 /*********************************
 16. Search Layout
 *********************************/
@@ -2055,10 +2056,42 @@ section
 .table-search-section td {height: 70px;}
 .search-results-section{margin-bottom: 20px;}
 
-
 /*********************************
-17. Register  / login Layout
+16. School Layout
 *********************************/
+.school-info 	{margin:10px 0; float: left;}
+.school-info div:first-child{margin-left: 0;}
+.school-info div:last-child{border-right: none;}
+.school-info div {margin: 0 7px; min-height: 30px;padding: 5px 17px 5px 0; border-right: 1px dotted  #727272;}
+.school-info div a:link, .school-info div a:visited {color:#ccc;}
+.school-info div a:hover, .school-info div a:active {color:#a1e373;}
+h1 span a:link,h1 span a:visited  {font-size:16px; font-weight: 300;  }
+.school-info-bar { min-height: 80px; padding: 20px 0 ;}
+.kpsg-rating-bar, .kpsg-review-bar  {border-right: 1px dotted #727272;}
+.kpsg-ratings-ico {background: #ffc80a; color:#15314E; font-size: 30px; min-height: 40px;padding: 10px;	border-radius: 60px;	width: 65px; font-weight: bold; letter-spacing: -4px; margin-right: 20px;margin-right: 20px;margin-top: 10px;}
+.kpsg-ratings-ico small{font-size:16px; letter-spacing: -2px;margin-left: 3px;}
+.kpsg-rating-title h3 small, .kpsg-review-bar h3 small {font-size:14px;text-transform: capitalize;}
+.kpsg-rating-title h3, .kpsg-review-bar h3  {font-size:15px; line-height: 17px; font-weight: lighter; text-transform: uppercase; color:#ccc; font-family: 'Roboto', sans-serif;}
+.kpsg-rating-title h3 span, .kpsg-review-bar h3 span{font-weight: bold;}
+.kpsg-review-bar {
+	padding-top: 15px;
+	padding-bottom: 15px;}
+.no-border{border: none;}
+.kpsg-review-bar h3 span{font-size:13px; line-height: 30px}
+.kpsg-review-bar h2{ font-size:18px; font-weight: 400; color:#fff; font-family: 'Roboto', sans-serif; line-height: 26px}
+.kpsg-page {padding:30px 0;}
+.school-info-bar  i {background: #0D2035;padding: 5px 7px;border-radius: 18px;color: white;}
+.sch-bar li {border: 1px solid #ccc; padding: 2% 3%}
+.sch-bar li i {font-size:20px}
+.sch-bar li a {font-size:12px; color:#333; line-height: 12px;}
+
+
+
+
+	/*********************************
+    17. Register  / login Layout
+    *********************************/
+
 .register-bg {min-height: 700px; background: #ffc80a; position: relative; }
 .register-box {min-height: 200px; max-width: 900px; min-height: 400px; padding: 20px; background: #fff; margin: 0 auto; border-radius: 20px; border: 10px solid #e9ae0b;
 	vertical-align: middle; }
