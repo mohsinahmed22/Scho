@@ -2175,4 +2175,8 @@ h1 span a:link,h1 span a:visited  {font-size:16px; font-weight: 300;  }
 .home.kpsg-schools{
     height: 100%;
     min-height: 1000px;}
-h1,h2,h3,h4,h5,h5{font-family: 'Open Sans';}
+h1,h2,h3,h4,h5,h6{font-family: 'Open Sans';}
+.school-rating h5{ font-size: 22px; font-weight: 400; text-transform: uppercase;}
+.school-rating h5 small {text-transform: none; font-size:14px;}
+.review-rating  {	border: 1px solid #ddd;
+	padding: 30px; min-height: 120px;}

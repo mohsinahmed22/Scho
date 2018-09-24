@@ -133,42 +133,47 @@ include '../includes/header.php'; ?>
                 <div class="col-sm-4">aaa</div>
             </div>
 
-            <div class="row school-main school-enve" >
-                <div class="col-sm-2" >
-                    <div class="head"  data-spy="affix" data-offset-top="1480" >
-                        <h3>Environmenaaaaat</h3>
-                    </div>
-
+            <div class="row school-main school-rating" >
+                <div class="col-sm-2">
+                    <h5>Rate This School<br/>
+                    <small>let other parents know about this school</small></h5>
                 </div>
                 <div class="col-sm-6">
-                    <div class="container-info">
-                        <h4><i class="fa fa-graduation-cap"></i> General information<br/><small style="font-weight: 200;">Detail information about school, faculty, availablity and comfortablity etc.</small></h4>
-                        <div class="container-box">
+                    <div class="review-rating">
+                        <div class="row">
+                            <div class="col-sm-2 text-center">
+                                <div style="width: 50px; height: 50px; background: skyblue; border-radius: 25px; margin: 0 auto"></div>
+                                <small>You</small>
+                            </div>
+                            <div class="col-sm-10">
+                                <h4>How would you rate your experience at this school?</h4>
+                                <!-- Script -->
+                                <div class="post-action">
+                                    <!-- Rating -->
+                                    <select class='rating' id='rating' data-id='rating'>
+                                        <option value="1" >1</option>
+                                        <option value="2" >2</option>
+                                        <option value="3" >3</option>
+                                        <option value="4" >4</option>
+                                        <option value="5" >5</option>
+                                    </select>
+                                    <div style='clear: both;'></div>
+                                    Average Rating : <span id='avgrating'></span>
 
-                            <div class="unclaimed-message">
-                                <ul style="list-style:circle; padding-left:10px;"><li><strong>Are you an administrator at this school?</strong>
-                                        Claim your school’s profile to edit general information and share what makes your school unique.
-                                        <a href="#">Learn more</a>.</li>
-                                    <li><strong>Are you a parent or student at this school?</strong>
-                                        <a href="#">Encourage school administrators</a> to claim this school’s profile.</li></ul>
+                                    <!-- Set rating -->
+                                    <script type='text/javascript'>
+                                        //$(document).ready(function(){
+                                        //    $('#rating_<?php //echo $postid; ?>//').barrating('set',<?php //echo $rating; ?>//);
+                                        //});
+
+                                    </script>
                             </div>
                         </div>
-                    </div>
-                    <div class="container-info">
-                        <h4><i class="fa fa-graduation-cap"></i> General information<br/><small style="font-weight: 200;">Detail information about school, faculty, availablity and comfortablity etc.</small></h4>
-                        <div class="container-box">
 
-                            <div class="unclaimed-message">
-                                <ul style="list-style:circle; padding-left:10px;"><li><strong>Are you an administrator at this school?</strong>
-                                        Claim your school’s profile to edit general information and share what makes your school unique.
-                                        <a href="#">Learn more</a>.</li>
-                                    <li><strong>Are you a parent or student at this school?</strong>
-                                        <a href="#">Encourage school administrators</a> to claim this school’s profile.</li></ul>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
-                <div class="col-sm-4">aaa</div>
+
             </div>
         </div>
     </div>
@@ -176,6 +181,8 @@ include '../includes/header.php'; ?>
 
 <?php  include "../includes/footer.php";?>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 
 <script>
     $('#aa').popover();

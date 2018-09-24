@@ -9,6 +9,8 @@ include 'admin365/core/init.php';
 
 
 $template = new Templates('templates/school_home.php');
+$rating = new Rating();
+$template->rating_question = $rating->select_all_rating_questions();
 
 
 
