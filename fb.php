@@ -88,54 +88,6 @@ $page_title = "Facebook page posts";
     <div class='col-lg-12'>
         <?php
         echo "<h1 class='page-header'>{$page_title}</h1>";
-
-        $fb_page_id = "185933601940455";
-        $profile_photo_src = "https://graph.facebook.com/{$fb_page_id}/picture?type=square";
-        $access_token = "YOUR_ACCESS_TOKEN";
-        $fields = "id,message,picture,link,name,description,type,icon,created_time,from,object_id";
-        $limit = 5;
-        $json_link = "https://graph.facebook.com/{$fb_page_id}/feed?access_token={$access_token}&fields={$fields}&limit={$limit}";
-        $json = file_get_contents($json_link);
-        $obj = json_decode($json, true);
-        $feed_item_count = count($obj['data']);
-
-        for($x=0; $x<$feed_item_count; $x++){
-
-            // to get the post id
-            $id = $obj['data'][$x]['id'];
-            $post_id_arr = explode('_', $id);
-            $post_id = $post_id_arr[1];
-
-            // user's custom message
-            $message = $obj['data'][$x]['message'];
-
-            // picture from the link
-            $picture = $obj['data'][$x]['picture'];
-            $picture_url_arr = explode('&url=', $picture);
-            $picture_url = urldecode($picture_url_arr[1]);
-
-            // link posted
-            $link = $obj['data'][$x]['link'];
-
-            // name or title of the link posted
-            $name = $obj['data'][$x]['name'];
-
-            $description = $obj['data'][$x]['description'];
-            $type = $obj['data'][$x]['type'];
-
-            // when it was posted
-            $created_time = $obj['data'][$x]['created_time'];
-            $converted_date_time = date( 'Y-m-d H:i:s', strtotime($created_time));
-            $ago_value = time_elapsed_string($converted_date_time);
-
-            // from
-            $page_name = $obj['data'][$x]['from']['name'];
-
-            // useful for photo
-            $object_id = $obj['data'][$x]['object_id'];
-        }
-
-
         // to get 'time ago' text
         function time_elapsed_string($datetime, $full = false) {
 
@@ -166,6 +118,58 @@ $page_title = "Facebook page posts";
             if (!$full) $string = array_slice($string, 0, 1);
             return $string ? implode(', ', $string) . ' ago' : 'just now';
         }
+
+        $fb_page_id = "1992138387503935";
+
+        $profile_photo_src = "https://graph.facebook.com/1992138387503935/picture?type=square";
+        $access_token = "EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD";
+        $fields = "id,message,picture,link,name,description,type,icon,created_time,from,object_id,like";
+        $limit = 15;
+        $json_link = "https://graph.facebook.com/{$fb_page_id}/feed?access_token={$access_token}&fields={$fields}&limit={$limit}";
+        $json = file_get_contents($json_link);
+        $obj = json_decode($json, true);
+        $feed_item_count = count($obj['data']);
+
+        print_r($obj);
+
+        for($x=0; $x<$feed_item_count; $x++){
+
+            // to get the post id
+            $id = $obj['data'][$x]['id'];
+            $post_id_arr = explode('_', $id);
+            $post_id = $post_id_arr[1];
+
+            // user's custom message
+            $message = $obj['data'][$x]['message'];
+
+            // picture from the link
+            $picture = $obj['data'][$x]['picture'];
+            echo $picture_url_arr = explode('&url=', $picture);
+            $picture_url = urldecode($picture_url_arr[0]);
+//            print_r($picture_url_arr);
+
+            // link posted
+            $link = $obj['data'][$x]['link'];
+
+            // name or title of the link posted
+            $name = $obj['data'][$x]['name'];
+
+//            $description = $obj['data'][$x]['description'];
+            $type = $obj['data'][$x]['type'];
+
+            // when it was posted
+            $created_time = $obj['data'][$x]['created_time'];
+            $converted_date_time = date( 'Y-m-d H:i:s', strtotime($created_time));
+            $ago_value = time_elapsed_string($converted_date_time);
+
+            // from
+            $page_name = $obj['data'][$x]['from']['name'];
+
+            // useful for photo
+            $object_id = $obj['data'][$x]['object_id'];
+
+
+
 
 
         echo "<div class='row'>";
@@ -229,7 +233,7 @@ $page_title = "Facebook page posts";
         echo "</div>";
         echo "</a>";
         echo "</div>";
-
+        }
         ?>
 
 

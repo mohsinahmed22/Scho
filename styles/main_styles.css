@@ -2180,3 +2180,9 @@ h1,h2,h3,h4,h5,h6{font-family: 'Open Sans';}
 .school-rating h5 small {text-transform: none; font-size:14px;}
 .review-rating  {	border: 1px solid #ddd;
 	padding: 30px; min-height: 120px;}
+
+.profile-pic {width: 70px;
+	height: 50px; padding: 0 10px 10px 10px;}
+.fb-title{ width: 200px;
+	padding-left: 15px;
+	margin-left: 10px; }

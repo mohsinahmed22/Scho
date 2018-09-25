@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2018 at 06:51 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.1.13
+-- Generation Time: Sep 25, 2018 at 03:09 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -91,15 +89,6 @@ CREATE TABLE `posts` (
 CREATE TABLE `review` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `school_profile_id` int(11) DEFAULT NULL,
-  `school_branches_id` int(11) DEFAULT NULL,
-  `tutor_id` int(11) DEFAULT NULL,
-  `question_1` varchar(255) DEFAULT NULL,
-  `question_2` varchar(255) DEFAULT NULL,
-  `question_3` varchar(255) DEFAULT NULL,
-  `question_4` varchar(255) DEFAULT NULL,
-  `question_5` varchar(255) DEFAULT NULL,
-  `question_6` text,
   `overall_rating` varchar(255) DEFAULT NULL,
   `overall_message` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -118,6 +107,24 @@ CREATE TABLE `school_branches` (
   `school_branch_email` varchar(255) DEFAULT NULL,
   `school_branch_description` varchar(255) DEFAULT NULL,
   `school_branch_area` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_features`
+--
+
+CREATE TABLE `school_features` (
+  `id` int(11) NOT NULL,
+  `school_profile_id` int(11) DEFAULT NULL,
+  `school_main_campus` varchar(255) DEFAULT '0',
+  `School_special_child` varchar(255) DEFAULT '0',
+  `school_branches` varchar(255) DEFAULT '0',
+  `school_type` varchar(255) DEFAULT NULL,
+  `school_grade` varchar(255) DEFAULT NULL,
+  `school_enrolled_students` varchar(255) DEFAULT NULL,
+  `school_mont_system` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -158,26 +165,59 @@ CREATE TABLE `school_profile` (
   `school_city` varchar(255) DEFAULT NULL,
   `school_area` varchar(255) DEFAULT NULL,
   `school_description` text,
-  `school_mont_system` varchar(255) DEFAULT NULL,
-  `school_type` varchar(255) DEFAULT NULL,
-  `school_special_child` varchar(255) DEFAULT '0',
-  `school_main_campus` varchar(255) DEFAULT '0',
-  `school_branches` varchar(255) DEFAULT '0',
   `school_cover` varchar(255) DEFAULT NULL,
-  `school_avatar` varchar(255) DEFAULT NULL,
-  `school_grade` varchar(255) DEFAULT NULL,
-  `school_enrolled_students` varchar(255) DEFAULT NULL
+  `school_avatar` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `school_profile`
 --
 
-INSERT INTO `school_profile` (`id`, `user_id`, `school_name`, `school_phone`, `school_email`, `school_address`, `school_fb_link`, `school_twitter_link`, `school_website_link`, `school_city`, `school_area`, `school_description`, `school_mont_system`, `school_type`, `school_special_child`, `school_main_campus`, `school_branches`, `school_cover`, `school_avatar`, `school_grade`, `school_enrolled_students`) VALUES
-(1, 16, 'KPSG', 'aa', 'aa', 'aaa', 'aa', 'aa', NULL, 'karachi', 'Clifton', NULL, 'aaa', 'new', NULL, NULL, NULL, 'aa', 'aa', 'aa', 'aa'),
-(2, 17, 'Arise School', 't', 'a', 'abacaksdkfksd', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'Workbook, Worksheet', 'Matric System', NULL, '1', '1', 'aa', 'aa', 'Montessori - 10 grade', '100'),
-(3, 31, 'Mrs.Ahmed Montissori & Propatary', '021-31111111', 'a', 'aaaaaaaaaasdsadada', 'aaaaa', 'aaaaaa', NULL, 'karachi', 'North Nazimabad', NULL, 'Cambridge', 'A Level', NULL, NULL, NULL, 'aa', 'aa', 'Montessori - 10 grade', '150'),
-(4, 32, 'a', '021-3aa', 'aaa', 'a', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'a', NULL, NULL, NULL, 'aa', 'aa', 'a', 'a');
+INSERT INTO `school_profile` (`id`, `user_id`, `school_name`, `school_phone`, `school_email`, `school_address`, `school_fb_link`, `school_twitter_link`, `school_website_link`, `school_city`, `school_area`, `school_description`, `school_cover`, `school_avatar`) VALUES
+(1, 16, 'KPSG', 'aa', 'aa', 'aaa', 'aa', 'aa', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa'),
+(2, 17, 'Arise School', 't', 'a', 'abacaksdkfksd', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa'),
+(3, 31, 'Mrs.Ahmed Montissori & Propatary', '021-31111111', 'a', 'aaaaaaaaaasdsadada', 'aaaaa', 'aaaaaa', NULL, 'karachi', 'North Nazimabad', NULL, 'aa', 'aa'),
+(4, 32, 'a', '021-3aa', 'aaa', 'a', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_rating`
+--
+
+CREATE TABLE `school_rating` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `school_profile_id` int(11) DEFAULT NULL,
+  `school_rating_question_id` int(11) DEFAULT NULL,
+  `school_rating_value` int(11) DEFAULT NULL,
+  `school_rating_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_rating_questions`
+--
+
+CREATE TABLE `school_rating_questions` (
+  `id` int(11) NOT NULL,
+  `school_rating_question` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_teachers`
+--
+
+CREATE TABLE `school_teachers` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `school_profile_id` int(11) DEFAULT NULL,
+  `tutor_profile_id` varchar(255) DEFAULT NULL,
+  `tutor_designation` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -377,10 +417,7 @@ ALTER TABLE `posts`
 --
 ALTER TABLE `review`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `review_school_profile_id_fk` (`school_profile_id`),
-  ADD KEY `review_school_branches_id_fk` (`school_branches_id`),
-  ADD KEY `review_users_id_fk` (`user_id`),
-  ADD KEY `review_tutors_profile_id_fk` (`tutor_id`);
+  ADD KEY `review_users_id_fk` (`user_id`);
 
 --
 -- Indexes for table `school_branches`
@@ -388,6 +425,12 @@ ALTER TABLE `review`
 ALTER TABLE `school_branches`
   ADD PRIMARY KEY (`id`),
   ADD KEY `school_branches_school_profile_id_fk` (`school_profile_id`);
+
+--
+-- Indexes for table `school_features`
+--
+ALTER TABLE `school_features`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `school_jobs`
@@ -403,6 +446,24 @@ ALTER TABLE `school_jobs`
 ALTER TABLE `school_profile`
   ADD PRIMARY KEY (`id`),
   ADD KEY `school_profile_users_id_fk` (`user_id`);
+
+--
+-- Indexes for table `school_rating`
+--
+ALTER TABLE `school_rating`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `school_rating_questions`
+--
+ALTER TABLE `school_rating_questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `school_teachers`
+--
+ALTER TABLE `school_teachers`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `settings`
@@ -438,67 +499,76 @@ ALTER TABLE `users_type`
 --
 ALTER TABLE `downloads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `parents_profile`
 --
 ALTER TABLE `parents_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `school_branches`
 --
 ALTER TABLE `school_branches`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
+--
+-- AUTO_INCREMENT for table `school_features`
+--
+ALTER TABLE `school_features`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `school_jobs`
 --
 ALTER TABLE `school_jobs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `school_profile`
 --
 ALTER TABLE `school_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+--
+-- AUTO_INCREMENT for table `school_rating`
+--
+ALTER TABLE `school_rating`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `school_rating_questions`
+--
+ALTER TABLE `school_rating_questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `school_teachers`
+--
+ALTER TABLE `school_teachers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tutors_profile`
 --
 ALTER TABLE `tutors_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
-
 --
 -- AUTO_INCREMENT for table `users_type`
 --
 ALTER TABLE `users_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- Constraints for dumped tables
 --
@@ -515,15 +585,6 @@ ALTER TABLE `downloads`
 --
 ALTER TABLE `parents_profile`
   ADD CONSTRAINT `seeker_profile_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `review`
---
-ALTER TABLE `review`
-  ADD CONSTRAINT `review_school_branches_id_fk` FOREIGN KEY (`school_branches_id`) REFERENCES `school_branches` (`id`),
-  ADD CONSTRAINT `review_school_profile_id_fk` FOREIGN KEY (`school_profile_id`) REFERENCES `school_profile` (`id`),
-  ADD CONSTRAINT `review_tutors_profile_id_fk` FOREIGN KEY (`tutor_id`) REFERENCES `tutors_profile` (`id`),
-  ADD CONSTRAINT `review_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `school_branches`
@@ -549,7 +610,6 @@ ALTER TABLE `school_profile`
 --
 ALTER TABLE `tutors_profile`
   ADD CONSTRAINT `tutors_profile_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
