@@ -462,4 +462,27 @@ class User
         }
     }
 
+
+    public function getSchool($id){
+        $this->db
+            ->query('select * from users
+                            inner join school_profile profile on users.id = profile.user_id
+                            inner join school_features features on features.school_profile_id = profile.id
+                            where profile.id = ' . $id );
+        $results = $this->db->resultset();
+
+        if($results){
+            return $results;
+        }else{
+            return false;
+        }
+    }
+
+
+
+
+    public function getSchoolteachers($id){}
+    public function getSchoolbranches($id){}
+
+    public function getSchooljobs($id){}
 }

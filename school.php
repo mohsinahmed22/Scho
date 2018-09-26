@@ -9,8 +9,11 @@ include 'admin365/core/init.php';
 
 
 $template = new Templates('templates/school_home.php');
+$user = new User();
+$template->school = $user->getSchool(1);
 $rating = new Rating();
-//$template->rating_question = $rating->select_all_rating_questions();
+$template->rating_question = $rating->select_all_rating_questions();
+$template->schoolRating = $rating->getSchoolrating(1);
 $fb_page_id = "1992138387503935";
 $template->profile_photo_src = "https://graph.facebook.com/{$fb_page_id}/picture?type=square&&height=200";
 $access_token = "EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD";

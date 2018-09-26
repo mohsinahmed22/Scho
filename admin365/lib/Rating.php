@@ -35,6 +35,18 @@ class Rating
     }
 
 
+    public function getSchoolrating($id){
+        $this->db
+            ->query('select * from school_rating 
+                                 where school_profile_id = ' . $id);
+
+        $results = $this->db->resultset();
+        if($results){
+            return $results;
+        }else{
+            return false;
+        }
+    }
 
 
 

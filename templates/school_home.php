@@ -21,10 +21,10 @@ include '../includes/header.php'; ?>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 title-cont">
-                    <h1>School Name <span><a href="">Unclaimed</a><a id='aa' href="#" role="button" data-toggle="popover"  data-placement="top" ' data-trigger="focus" title="This School has not cliamed its profile" data-content="School leaders - claim your school's profile to edit general information and share what makes your school unique. Learn more. "><i style="font-size:12px; opacity:.5; margin: 0 10px" class="fa fa-question" ></i></a></span></h1>
+                    <h1><?php echo $school[0]->school_name ;?> <span><a href="">Unclaimed</a><a id='aa' href="#" role="button" data-toggle="popover"  data-placement="top" ' data-trigger="focus" title="This School has not cliamed its profile" data-content="School leaders - claim your school's profile to edit general information and share what makes your school unique. Learn more. "><i style="font-size:12px; opacity:.5; margin: 0 10px" class="fa fa-question" ></i></a></span></h1>
                     <div class="school-info">
-                        <div class="school-address pull-left"><i class="fa fa-map-marker"></i> <a href="">A248, Block C, North Nazimabad, Karachi </a></div>
-                        <div class="school-area pull-left"><a href="#map">North Nazimabad</a></div>
+                        <div class="school-address pull-left"><i class="fa fa-map-marker"></i> <a href=""><?php echo $school[0]->school_address ;?>, <?php echo $school[0]->school_city ;?> </a></div>
+                        <div class="school-area pull-left"><a href="#map"><?php echo $school[0]->school_area ;?></a></div>
                         <div class="school-contact pull-left"><i class="fa fa-phone"></i> <a href="#">Contact Info</a></div>
                     </div>
                 </div>
@@ -48,15 +48,15 @@ include '../includes/header.php'; ?>
                     </div>
                     <div class="col-sm-2 kpsg-review-bar text-center" >
                         <h3><span>Grades</span></h3>
-                        <h2>Montessori - 10</h2>
+                        <h2><?php echo $school[0]->school_grade ;?></h2>
                     </div>
                     <div class="col-sm-2 kpsg-review-bar  text-center">
                         <h3><span>Students</span></h3>
-                        <h2>751</h2>
+                        <h2><?php echo $school[0]->school_enrolled_students ;?></h2>
                     </div>
                     <div class="col-sm-2 kpsg-review-bar text-center no-border">
                         <h3 class="text-center"><span>Type</span></h3>
-                        <h2>Public</h2>
+                        <h2><?php echo $school[0]->school_type ;?></h2>
                     </div>
 
                 </div>
@@ -79,6 +79,7 @@ include '../includes/header.php'; ?>
 
     </div>
     <div class="kpsg-page">
+        <?php print_r($school)?><?php //echo  $school->?>
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 sch-message">
@@ -108,40 +109,46 @@ include '../includes/header.php'; ?>
                         <div class="container-box">
                             <div class="row">
                                 <div class="col-sm-2"><h5>Description:</h5></div>
-                                <div class="col-sm-10"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p></div>
+                                <div class="col-sm-10"><p><?php echo $school[0]->school_description ;?></p></div>
 
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-2"><h5>Phone:</h5></div>
-                                <div class="col-sm-10"><p>000 000 0000</p></div>
+                                <div class="col-sm-10"><p><?php echo $school[0]->school_phone ;?></p></div>
 
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-2"><h5>Email:</h5></div>
-                                <div class="col-sm-10"><p>email@email.com</p></div>
+                                <div class="col-sm-10"><p><?php echo $school[0]->school_email ;?></p></div>
 
                             </div>
-
+                            <?php if(!empty($school[0]->school_website_link)):?>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-2"><h5>Website:</h5></div>
-                                <div class="col-sm-10"><p><a href="#" target="_blank">www.kpsg.pk</a></p></div>
+                                <div class="col-sm-10"><p><a href="#" target="_blank"><?php echo $school[0]->school_website_link ;?></a></p></div>
 
                             </div>
+                            <?php endif; ?>
+                            <?php if(!empty($school[0]->school_fb_link)):?>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-2"><h5>Facebook:</h5></div>
-                                <div class="col-sm-10"><p>Page link <span class="pull-right"><i class="fa fa-thumbs-up"></i>  Like </span></p> </div>
+                                <div class="col-sm-10"><p><a href="<?php echo $school[0]->school_fb_link ;?>"> Page link</a> <span class="pull-right"><i class="fa fa-thumbs-up"></i>  Like </span></p> </div>
 
                             </div>
+                            <?php endif; ?>
+                            <?php if(!empty($school[0]->school_twitter_link )):?>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-2"><h5>Twitter:</h5></div>
-                                <div class="col-sm-10"><p>Page link <span class="pull-right"><i class="fa fa-twitter"></i>  Follow us </span></p> </div>
+                                <div class="col-sm-10"><p><a href="<?php echo $school[0]->school_twitter_link ;?>"> Page link</a> <span class="pull-right"><i class="fa fa-twitter"></i>  Follow us </span></p> </div>
 
                             </div>
+                            <?php endif; ?>
+
                             <div class="unclaimed-message">
                                 <ul style="list-style:circle; padding-left:10px;"><li><strong>Are you an administrator at this school?</strong>
                                         Claim your school’s profile to edit general information and share what makes your school unique.
@@ -323,14 +330,43 @@ include '../includes/header.php'; ?>
                 </div>
             </div>
 
-
-
             <div class="row school-main school-rating" >
+                <div class="col-sm-8">
+                    <!-- Reviews -->
+                    <div class="schoolraitng">
+                        <h3>Course Review</h3>
+
+                        <!-- Rating -->
+                        <div class="review_rating_container">
+                            <div class="review_rating">
+                                <div class="review_rating_num">4.5</div>
+                                <div class="review_rating_stars">
+                                    <div class="rating_r rating_r_4"><i></i><i></i><i></i><i></i><i></i></div>
+                                </div>
+                                <div class="review_rating_text">(28 Ratings)</div>
+
+                            </div>
+                            <div class="review_rating_bars">
+                                <ul>
+                                    <li><span>5 Star</span><div class="review_rating_bar"><div style="width:90%;"></div></div></li>
+                                    <li><span>4 Star</span><div class="review_rating_bar"><div style="width:75%;"></div></div></li>
+                                    <li><span>3 Star</span><div class="review_rating_bar"><div style="width:32%;"></div></div></li>
+                                    <li><span>2 Star</span><div class="review_rating_bar"><div style="width:10%;"></div></div></li>
+                                    <li><span>1 Star</span><div class="review_rating_bar"><div style="width:3%;"></div></div></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="row school-main school-rating" >
                 <div class="col-sm-2">
                     <h5>Rate This School<br/>
                     <small>let other parents know about this school</small></h5>
                 </div>
                 <div class="col-sm-6">
+
+
                     <div class="review-rating">
                         <div class="row">
                             <div class="col-sm-2 text-center">
@@ -361,10 +397,57 @@ include '../includes/header.php'; ?>
                                     </script>
                             </div>
                         </div>
-
-
                     </div>
+                        <form action="school.php" method="post">
+                        <?php  foreach($rating_question as $question):?>
+                        <hr>
+                        <div class="row rating_question">
+                            <h4><?php echo $question->school_rating_question; ?></h4>
+                            <select class='rating' id='rating' data-id='rating'>
+                                <option value="1" >1</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                                <option value="4" >4</option>
+                                <option value="5" >5</option>
+                            </select>
+                            <input type="hidden" name="q_id" value="<?php echo $question->id;?>" />
+                            <textarea name="review_question_<?php echo $question->id;?>" class="form-control" placeholder="Why you rate this..."></textarea>
+                        </div>
+                        <?php endforeach; ?>
+                            <hr>
+                            <input type="hidden" name="user_id" value="<?php echo $school[0]->user_id;?>" />
+                            <input type="hidden" name="school_profile_id" value="<?php echo $school[0]->school_profile_id;?>" />
+                            <button type="submit" name="review_rating" class="btn btn-primary">Submit Review</button>
+                        </form>
                 </div>
+                    <!-- Reviews -->
+                    <div class="rating_reviews">
+                        <!-- Comments -->
+                        <div class="comments_container">
+                            <ul class="comments_list">
+                                <li>
+                                    <div class="comment_item d-flex flex-row align-items-start jutify-content-start">
+                                        <div class="comment_image text-center"><div style="width: 50px; height: 50px; background: lightpink; border-radius: 25px; margin: 0 auto"></div> <small>Parent</small></div>
+                                        <div class="comment_content">
+                                            <div class="comment_title_container d-flex flex-row align-items-center justify-content-start">
+                                                <div class="comment_author"><a href="#">Name</a></div>
+                                                <div class="comment_rating"><div class="rating_r rating_r_4"><i></i><i></i><i></i><i></i><i></i></div></div>
+                                                <div class="comment_time ml-auto">1 day ago</div>
+                                            </div>
+                                            <div class="comment_text">
+                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have alteration in some form, by injected humour.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                            <div class="add_comment_container">
+                                <div class="add_comment_title">Add a review</div>
+                                <div class="add_comment_text">You must be <a href="#">logged</a> in to post a comment.</div>
+                            </div>
+                        </div>
+                    </div>
 
             </div>
         </div>

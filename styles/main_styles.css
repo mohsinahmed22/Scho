@@ -2186,3 +2186,218 @@ h1,h2,h3,h4,h5,h6{font-family: 'Open Sans';}
 .fb-title{ width: 200px;
 	padding-left: 15px;
 	margin-left: 10px; }
+
+
+.review_rating_container
+{
+    margin-top: 43px;
+}
+.review_rating
+{
+    display: inline-block;
+    text-align: center;
+    padding-left: 0px;
+    padding-top: 28px;
+    vertical-align: top;
+    float: left;
+}
+.review_rating_num
+{
+    font-size: 72px;
+    line-height: 0.75;
+    font-weight: 900;
+    color: #384158;
+}
+.review_rating_stars
+{
+    margin-top: 27px;
+    margin-left: 3px;
+}
+.review_rating_stars .rating_r i::before
+{
+    color: #ffc80a;
+    font-size: 18px;
+}
+.review_rating_text
+{
+    font-size: 16px;
+    color: #b5b8be;
+    margin-top: 12px;
+}
+.review_rating_bars
+{
+    display: inline-block;
+    padding-left: 80px;
+    float: right;
+}
+.review_rating_bars ul li:not(:last-child)
+{
+    margin-bottom: 10px;
+}
+.review_rating_bars ul li span
+{
+    font-size: 16px;
+    font-weight: 400;
+    color: #384158;
+    vertical-align: middle;
+}
+.review_rating_bar
+{
+    display: inline-block;
+    vertical-align: middle;
+    width: 300px;
+    height: 30px;
+    background: #efefef;
+    margin-left: 22px;
+}
+.review_rating_bar > div
+{
+    height: 100%;
+    background: #14bdee;
+}
+.comments_container
+{
+    margin-top: 80px;
+}
+.comment_item
+{
+    border-bottom: solid 1px #e5e5e5;
+    padding-top: 31px;
+    padding-bottom: 16px;
+}
+.comment_image div
+{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.comment_image div img
+{
+    max-width: 100%;
+}
+.comment_content
+{
+    width: 100%;
+    padding-left: 20px;
+    margin-top: -7px;
+}
+.comment_author::after
+{
+    display: inline-block;
+    content: '-';
+    margin-left: 6px;
+}
+.comment_author a
+{
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #384158;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+.comment_author a:hover
+{
+    color: #14bdee;
+}
+.comments_container .rating_r
+{
+    margin-top: 3px;
+    margin-left: 5px;
+}
+.comments_container .rating_r i::before
+{
+    color: #ffc80a;
+}
+.comment_text
+{
+    margin-top: 12px;
+}
+.comment_extras
+{
+    margin-top: 13px;
+}
+.comment_reply
+{
+    margin-left: 35px;
+}
+.comment_extra a
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: #76777a;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+.comment_extra a:hover
+{
+    color: #14bdee;
+}
+.comment_extra a span
+{
+    margin-left: 3px;
+}
+.comment_reply a i
+{
+    color: #14bdee;
+}
+.comments_list li ul
+{
+    padding-left: 99px;
+}
+.add_comment_container
+{
+    margin-top: 24px;
+}
+.add_comment_title
+{
+    font-family: 'Roboto Slab', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #384158;
+}
+.add_comment_text
+{
+    margin-top: 14px;
+}
+.add_comment_text a
+{
+    color: #14bdee;
+    text-decoration: underline;
+}
+
+.rating_r
+{
+    margin-top: 7px;
+}
+.rating_r i::before
+{
+    font-family: 'FontAwesome';
+    content: "\f006";
+    font-style: normal;
+    font-size: 14px;
+    margin-right: 4px;
+    color: #14bdee;
+}
+.rating_r_1 i:first-child::before{content: "\f005";}
+.rating_r_2 i:first-child::before{content: "\f005";}
+.rating_r_2 i:nth-child(2)::before{content: "\f005";}
+.rating_r_3 i:first-child::before{content: "\f005";}
+.rating_r_3 i:nth-child(2)::before{content: "\f005";}
+.rating_r_3 i:nth-child(3)::before{content: "\f005";}
+.rating_r_4 i:first-child::before{content: "\f005";}
+.rating_r_4 i:nth-child(2)::before{content: "\f005";}
+.rating_r_4 i:nth-child(3)::before{content: "\f005";}
+.rating_r_4 i:nth-child(4)::before{content: "\f005";}
+.rating_r_5 i:first-child::before{content: "\f005";}
+.rating_r_5 i:nth-child(2)::before{content: "\f005";}
+.rating_r_5 i:nth-child(3)::before{content: "\f005";}
+.rating_r_5 i:nth-child(4)::before{content: "\f005";}
+.rating_r_5 i:nth-child(5)::before{content: "\f005";}
