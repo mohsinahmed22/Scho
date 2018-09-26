@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2018 at 03:09 PM
+-- Generation Time: Sep 26, 2018 at 03:13 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -127,6 +127,13 @@ CREATE TABLE `school_features` (
   `school_mont_system` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `school_features`
+--
+
+INSERT INTO `school_features` (`id`, `school_profile_id`, `school_main_campus`, `School_special_child`, `school_branches`, `school_type`, `school_grade`, `school_enrolled_students`, `school_mont_system`) VALUES
+(1, 1, 'yes', 'yes', 'no', 'no', '10-level', '200', 'yes');
+
 -- --------------------------------------------------------
 
 --
@@ -174,7 +181,7 @@ CREATE TABLE `school_profile` (
 --
 
 INSERT INTO `school_profile` (`id`, `user_id`, `school_name`, `school_phone`, `school_email`, `school_address`, `school_fb_link`, `school_twitter_link`, `school_website_link`, `school_city`, `school_area`, `school_description`, `school_cover`, `school_avatar`) VALUES
-(1, 16, 'KPSG', 'aa', 'aa', 'aaa', 'aa', 'aa', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa'),
+(1, 16, 'KPSG', 'aa', 'aa', 'aaa', 'aa', 'aa', NULL, 'karachi', 'Clifton', 'Detail information about school, faculty, availablity and comfortablity etc.\r\n', 'aa', 'aa'),
 (2, 17, 'Arise School', 't', 'a', 'abacaksdkfksd', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa'),
 (3, 31, 'Mrs.Ahmed Montissori & Propatary', '021-31111111', 'a', 'aaaaaaaaaasdsadada', 'aaaaa', 'aaaaaa', NULL, 'karachi', 'North Nazimabad', NULL, 'aa', 'aa'),
 (4, 32, 'a', '021-3aa', 'aaa', 'a', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa');
@@ -191,8 +198,22 @@ CREATE TABLE `school_rating` (
   `school_profile_id` int(11) DEFAULT NULL,
   `school_rating_question_id` int(11) DEFAULT NULL,
   `school_rating_value` int(11) DEFAULT NULL,
+  `school_rating_why_this` text,
   `school_rating_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `school_rating`
+--
+
+INSERT INTO `school_rating` (`id`, `user_id`, `school_profile_id`, `school_rating_question_id`, `school_rating_value`, `school_rating_why_this`, `school_rating_date`) VALUES
+(1, 16, 1, 1, 5, 'this is really good one', '2018-09-26 06:01:34'),
+(2, 16, 1, 2, 5, 'this is really good one', '2018-09-26 06:01:34'),
+(3, 16, 1, 3, 3, '', '2018-09-26 06:01:34'),
+(4, 16, 1, 4, 4, 'this is really good one', '2018-09-26 06:01:34'),
+(5, 16, 1, 5, 5, '', '2018-09-26 06:01:34'),
+(6, 16, 1, 6, 5, '', '2018-09-26 06:01:34'),
+(7, 16, 1, 7, 2, 'this is really good one', '2018-09-26 06:01:34');
 
 -- --------------------------------------------------------
 
@@ -204,6 +225,19 @@ CREATE TABLE `school_rating_questions` (
   `id` int(11) NOT NULL,
   `school_rating_question` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `school_rating_questions`
+--
+
+INSERT INTO `school_rating_questions` (`id`, `school_rating_question`) VALUES
+(1, 'This school has an effective approach to homework:'),
+(2, 'Teachers at this school are effective:'),
+(3, 'Leadership at this school is effective:'),
+(4, 'Teachers at this school are effective:'),
+(5, 'This school develops strong character in its students'),
+(6, 'This school effectively deals with bullying:'),
+(7, 'How would you rate your experience at this school?');
 
 -- --------------------------------------------------------
 
@@ -523,7 +557,7 @@ ALTER TABLE `school_branches`
 -- AUTO_INCREMENT for table `school_features`
 --
 ALTER TABLE `school_features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `school_jobs`
 --
@@ -538,12 +572,12 @@ ALTER TABLE `school_profile`
 -- AUTO_INCREMENT for table `school_rating`
 --
 ALTER TABLE `school_rating`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `school_rating_questions`
 --
 ALTER TABLE `school_rating_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `school_teachers`
 --
