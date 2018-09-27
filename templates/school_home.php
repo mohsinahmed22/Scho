@@ -368,54 +368,56 @@ include '../includes/header.php'; ?>
 
 
                     <div class="review-rating">
-                        <div class="row">
-                            <div class="col-sm-2 text-center">
-                                <div style="width: 50px; height: 50px; background: skyblue; border-radius: 25px; margin: 0 auto"></div>
-                                <small>You</small>
-                            </div>
-                            <div class="col-sm-10">
-                                <h4>How would you rate your experience at this school?</h4>
-                                <!-- Script -->
-                                <div class="post-action">
-                                    <!-- Rating -->
-                                    <select class='rating' id='rating' data-id='rating'>
-                                        <option value="1" >1</option>
-                                        <option value="2" >2</option>
-                                        <option value="3" >3</option>
-                                        <option value="4" >4</option>
-                                        <option value="5" >5</option>
-                                    </select>
-                                    <div style='clear: both;'></div>
-                                    Average Rating : <span id='avgrating'></span>
 
-                                    <!-- Set rating -->
-                                    <script type='text/javascript'>
-                                        //$(document).ready(function(){
-                                        //    $('#rating_<?php //echo $postid; ?>//').barrating('set',<?php //echo $rating; ?>//);
-                                        //});
-
-                                    </script>
-                            </div>
-                        </div>
-                    </div>
                         <form action="school.php" method="post">
+                            <div class="row">
+                                <div class="col-sm-2 text-center">
+                                    <div style="width: 50px; height: 50px; background: skyblue; border-radius: 25px; margin: 0 auto"></div>
+                                    <small>You</small>
+                                </div>
+                                <div class="col-sm-10">
+                                    <h4>How would you rate your experience at this school?</h4>
+                                    <!-- Script -->
+                                    <div class="post-action">
+                                        <!-- Rating -->
+                                        <select class='rating' id='rating' data-id='rating' name="rating">
+                                            <option value="1">1</option>
+                                            <option value="2" >2</option>
+                                            <option value="3" >3</option>
+                                            <option value="4" >4</option>
+                                            <option value="5" >5</option>
+                                        </select>
+                                        <div style='clear: both;'></div>
+                                        Average Rating : <span id='avgrating'></span>
+
+                                        <!-- Set rating -->
+                                        <script type='text/javascript'>
+                                            $(document).ready(function(){
+                                                $('#rating_<?php echo $postid; ?>').barrating('set',<?php echo $rating; ?>);
+                                            });
+
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
                         <?php  foreach($rating_question as $question):?>
                         <hr>
                         <div class="row rating_question">
                             <h4><?php echo $question->school_rating_question; ?></h4>
-                            <select class='rating' id='rating' data-id='rating'>
+                            <select class='rating' name="rating_<?php echo $question->id;?>">
                                 <option value="1" >1</option>
                                 <option value="2" >2</option>
                                 <option value="3" >3</option>
                                 <option value="4" >4</option>
-                                <option value="5" >5</option>
+                                <option value="5">5</option>
                             </select>
-                            <input type="hidden" name="q_id" value="<?php echo $question->id;?>" />
-                            <textarea name="review_question_<?php echo $question->id;?>" class="form-control" placeholder="Why you rate this..."></textarea>
+                            <input type="hidden" name="q_<?php echo $question->id;?>" value="<?php echo $question->id;?>" />
+                            <textarea name="school_rating_why_this_<?php echo $question->id;?>" class="form-control" placeholder="Why you rate this..."></textarea>
                         </div>
                         <?php endforeach; ?>
                             <hr>
-                            <input type="hidden" name="user_id" value="<?php echo $school[0]->user_id;?>" />
+                            <input type="hidden" name="user_id" value="18>" />
+                            <input type="hidden" name="user_type" value="user" />
                             <input type="hidden" name="school_profile_id" value="<?php echo $school[0]->school_profile_id;?>" />
                             <button type="submit" name="review_rating" class="btn btn-primary">Submit Review</button>
                         </form>
