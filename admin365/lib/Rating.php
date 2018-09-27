@@ -61,11 +61,12 @@ class Rating
             $data['school_rating_why_this'] = $data['school_rating_why_this_'.$x];
             $data['school_rating_value'] = $data['rating_'.$x];
 
-            $this->addRating($data);
             print_r($data);
+            $results = $this->addRating($data);
+
         }
 
-
+        //return $results;
     }
 
     public function addRating($data){

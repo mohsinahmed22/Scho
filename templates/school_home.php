@@ -416,7 +416,7 @@ include '../includes/header.php'; ?>
                         </div>
                         <?php endforeach; ?>
                             <hr>
-                            <input type="hidden" name="user_id" value="18>" />
+                            <input type="hidden" name="user_id" value="18" />
                             <input type="hidden" name="user_type" value="user" />
                             <input type="hidden" name="school_profile_id" value="<?php echo $school[0]->school_profile_id;?>" />
                             <button type="submit" name="review_rating" class="btn btn-primary">Submit Review</button>
