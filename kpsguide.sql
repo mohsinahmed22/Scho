@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2018 at 03:13 PM
+-- Generation Time: Sep 28, 2018 at 02:32 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -90,8 +90,21 @@ CREATE TABLE `review` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `overall_rating` varchar(255) DEFAULT NULL,
-  `overall_message` text
+  `overall_message` text,
+  `review_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `school_profile_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`id`, `user_id`, `overall_rating`, `overall_message`, `review_date`, `school_profile_id`) VALUES
+(1, 18, '5', 'this is good review for school let test finally', '2018-09-28 10:56:48', 1),
+(15, 19, '3', '1111', '2018-09-28 11:47:43', 1),
+(16, 20, '4', 'this is good review for school let test finally', '2018-09-28 11:47:43', 1),
+(17, 17, '1', 'testing', '2018-09-28 11:47:43', 1),
+(18, 16, '5', 'testing', '2018-09-28 11:47:43', 1);
 
 -- --------------------------------------------------------
 
@@ -124,15 +137,19 @@ CREATE TABLE `school_features` (
   `school_type` varchar(255) DEFAULT NULL,
   `school_grade` varchar(255) DEFAULT NULL,
   `school_enrolled_students` varchar(255) DEFAULT NULL,
-  `school_mont_system` varchar(255) DEFAULT NULL
+  `school_mont_system` varchar(255) DEFAULT NULL,
+  `map_latitute` varchar(255) DEFAULT NULL,
+  `map_longtitute` varchar(255) DEFAULT NULL,
+  `fb_page_acesskey` varchar(255) DEFAULT NULL,
+  `fb_pageid` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `school_features`
 --
 
-INSERT INTO `school_features` (`id`, `school_profile_id`, `school_main_campus`, `School_special_child`, `school_branches`, `school_type`, `school_grade`, `school_enrolled_students`, `school_mont_system`) VALUES
-(1, 1, 'yes', 'yes', 'no', 'no', '10-level', '200', 'yes');
+INSERT INTO `school_features` (`id`, `school_profile_id`, `school_main_campus`, `School_special_child`, `school_branches`, `school_type`, `school_grade`, `school_enrolled_students`, `school_mont_system`, `map_latitute`, `map_longtitute`, `fb_page_acesskey`, `fb_pageid`) VALUES
+(1, 1, 'yes', 'yes', 'yes', 'private', '1-10', '200', 'yes', NULL, NULL, 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935');
 
 -- --------------------------------------------------------
 
@@ -194,6 +211,7 @@ INSERT INTO `school_profile` (`id`, `user_id`, `school_name`, `school_phone`, `s
 
 CREATE TABLE `school_rating` (
   `id` int(11) NOT NULL,
+  `review_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `school_profile_id` int(11) DEFAULT NULL,
   `school_rating_question_id` int(11) DEFAULT NULL,
@@ -206,14 +224,21 @@ CREATE TABLE `school_rating` (
 -- Dumping data for table `school_rating`
 --
 
-INSERT INTO `school_rating` (`id`, `user_id`, `school_profile_id`, `school_rating_question_id`, `school_rating_value`, `school_rating_why_this`, `school_rating_date`) VALUES
-(1, 16, 1, 1, 5, 'this is really good one', '2018-09-26 06:01:34'),
-(2, 16, 1, 2, 5, 'this is really good one', '2018-09-26 06:01:34'),
-(3, 16, 1, 3, 3, '', '2018-09-26 06:01:34'),
-(4, 16, 1, 4, 4, 'this is really good one', '2018-09-26 06:01:34'),
-(5, 16, 1, 5, 5, '', '2018-09-26 06:01:34'),
-(6, 16, 1, 6, 5, '', '2018-09-26 06:01:34'),
-(7, 16, 1, 7, 2, 'this is really good one', '2018-09-26 06:01:34');
+INSERT INTO `school_rating` (`id`, `review_id`, `user_id`, `school_profile_id`, `school_rating_question_id`, `school_rating_value`, `school_rating_why_this`, `school_rating_date`) VALUES
+(91, NULL, 18, 1, 1, 5, 'Nice school', '2018-09-28 06:52:31'),
+(92, NULL, 18, 1, 2, 5, 'good teachers', '2018-09-28 06:52:31'),
+(93, NULL, 18, 1, 3, 3, 'not too good leardership', '2018-09-28 06:52:31'),
+(94, NULL, 18, 1, 4, 4, 'yes', '2018-09-28 06:52:31'),
+(95, NULL, 18, 1, 5, 4, 'Yes ', '2018-09-28 06:52:31'),
+(96, NULL, 18, 1, 6, 1, 'yes\r\n', '2018-09-28 06:52:31'),
+(97, NULL, 18, 1, 7, 5, 'fine and good', '2018-09-28 06:52:31'),
+(196, 15, 19, 1, 1, 5, 'aaa', '2018-09-28 11:47:43'),
+(197, 15, 19, 1, 2, 3, '', '2018-09-28 11:47:43'),
+(198, 15, 19, 1, 3, 5, 'test', '2018-09-28 11:47:43'),
+(199, 15, 19, 1, 4, 2, '111', '2018-09-28 11:47:43'),
+(200, 15, 19, 1, 5, 4, '112', '2018-09-28 11:47:43'),
+(201, 15, 19, 1, 6, 2, '1', '2018-09-28 11:47:43'),
+(202, 15, 19, 1, 7, 1, '1111', '2018-09-28 11:47:43');
 
 -- --------------------------------------------------------
 
@@ -547,7 +572,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `school_branches`
 --
@@ -572,7 +597,7 @@ ALTER TABLE `school_profile`
 -- AUTO_INCREMENT for table `school_rating`
 --
 ALTER TABLE `school_rating`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 --
 -- AUTO_INCREMENT for table `school_rating_questions`
 --

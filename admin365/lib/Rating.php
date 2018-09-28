@@ -26,7 +26,8 @@ class Rating
     /**
      * @return array
      */
-    public function select_all_rating_questions(){
+    public function select_all_rating_questions()
+    {
         $this->db->query('select * from school_rating_questions');
         $this->db->execute();
 
@@ -40,33 +41,60 @@ class Rating
      * @param $id
      * @return array|bool
      */
-    public function getSchoolrating($id){
+    public function getSchoolrating($id)
+    {
         $this->db
             ->query('select * from school_rating 
                                  where school_profile_id = ' . $id);
 
         $results = $this->db->resultset();
-        if($results){
+        if ($results) {
             return $results;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public function addAllRating($data){
+    public function addAllRating($data)
+    {
+        $data['review_id'] = $this->addOverAllRating($data);
 
+        for ($x = 1; $x <= count($this->select_all_rating_questions()); $x++) {
+            $data['school_rating_question_id'] = $data['q_' . $x];
+            $data['school_rating_why_this'] = $data['school_rating_why_this_' . $x];
+            $data['school_rating_value'] = $data['rating_' . $x];
 
-        for ($x = 1; $x < count($this->select_all_rating_questions()); $x++){
-            $data['school_rating_question_id'] = $data['q_'.$x];
-            $data['school_rating_why_this'] = $data['school_rating_why_this_'.$x];
-            $data['school_rating_value'] = $data['rating_'.$x];
-
-            print_r($data);
-            $results = $this->addRating($data);
-
+            $this->addRating($data);
         }
+    }
 
-        //return $results;
+    public function selectOverAllRating($id){
+        $this->db->query('select * from review 
+                                 where school_profile_id = ' . $id);
+        $results = $this->db->resultset();
+        if ($results) {
+            return $results;
+        } else {
+            return false;
+        }
+    }
+
+    public function addOverAllRating($data){
+        $this->db
+            ->query("INSERT INTO review 
+              (user_id, school_profile_id, overall_rating, overall_message)   
+              values (:user_id, :school_profile_id, :overall_rating, :overall_message)");
+            $this->db->bind(':user_id', $data['user_id']);
+            $this->db->bind(':school_profile_id', $data['school_profile_id']);
+            $this->db->bind(':overall_rating', $data['rating']);
+            $this->db->bind(':overall_message', $data['school_rating_why_this_7']);
+
+            if($this->db->execute()){
+                return $this->db->last_insert_id();
+
+            }else{
+                return false;
+            }
     }
 
     public function addRating($data){
@@ -74,6 +102,7 @@ class Rating
             ->query(
                 " INSERT INTO school_rating ( 
                   user_id,
+                  review_id,
                   school_profile_id,
                   school_rating_question_id,
                   school_rating_value,
@@ -81,6 +110,7 @@ class Rating
                   school_rating_date
                 ) VALUES (
                   :user_id,
+                  :review_id,
                   :school_profile_id,
                   :school_rating_question_id,
                   :school_rating_value,
@@ -90,14 +120,13 @@ class Rating
             );
 
         $this->db->bind(':user_id', $data['user_id']);
-//        $this->db->bind(':user_type', $data['user_type']);
+        $this->db->bind(':review_id', $data['review_id']);
         $this->db->bind(':school_profile_id', $data['school_profile_id']);
         $this->db->bind(':school_rating_question_id', $data['school_rating_question_id']);
         $this->db->bind(':school_rating_value', $data['school_rating_value']);
         $this->db->bind(':school_rating_why_this', $data['school_rating_why_this']);
 
-
-        if($this->db->resultset()){
+        if($this->db->execute()){
             return true;
         }else{
             return false;
@@ -107,6 +136,34 @@ class Rating
 
 
 
+    public function checkUserRating($uid, $school_id){
+        $this->db
+            ->query("select * from school_rating where user_id = " . $uid ." and school_profile_id  = " . $school_id);
+
+        if($results = $this->db->resultset()){
+            return $results;
+        }
+    }
+
+
+
+    public function calculateRating($id){
+        for ($x = 1; $x <= 5; $x++){
+            $arr[$x] = $this->countRating($x, $id);
+        }
+        return $arr;
+    }
+
+
+    public function countRating($rating, $id){
+        $this->db
+            ->query("select COUNT(overall_rating) overall from review where overall_rating = ". $rating ." and school_profile_id = " . $id);
+
+        if($results = $this->db->single()){
+            return $results;
+        }
+
+    }
 
 
 
