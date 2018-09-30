@@ -66,6 +66,18 @@ include '../includes/header.php'; ?>
                                     <p>School Teachers</p>
                                 </a>
                             </li>
+                            <li class="tabContact" style="float:right;">
+                                <a href="#" >
+                                    <i class="fa fa-bullhorn"></i>
+                                    <p>Promotion<br/> <br/></p>
+                                </a>
+                            </li>
+                            <li class="tabContact" style="float:right;">
+                                <a href="#" >
+                                    <i class="fa fa-id-card"></i>
+                                    <p>Contact Us<br/><br/></p>
+                                </a>
+                            </li>
                         </ul>
 
                     </div>

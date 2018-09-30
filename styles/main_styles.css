@@ -2418,3 +2418,4 @@ html{ scroll-behavior: smooth;}
 .dashboard-links li:hover p, .dashboard-links li:hover  p{color:#333 !important;}
 .dashboard-links i { background: none; font-size:20px; }
 .dashboard-links li:hover i{ color:#333;}
+.dashboard-links .tabContact { background: #26bdd6; }
