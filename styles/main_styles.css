@@ -2401,3 +2401,20 @@ h1,h2,h3,h4,h5,h6{font-family: 'Open Sans';}
 .rating_r_5 i:nth-child(3)::before{content: "\f005";}
 .rating_r_5 i:nth-child(4)::before{content: "\f005";}
 .rating_r_5 i:nth-child(5)::before{content: "\f005";}
+
+.rating_question p{float: left; width: 100%;margin: 15px 0;}
+.br-widget {	width: 100%;	float: left;	clear: left;}
+.br-theme-fontawesome-stars .br-widget a {
+	font: normal normal normal 30px/1 FontAwesome !important;
+	margin-right: 15px;	float: left;	margin-top: 10px;	margin-bottom: 10px;}
+.br-wrapper.br-theme-fontawesome-stars {width: 100%;margin: 13px 0;}
+html{ scroll-behavior: smooth;}
+.dashboard-links p{ line-height: normal; font-size:13px; color:#fff;}
+.dashboard-links i{ font-size:15px; color:#fff;}
+.dashboard-links li a:link { font-size:16px; color:#fff; transition: background-color .2s; text-decoration: none;}
+.dashboard-links li {float: left;	background: #5baf2f;	width: 8%;	padding: 11px;
+	text-align: center;	border-radius: 13px;	font-size: 14px;	margin: 0 5px;}
+.dashboard-links li:hover{background: #ffaa14; color:#333; transition: background-color .5s;}
+.dashboard-links li:hover p, .dashboard-links li:hover  p{color:#333 !important;}
+.dashboard-links i { background: none; font-size:20px; }
+.dashboard-links li:hover i{ color:#333;}

@@ -14,6 +14,7 @@ $template = new Templates('templates/school_home.php');
  */
 $user = new User();
 $school_id = 1;
+$uid = 11;
 $template->school = $user->getSchool($school_id);
 
 
@@ -30,7 +31,7 @@ $template->overAllRatingCount = count($template->schoolOverAllRating);
 /*
  * Checking user Have rated before
  */
-$uid = 19;
+
 if($rating->checkUserRating($uid,$school_id)){
     $template->user_school_rated = $rating->checkUserRating($uid,$school_id);
 }

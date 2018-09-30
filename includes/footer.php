@@ -122,7 +122,7 @@
 <script src="admin365/assets/src/bootstrap-wysiwyg.js"></script>
 <script src="js/custom.js"></script>
 
-<script src="js/jquery-3.0.0.js" type="text/javascript"></script>
+<!--<script src="js/jquery-3.0.0.js" type="text/javascript"></script>-->
 <script src="js/jquery.barrating.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function() {

@@ -329,8 +329,6 @@ include '../includes/header.php'; ?>
                 <div class="col-sm-3">
                 </div>
             </div>
-
-            <?php print_r($calculateRatingbar);?>
             <div class="row school-main school-rating" >
                 <div class="col-sm-8">
                     <!-- Reviews -->
@@ -349,25 +347,33 @@ include '../includes/header.php'; ?>
                             </div>
                             <div class="review_rating_bars">
                                 <ul>
-                                    <?php foreach ($calculateRatingbar as $rabar):?>
-                                    <?php
-                                        if($rabar->overall == 0) {
-                                            echo $bar = 0;
-                                        }elseif($rabar->overall <= 100){
-                                            $bar =  (100/$rabar->overall) ;
-                                            echo $bar;
-                                        }else{
-                                            $bar =  (100/$rabar->overall)*100 ;
-                                            echo $bar;
-                                        }
 
+                                    <?php
+                                        for($r= 1; $r <= count($calculateRatingbar); $r++ ):
+                                            $maxValue = max($calculateRatingbar);
                                         ?>
-                                    <?php endforeach;?>
-                                    <li><span>5 Star</span><div class="review_rating_bar"><div style="width:90%;"></div></div></li>
-                                    <li><span>4 Star</span><div class="review_rating_bar"><div style="width:75%;"></div></div></li>
-                                    <li><span>3 Star</span><div class="review_rating_bar"><div style="width:32%;"></div></div></li>
-                                    <li><span>2 Star</span><div class="review_rating_bar"><div style="width:10%;"></div></div></li>
-                                    <li><span>1 Star</span><div class="review_rating_bar"><div style="width:3%;"></div></div></li>
+                                            <li>
+                                                <span><?php echo $r ?> Star</span>
+                                                <div class="review_rating_bar"><div style="width:
+                                                <?php // echo $calculateRatingbar[$r]->overall;
+                                                    if($calculateRatingbar[$r]->overall == 0):
+                                                         echo 0;
+                                                    elseif($calculateRatingbar[$r]->overall == 1):
+                                                        echo (100/99) . '%';
+                                                    elseif($calculateRatingbar[$r]->overall <= 100):
+                                                        echo 100/(100-$calculateRatingbar[$r]->overall)* $calculateRatingbar[$r]->overall . '%';
+                                                    else:
+                                                        echo ($calculateRatingbar[$r]->overall/100)*100 . '%';
+                                                    endif;
+                                                ?>
+                                                "></div></div>
+                                            </li>
+                                    <?php endfor; ?>
+<!--                                    <li><span>5 Star</span><div class="review_rating_bar"><div style="width:90%;"></div></div></li>-->
+<!--                                    <li><span>4 Star</span><div class="review_rating_bar"><div style="width:75%;"></div></div></li>-->
+<!--                                    <li><span>3 Star</span><div class="review_rating_bar"><div style="width:32%;"></div></div></li>-->
+<!--                                    <li><span>2 Star</span><div class="review_rating_bar"><div style="width:10%;"></div></div></li>-->
+<!--                                    <li><span>1 Star</span><div class="review_rating_bar"><div style="width:3%;"></div></div></li>-->
                                 </ul>
                             </div>
                         </div>
@@ -393,7 +399,7 @@ include '../includes/header.php'; ?>
                                     <h4>How would you rate your experience at this school?</h4>
                                     <!-- Script -->
                                     <?php if(!empty($user_school_rated)): ?>
-                                    <div class="post-action">
+                                    <div class="post-action" id="review">
                                         <!-- Rating -->
                                         <select class='rating' id='rating' data-id='rating' name="rating">
                                             <option value="1">1</option>
@@ -403,8 +409,8 @@ include '../includes/header.php'; ?>
                                             <option value="5">5</option>
                                         </select>
                                         <div style='clear: both;'></div>
-                                        Average Rating : <span id='avgrating'></span>
-                                        <p>overall ratting</p>
+                                        <span id='avgrating'></span>
+                                        <p></p>
                                         <!-- Set rating -->
                                         <script type='text/javascript'>
                                             $(document).ready(function(){
@@ -424,7 +430,8 @@ include '../includes/header.php'; ?>
                                                 <option value="5" >5</option>
                                             </select>
                                             <div style='clear: both;'></div>
-                                            Average Rating : <span id='avgrating'></span>
+                                            <span id='avgrating'></span>
+                                            <p></p>
 
                                             <!-- Set rating -->
                                             <script type='text/javascript'>
@@ -442,7 +449,7 @@ include '../includes/header.php'; ?>
                                 <hr>
                                 <div class="row rating_question">
                                     <h4><?php echo $question->school_rating_question; ?></h4>
-                                    <select class='rating' name="rating_<?php echo $question->id;?>">
+                                    <select class='rating' name="rating_<?php echo $question->id;?>"    >
                                         <?php for($r = 1; $r <= 5; $r++): ?>
 
                                             <option value="<?php echo $r?>"
@@ -459,15 +466,15 @@ include '../includes/header.php'; ?>
                                         <?php endfor;?>
                                     </select><br />
                                     <input type="hidden" name="q_<?php echo $question->id;?>" value="<?php echo $question->id;?>" /><br />
-                                    <p><strong><?php foreach($user_school_rated as $user_comment):
+                                    <p><?php foreach($user_school_rated as $user_comment):
                                                 if($user_comment->school_rating_question_id == $question->id){
                                                     echo $user_comment->school_rating_why_this;
                                                 }
-                                            endforeach;?></strong></p>
+                                            endforeach;?></p>
 <!--                                    <textarea name="school_rating_why_this_--><?php //echo $question->id;?><!--" class="form-control text-left" placeholder="Why you rate this..."></textarea>-->
                                 </div>
                             <?php  endforeach;?>
-                            <hr>
+
                             <input type="hidden" name="user_id" value="18" />
                             <input type="hidden" name="user_type" value="user" />
                             <input type="hidden" name="school_profile_id" value="<?php echo $school[0]->school_profile_id;?>" />
@@ -531,7 +538,7 @@ include '../includes/header.php'; ?>
                             </ul>
                             <div class="add_comment_container">
                                 <div class="add_comment_title">Add a review</div>
-                                <div class="add_comment_text">You must be <a href="#">logged</a> in to post a comment.</div>
+                                <div class="add_comment_text">You must be <a href="#review">logged</a> in to post a comment.</div>
                             </div>
                         </div>
                     </div>
