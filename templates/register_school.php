@@ -30,7 +30,7 @@ include '../includes/header.php'; ?>
 
                                     <!-- One "tab" for each step in the form: -->
                                     <div class="tab school_account_info"><h4>Account Information:</h4>
-                                                                               <div class="row">
+                                        <div class="row">
                                             <div class="col">
                                                 <input placeholder="First name..." oninput="this.className = ''" name="first_name" class="form-control">
                                                 <p><small></small></p>

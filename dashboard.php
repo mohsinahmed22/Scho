@@ -12,7 +12,21 @@ $template = new Templates('templates/school_dashboard.php');
 
 $user = new User();
 $uid = 16;
-
+$school_id= 1;
 $template->userinfo = $user->getUserInfo($uid);
+
+
+/**
+ * Rating
+ */
+    $rating = new  Rating();
+    $template->allReviews = $rating->selectUserInfo($school_id);
+    $template->schoolRating = $rating->getSchoolrating($school_id);
+    $template->schoolOverAllRating = $rating->selectOverAllRating($school_id);
+    $template->calculateRatingbar = $rating->calculateRating($school_id);
+    $template->overAllRatingCount = count($template->schoolOverAllRating);
+
+
+
 
 echo $template;

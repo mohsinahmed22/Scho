@@ -79,6 +79,20 @@ class Rating
         }
     }
 
+    public function selectUserInfo($id){
+        $this->db->query('select * from review
+                                inner join users profile on review.user_id = profile.id 
+                                where school_profile_id = ' . $id);
+        $results = $this->db->resultset();
+        if ($results) {
+            return $results;
+        } else {
+            return false;
+        }
+    }
+
+
+
     public function addOverAllRating($data){
         $this->db
             ->query("INSERT INTO review 
