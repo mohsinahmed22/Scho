@@ -29,6 +29,12 @@ $template->calculateRatingbar = $rating->calculateRating($school_id);
 $template->overAllRatingCount = count($template->schoolOverAllRating);
 
 /*
+ *
+ */
+$template->teachers = $user->getSchoolteachers($school_id);
+
+
+/*
  * Checking user Have rated before
  */
 

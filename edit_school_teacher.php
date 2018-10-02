@@ -8,11 +8,13 @@
 
 include 'admin365/core/init.php';
 
-$template = new Templates('templates/edit_account_info.php');
+$template = new Templates('templates/edit_teacher_info.php');
 
 $user = new User();
 $uid = 16;
 $school_id= 1;
 $template->userinfo = $user->getUserInfo($uid);
+$template->teachers = $user->getSchoolteachers($school_id);
+
 
 echo $template;

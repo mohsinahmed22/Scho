@@ -492,12 +492,22 @@ class User
         }
     }
 
+    public function getSchoolteachers($id){
+        $this->db
+            ->query('select * from school_teachers
+                            inner join  tutors_profile teacher on teacher.id = tutor_profile_id
+                            where school_profile_id = ' . $id );
+        $results = $this->db->resultset();
+
+        if($results){
+            return $results;
+        }else{
+            return false;
+        }
+
+    }
 
 
-
-
-
-    public function getSchoolteachers($id){}
     public function getSchoolbranches($id){}
 
     public function getSchooljobs($id){}

@@ -176,13 +176,12 @@ include '../includes/header.php'; ?>
                             <div class="row">
                                 <div class="col-sm-2"><h5>Teachers:</h5></div>
                                 <div class="col-sm-10">
-                                                    <p>TeacherName <span class="pull-right"><i class="fa fa-user"></i> Profile</span></p>
+                                    <?php foreach ($teachers as $teacher): ?>
+
+                                                    <p><?php echo $teacher->tutor_name; ?> <span class="pull-right"><a
+                                                                    href="tutorProfile.php?id=<?php echo $teacher->tutor_profile_id; ?>"><i class="fa fa-user"></i> Profile</a></span></p>
                                                     <hr>
-                                                    <p>TeacherName <span class="pull-right"><i class="fa fa-user"></i> Profile</span></p>
-                                                    <hr>
-                                                    <p>TeacherName <span class="pull-right"><i class="fa fa-user"></i> Profile</span></p>
-                                                    <hr>
-                                                    <p>TeacherName <span class="pull-right"><i class="fa fa-user"></i> Profile</span></p>
+                                    <?php endforeach; ?>
                                 </div>
 
                             </div>
@@ -369,11 +368,7 @@ include '../includes/header.php'; ?>
                                                 "></div></div>
                                             </li>
                                     <?php endfor; ?>
-<!--                                    <li><span>5 Star</span><div class="review_rating_bar"><div style="width:90%;"></div></div></li>-->
-<!--                                    <li><span>4 Star</span><div class="review_rating_bar"><div style="width:75%;"></div></div></li>-->
-<!--                                    <li><span>3 Star</span><div class="review_rating_bar"><div style="width:32%;"></div></div></li>-->
-<!--                                    <li><span>2 Star</span><div class="review_rating_bar"><div style="width:10%;"></div></div></li>-->
-<!--                                    <li><span>1 Star</span><div class="review_rating_bar"><div style="width:3%;"></div></div></li>-->
+
                                 </ul>
                             </div>
                         </div>
