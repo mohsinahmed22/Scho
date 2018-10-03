@@ -412,6 +412,16 @@ class User
         }
     }
 
+    public function deleteSchoolTeacher($stid){
+        $this->db->query("DELETE FROM school_teachers WHERE id = :id ");
+        $this->db->bind(":id", $stid);
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     /**
      * @return string
@@ -494,8 +504,8 @@ class User
 
     public function getSchoolteachers($id){
         $this->db
-            ->query('select * from school_teachers
-                            inner join  tutors_profile teacher on teacher.id = tutor_profile_id
+            ->query('select *, schoolteacher.id as stid from school_teachers schoolteacher
+                            inner join  tutors_profile teacher on teacher.id = schoolteacher.tutor_profile_id
                             where school_profile_id = ' . $id );
         $results = $this->db->resultset();
 
@@ -504,8 +514,25 @@ class User
         }else{
             return false;
         }
+    }
+
+
+    public function AddteacherToSchool($tutor_id, $school_id, $user_id){
+        $this->db->query("INSERT INTO school_teachers
+                                (user_id, school_profile_id, tutor_profile_id) values (:uid, :sid, :tid)");
+        $this->db->bind(":uid", $user_id);
+        $this->db->bind(":tid", $tutor_id);
+        $this->db->bind(":sid", $school_id);
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+
 
     }
+
+
 
 
     public function getSchoolbranches($id){}

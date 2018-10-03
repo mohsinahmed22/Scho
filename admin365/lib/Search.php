@@ -94,4 +94,22 @@ class Search {
         $search = $this->db->resultset();
         return $search;
     }
+
+
+
+    public function searchSchoolTeachers($find)
+    {
+        $query = "SELECT *, t.id tid FROM tutors_profile t
+                  inner join users u on u.id = t.user_id 
+                  where tutor_name like '%{$find}%' " ;
+        $this->db->query($query);
+
+        $search = $this->db->resultset();
+        if($search){
+            return $search;
+        }else{
+            return false;
+        }
+
+    }
 }
