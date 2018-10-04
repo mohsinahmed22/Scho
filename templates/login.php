@@ -30,12 +30,12 @@ include '../includes/header.php'; ?>
                                     <form action="register.php" class="login-form for" method="post">
                                         <div class="row">
                                             <div class="col">
-                                                <input type="text" class="form-control" placeholder="Username" required="required" style="margin-bottom:20px">
+                                                <input type="text" class="form-control" placeholder="Username" name="email" required="required" style="margin-bottom:20px">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <input type="password" class="form-control" placeholder="Password" required="required"  style="margin-bottom:20px">
+                                                <input type="password" class="form-control" placeholder="Password" name="password" required="required"  style="margin-bottom:20px">
                                             </div>
                                         </div>
                                         <div class="row">

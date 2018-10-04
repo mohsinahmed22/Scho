@@ -7,7 +7,9 @@
  */
 
 include 'admin365/core/init.php';
+if(isset($_POST['login_form'])){
 
+}
 if(isset($_GET['school'])){
     $template = new Templates('templates/register.php');
 }elseif(isset($_GET['teachers'])){

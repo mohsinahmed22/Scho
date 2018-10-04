@@ -15,4 +15,13 @@ $uid = 16;
 $school_id= 1;
 $template->userinfo = $user->getUserInfo($uid);
 
+if(isset($_POST['update_UserAccount'])){
+    $UserInfo = $user->UpdateAccountInfo($_POST, $uid);
+}
+if(isset($_POST['update_UserPassword'])){
+    if($_POST['password'] == $_POST['confirmpassword']){
+        $UserPassword =  $user->updatePassword($_POST, $uid);
+    }
+}
+
 echo $template;
