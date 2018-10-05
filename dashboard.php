@@ -7,24 +7,36 @@
  */
 
 include 'admin365/core/init.php';
-
-$template = new Templates('templates/school_dashboard.php');
-
 $user = new User();
 $uid = 16;
-$school_id= 1;
-$template->userinfo = $user->getUserInfo($uid);
+
+if($user->is_loggedin()){
+    if($_SESSION['user_type'] == 'school'){
+        $template = new Templates('templates/school_dashboard.php');
+
+        $school_id= 1;
+        $template->userinfo = $user->getUserInfo($uid);
+        /**
+         * Rating
+         */
+        $rating = new  Rating();
+        $template->allReviews = $rating->selectUserInfo($school_id);
+        $template->schoolRating = $rating->getSchoolrating($school_id);
+        $template->schoolOverAllRating = $rating->selectOverAllRating($school_id);
+        $template->calculateRatingbar = $rating->calculateRating($school_id);
+        $template->overAllRatingCount = count($template->schoolOverAllRating);
+
+    }elseif($_SESSION['user_type'] == 'teacher'){
+        $template = new Templates('templates/teacher_dashboard.php');
+    }else{
+        $template = new Templates('templates/parent_dashboard.php');
+    }
 
 
-/**
- * Rating
- */
-    $rating = new  Rating();
-    $template->allReviews = $rating->selectUserInfo($school_id);
-    $template->schoolRating = $rating->getSchoolrating($school_id);
-    $template->schoolOverAllRating = $rating->selectOverAllRating($school_id);
-    $template->calculateRatingbar = $rating->calculateRating($school_id);
-    $template->overAllRatingCount = count($template->schoolOverAllRating);
+}else{
+    redirect('register.php');
+
+}
 
 
 

@@ -8,6 +8,12 @@
 
 include 'admin365/core/init.php';
 if(isset($_POST['login_form'])){
+        $UserLogin = new User();
+        if($UserLogin->login($_POST)){
+            redirect('dashboard.php');
+        }else{
+            redirect('index.php');
+        }
 
 }
 if(isset($_GET['school'])){
