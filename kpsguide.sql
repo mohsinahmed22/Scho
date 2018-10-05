@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2018 at 02:32 PM
+-- Generation Time: Oct 05, 2018 at 01:17 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -149,7 +149,7 @@ CREATE TABLE `school_features` (
 --
 
 INSERT INTO `school_features` (`id`, `school_profile_id`, `school_main_campus`, `School_special_child`, `school_branches`, `school_type`, `school_grade`, `school_enrolled_students`, `school_mont_system`, `map_latitute`, `map_longtitute`, `fb_page_acesskey`, `fb_pageid`) VALUES
-(1, 1, 'yes', 'yes', 'yes', 'private', '1-10', '200', 'yes', NULL, NULL, 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935');
+(1, 1, '0', '0', '0', 'Public', '1-10', '200', 'Yes ', '123', '35', 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935');
 
 -- --------------------------------------------------------
 
@@ -198,7 +198,7 @@ CREATE TABLE `school_profile` (
 --
 
 INSERT INTO `school_profile` (`id`, `user_id`, `school_name`, `school_phone`, `school_email`, `school_address`, `school_fb_link`, `school_twitter_link`, `school_website_link`, `school_city`, `school_area`, `school_description`, `school_cover`, `school_avatar`) VALUES
-(1, 16, 'KPSG', 'aa', 'aa', 'aaa', 'aa', 'aa', NULL, 'karachi', 'Clifton', 'Detail information about school, faculty, availablity and comfortablity etc.\r\n', 'aa', 'aa'),
+(1, 16, 'KPSG  - Karachi Parents School Guide ', 'aa', 'aa', '', 'aa', 'aa', 'aaa', 'karachi', 'Clifton', '2000 Test', 'aa', 'aa'),
 (2, 17, 'Arise School', 't', 'a', 'abacaksdkfksd', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa'),
 (3, 31, 'Mrs.Ahmed Montissori & Propatary', '021-31111111', 'a', 'aaaaaaaaaasdsadada', 'aaaaa', 'aaaaaa', NULL, 'karachi', 'North Nazimabad', NULL, 'aa', 'aa'),
 (4, 32, 'a', '021-3aa', 'aaa', 'a', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa');
@@ -278,6 +278,14 @@ CREATE TABLE `school_teachers` (
   `tutor_designation` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `school_teachers`
+--
+
+INSERT INTO `school_teachers` (`id`, `user_id`, `school_profile_id`, `tutor_profile_id`, `tutor_designation`) VALUES
+(1, 30, 1, '1', 'Montessori Directress'),
+(2, 36, 1, '2', 'Maths Teacher');
+
 -- --------------------------------------------------------
 
 --
@@ -334,18 +342,18 @@ CREATE TABLE `tutors_profile` (
 --
 
 INSERT INTO `tutors_profile` (`id`, `user_id`, `tutor_name`, `tutor_job_status`, `tutor_city`, `tutor_facebook_link`, `tutor_linkedin`, `tutor_description`, `tutor_cover`, `tutor_avatar`, `tutor_area`, `tutor_phone`, `tutor_where_to_teach`, `tutor_gender`, `tutor_age`, `tutor_experience`, `tutor_tuition_timing`, `tutor_cnic`, `tutor_resume`) VALUES
-(1, 30, 'Mohsin Ahmed', 'Yes', 'karachi', 'aa', 'aaaaa', 'aaaa', NULL, NULL, 'All Location', '03313644820', 'No', 'Male', NULL, NULL, NULL, NULL, NULL),
-(2, 36, 'Mohsin ahmed', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'All Location', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL),
-(3, 37, 'Mohsin ahmed', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'All Location', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL),
+(1, 30, 'Umar Khan', 'Yes', 'karachi', 'aa', 'aaaaa', 'aaaa', NULL, NULL, 'All Location', '03313644820', 'No', 'Male', NULL, NULL, NULL, NULL, NULL),
+(2, 36, 'Hammad Hassan', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'All Location', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL),
+(3, 37, 'Samrah', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'All Location', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL),
 (4, 40, 'Mohsin Ahmed', 'No', 'karachi', 'aa', 'aa', 'testing', NULL, NULL, 'All Location', '03313644820', 'At Your Place, Academy, School', 'Male', 36, 'aaa', 'aa', '0000000000000', NULL),
-(5, 46, 'a a', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL),
-(6, 47, 'a a', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL),
-(7, 48, 'a a', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL),
-(8, 52, 'a a', 'No', 'karachi', 'aa', 'aaaa', 'aa', NULL, NULL, 'All Location', 'aa', 'At Student Place, At Your Place', 'Male', 0, 'aaaa', 'aaa', 'a', 'IN_000380194051.pdf'),
-(9, 54, 'a a', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, School', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051(1).pdf'),
-(10, 55, 'a a', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf'),
-(11, 56, 'a a', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf'),
-(12, 57, 'a a', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf');
+(5, 46, 'farhan', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL),
+(6, 47, 'obaid', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL),
+(7, 48, 'sumaria', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL),
+(8, 52, 'ayesha', 'No', 'karachi', 'aa', 'aaaa', 'aa', NULL, NULL, 'All Location', 'aa', 'At Student Place, At Your Place', 'Male', 0, 'aaaa', 'aaa', 'a', 'IN_000380194051.pdf'),
+(9, 54, 'fazil', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, School', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051(1).pdf'),
+(10, 55, 'asif', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf'),
+(11, 56, 'sommoro', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf'),
+(12, 57, 'faizan', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf');
 
 -- --------------------------------------------------------
 
@@ -374,15 +382,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `profile_status`, `first_name`, `last_name`, `user_type`, `join_date`, `rate_us`, `hear_about_us`, `why_to_join`, `how_to_improve`, `testimonials`) VALUES
-(16, 'ahmed.mohsin98@gmail.com', 'test', 'Not Approved', 'mohsin', 'ahmed', 'school', '2018-09-19 07:10:04', NULL, NULL, NULL, NULL, NULL),
-(17, 'ahmed.mohsin98@ghmail.com', 'temst123', 'Not Approved', 'Mohsin', 'Ahmed', 'school', '2018-09-19 19:24:31', NULL, NULL, NULL, NULL, NULL),
-(18, 'ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:29:59', NULL, NULL, NULL, NULL, NULL),
-(19, 'ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:31:04', NULL, NULL, NULL, NULL, NULL),
-(20, 'ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:32:41', NULL, NULL, NULL, NULL, NULL),
-(21, 'ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:33:14', NULL, NULL, NULL, NULL, NULL),
-(22, 'ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:33:56', NULL, NULL, NULL, NULL, NULL),
-(23, 'ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 05:31:55', NULL, NULL, NULL, NULL, NULL),
-(24, 'ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 05:33:03', NULL, NULL, NULL, NULL, NULL),
+(16, 'ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Shakeel', 'Siddiqui', 'school', '2018-09-19 07:10:04', NULL, NULL, NULL, NULL, NULL),
+(17, '1ahmed.mohsin98@ghmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Hammad', 'Hassan', 'school', '2018-09-19 19:24:31', NULL, NULL, NULL, NULL, NULL),
+(18, '2ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Farhan', 'Soomoro', 'teacher', '2018-09-19 19:29:59', NULL, NULL, NULL, NULL, NULL),
+(19, '3ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Faizan', 'Raza', 'teacher', '2018-09-19 19:31:04', NULL, NULL, NULL, NULL, NULL),
+(20, '4ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:32:41', NULL, NULL, NULL, NULL, NULL),
+(21, '5ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:33:14', NULL, NULL, NULL, NULL, NULL),
+(22, '6ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:33:56', NULL, NULL, NULL, NULL, NULL),
+(23, '8ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 05:31:55', NULL, NULL, NULL, NULL, NULL),
+(24, '7ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 05:33:03', NULL, NULL, NULL, NULL, NULL),
 (25, 'demo@demo.com', 'Tmt123456!', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 05:35:54', NULL, NULL, NULL, NULL, NULL),
 (26, 'aaaa', 'Tmt123456!', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 05:36:45', NULL, NULL, NULL, NULL, NULL),
 (27, 'aaaa', 'Tmt123456!', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 05:38:14', NULL, NULL, NULL, NULL, NULL),
@@ -607,7 +615,7 @@ ALTER TABLE `school_rating_questions`
 -- AUTO_INCREMENT for table `school_teachers`
 --
 ALTER TABLE `school_teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `settings`
 --
