@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2018 at 01:17 PM
+-- Generation Time: Oct 08, 2018 at 12:50 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -34,6 +34,29 @@ CREATE TABLE `downloads` (
   `download_file` varchar(255) DEFAULT NULL,
   `download_tags` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `page_counter`
+--
+
+CREATE TABLE `page_counter` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `counter` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `page_counter`
+--
+
+INSERT INTO `page_counter` (`id`, `user_id`, `page_id`, `counter`) VALUES
+(1, 16, 1, 21),
+(2, 17, 2, 9),
+(3, 78, 7, 24),
+(4, 88, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -132,7 +155,7 @@ CREATE TABLE `school_features` (
   `id` int(11) NOT NULL,
   `school_profile_id` int(11) DEFAULT NULL,
   `school_main_campus` varchar(255) DEFAULT '0',
-  `School_special_child` varchar(255) DEFAULT '0',
+  `school_special_child` varchar(255) DEFAULT '0',
   `school_branches` varchar(255) DEFAULT '0',
   `school_type` varchar(255) DEFAULT NULL,
   `school_grade` varchar(255) DEFAULT NULL,
@@ -148,8 +171,12 @@ CREATE TABLE `school_features` (
 -- Dumping data for table `school_features`
 --
 
-INSERT INTO `school_features` (`id`, `school_profile_id`, `school_main_campus`, `School_special_child`, `school_branches`, `school_type`, `school_grade`, `school_enrolled_students`, `school_mont_system`, `map_latitute`, `map_longtitute`, `fb_page_acesskey`, `fb_pageid`) VALUES
-(1, 1, '0', '0', '0', 'Public', '1-10', '200', 'Yes ', '123', '35', 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935');
+INSERT INTO `school_features` (`id`, `school_profile_id`, `school_main_campus`, `school_special_child`, `school_branches`, `school_type`, `school_grade`, `school_enrolled_students`, `school_mont_system`, `map_latitute`, `map_longtitute`, `fb_page_acesskey`, `fb_pageid`) VALUES
+(1, 1, '0', '0', '0', 'Public', '1-10', '200', 'Yes ', '123', '35', 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935'),
+(2, 2, '0', '0', '0', 'Public', '1-10', '200', 'Yes ', '123', '35', 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935'),
+(3, 6, NULL, NULL, NULL, 'a', 'a', 'a', 'a', NULL, NULL, 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935'),
+(4, 7, NULL, NULL, NULL, 'a', 'a', 'a', 'a', NULL, NULL, 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935'),
+(5, 8, NULL, NULL, NULL, 'a', 'a', 'a', 'a', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -201,7 +228,11 @@ INSERT INTO `school_profile` (`id`, `user_id`, `school_name`, `school_phone`, `s
 (1, 16, 'KPSG  - Karachi Parents School Guide ', 'aa', 'aa', '', 'aa', 'aa', 'aaa', 'karachi', 'Clifton', '2000 Test', 'aa', 'aa'),
 (2, 17, 'Arise School', 't', 'a', 'abacaksdkfksd', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa'),
 (3, 31, 'Mrs.Ahmed Montissori & Propatary', '021-31111111', 'a', 'aaaaaaaaaasdsadada', 'aaaaa', 'aaaaaa', NULL, 'karachi', 'North Nazimabad', NULL, 'aa', 'aa'),
-(4, 32, 'a', '021-3aa', 'aaa', 'a', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa');
+(4, 32, 'a', '021-3aa', 'aaa', 'a', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa'),
+(5, 76, 'a', '021-3', 'a', 'a', 'a', 'a', 'a', 'karachi', 'Clifton', 'a', 'aa', 'aa'),
+(6, 77, 'a', '021-3', 'a', 'a', 'a', 'a', 'a', 'karachi', 'Clifton', 'a', 'aa', 'aa'),
+(7, 78, 'a', '021-3', 'a', 'aaa', 'a', 'a', 'a', 'karachi', 'Clifton', 'a', 'aa', 'aa'),
+(8, 88, 'a', '021-3a', 'a', 'aaa', 'a', 'a', 'a', 'karachi', 'Clifton', 'aaa', 'aa', 'aa');
 
 -- --------------------------------------------------------
 
@@ -437,7 +468,24 @@ INSERT INTO `users` (`id`, `email`, `password`, `profile_status`, `first_name`, 
 (68, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL),
 (69, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL),
 (70, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:20', NULL, NULL, NULL, NULL, NULL),
-(71, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:20', NULL, NULL, NULL, NULL, NULL);
+(71, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:20', NULL, NULL, NULL, NULL, NULL),
+(72, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:35:14', '5', 'Website', 'aa', 'aa', 'a'),
+(73, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:36:18', '5', 'Website', 'a', 'aa', 'a'),
+(74, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:36:27', '5', 'Website', 'a', 'aa', 'a'),
+(75, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'aa', 'a', 'school', '2018-10-08 07:36:54', '4', 'Website', 'a', 'a', 'a'),
+(76, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'aa', 'a', 'school', '2018-10-08 07:37:28', '4', 'Website', 'a', 'a', 'a'),
+(77, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'aa', 'a', 'school', '2018-10-08 07:38:17', '4', 'Website', 'a', 'a', 'a'),
+(78, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:42:18', '5', 'Website', 'a', 'a', 'a'),
+(79, 'aa', '74b87337454200d4d33f80c4663dc5e5', 'Not Approved', 'aaa', 'aaa', 'school', '2018-10-08 10:33:52', '5', 'Website', 'a', 'a', 'a'),
+(80, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:38:05', '5', 'Website', 'a', 'a', 'a'),
+(81, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:38:34', '5', 'Website', 'a', 'a', 'a'),
+(82, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:41:00', '5', 'Website', 'a', 'a', 'a'),
+(83, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:42:30', '5', 'Website', 'a', 'a', 'a'),
+(84, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:42:34', '5', 'Website', 'a', 'a', 'a'),
+(85, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:42:53', '5', 'Website', 'a', 'a', 'a'),
+(86, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:43:43', '5', 'Website', 'a', 'a', 'a'),
+(87, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:43:50', '5', 'Website', 'a', 'a', 'a'),
+(88, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:46:43', '5', 'Website', 'a', 'a', 'a');
 
 -- --------------------------------------------------------
 
@@ -461,6 +509,12 @@ ALTER TABLE `downloads`
   ADD PRIMARY KEY (`id`),
   ADD KEY `downloads_posts_id_fk` (`posts_id`),
   ADD KEY `downloads_users_id_fk` (`user_id`);
+
+--
+-- Indexes for table `page_counter`
+--
+ALTER TABLE `page_counter`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `parents_profile`
@@ -567,6 +621,11 @@ ALTER TABLE `users_type`
 ALTER TABLE `downloads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `page_counter`
+--
+ALTER TABLE `page_counter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `parents_profile`
 --
 ALTER TABLE `parents_profile`
@@ -590,7 +649,7 @@ ALTER TABLE `school_branches`
 -- AUTO_INCREMENT for table `school_features`
 --
 ALTER TABLE `school_features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `school_jobs`
 --
@@ -600,7 +659,7 @@ ALTER TABLE `school_jobs`
 -- AUTO_INCREMENT for table `school_profile`
 --
 ALTER TABLE `school_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `school_rating`
 --
@@ -630,7 +689,7 @@ ALTER TABLE `tutors_profile`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 --
 -- AUTO_INCREMENT for table `users_type`
 --

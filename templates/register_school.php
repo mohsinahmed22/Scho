@@ -87,12 +87,12 @@ include '../includes/header.php'; ?>
                                         <p><small>Please enter complete School address</small></p>
                                     </div>
                                     <div class="tab school_contact_detail"><h4>School Contact Details:</h4>
-                                        <input placeholder="School name..." oninput="this.className = ''" name="school_phone">
+                                        <input placeholder="School Phone ..." oninput="this.className = ''" name="school_phone">
                                         <p><small>Please enter your school Landline telephone..</small></p>
-                                        <input placeholder="School name..." oninput="this.className = ''" name="school_email">
+                                        <input placeholder="School Email..." oninput="this.className = ''" name="school_email">
                                         <p><small>Please enter your school offical email address..</small></p>
                                         <hr>
-                                        <input placeholder="School name..." oninput="this.className = ''" name="school_fb_link">
+                                        <input placeholder="Face Book..." oninput="this.className = ''" name="school_fb_link">
                                         <p><small>Please enter your facbeook page link..</small></p>
                                         <input placeholder="School name..." oninput="this.className = ''" name="school_webiste_link">
                                         <p><small>Please enter your school website link..</small></p>

@@ -92,7 +92,7 @@ include '../includes/header.php'; ?>
                                         <div class="row">
                                             <div class="col">
                                                 <p><strong>School Complete Description:</strong></p>
-                                                <textarea placeholder="School description..." oninput="this.className = 'form-control '" name="school_decription" class="form-control"></textarea>
+                                                <textarea placeholder="School description..." oninput="this.className = 'form-control '" name="school_description" class="form-control"></textarea>
                                                 <p><small>Add school detail description..</small></p>
                                             </div>
                                         </div>
@@ -159,7 +159,7 @@ include '../includes/header.php'; ?>
                                         <div class="row">
                                                 <div class="col">
                                                     <p><strong>Website Link:</strong></p>
-                                                    <input placeholder="School name..." oninput="this.className = 'form-control '" name="school_webiste_link"  class="form-control">
+                                                    <input placeholder="Website Link..." oninput="this.className = 'form-control '" name="school_website_link"  class="form-control">
                                                     <p><small>Example: <strong>https://www.kpsguide.pk</strong></small></p>
                                                 </div>
 
@@ -238,6 +238,7 @@ include '../includes/header.php'; ?>
                                         <div style="float:right;">
                                             <button type="button" id="prevBtn" class="btn btn-primary" onclick="nextPrev(-1)">Previous</button>
                                             <button type="button" id="nextBtn" class="btn btn-primary" onclick="nextPrev(1)">Next</button>
+                                            <button type="submit" id="submit" class="btn btn-primary" style="display: none" name="submit">ubmit</button>
                                         </div>
                                     </div>
                                     <!-- Circles which indicates the steps of the form: -->
@@ -265,7 +266,8 @@ include '../includes/header.php'; ?>
                                             document.getElementById("prevBtn").style.display = "inline";
                                         }
                                         if (n == (x.length - 1)) {
-                                            document.getElementById("nextBtn").innerHTML = "Submit";
+                                            document.getElementById("nextBtn").style.display = "none";
+                                            document.getElementById("submit").style.display = "inline";
                                         } else {
                                             document.getElementById("nextBtn").innerHTML = "Next";
                                         }

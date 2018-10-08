@@ -173,18 +173,27 @@ include '../includes/header.php'; ?>
                     <div class="container-info">
                         <h4><i class="fa fa-group"></i> Branches & Teachers Profiles<br/><small style="font-weight: 200;">Detail information about school, faculty, availablity and comfortablity etc.</small></h4>
                         <div class="container-box">
+                            <?php  if(!empty($teachers)): ?>
                             <div class="row">
                                 <div class="col-sm-2"><h5>Teachers:</h5></div>
                                 <div class="col-sm-10">
-                                    <?php foreach ($teachers as $teacher): ?>
+                                    <?php foreach ($teachers as $teach): ?>
 
-                                                    <p><?php echo $teacher->tutor_name; ?> <span class="pull-right"><a
-                                                                    href="tutorProfile.php?id=<?php echo $teacher->tutor_profile_id; ?>"><i class="fa fa-user"></i> Profile</a></span></p>
+                                                    <p><?php echo $teach->tutor_name; ?> <span class="pull-right"><a
+                                                                    href="tutorProfile.php?id=<?php echo $teach->tutor_profile_id; ?>"><i class="fa fa-user"></i> Profile</a></span></p>
                                                     <hr>
                                     <?php endforeach; ?>
                                 </div>
-
                             </div>
+                            <?php  else: ?>
+                            <div class="row">
+                                <div class="col-sm-2"><h5>Teachers:</h5></div>
+                                <div class="col-sm-10">
+                                    <strong>No Teachers Added</strong>
+                                    <p>If your a school addministrator it is recommended to add your teachers here. Login in to your account and add your school teachers</p>
+                                </div>
+                            </div>
+                            <?php  endif;?>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-2"><h5>Branches:</h5></div>
@@ -381,7 +390,7 @@ include '../includes/header.php'; ?>
                     <small>let other parents know about this school</small></h5>
                 </div>
                 <div class="col-sm-6">
-                    <div class="review-rating">
+                    <div class="review-rating"  onclick="displayQuestion()">
 
                         <form action="school.php" method="post">
                             <div class="row">
@@ -439,6 +448,7 @@ include '../includes/header.php'; ?>
                                     <?php endif; ?>
                                 </div>
                             </div>
+                            <div style="display: none"  id="allquestion">
                             <?php  if(!empty($user_school_rated)): ?>
                             <?php   foreach($rating_question as $question): ?>
                                 <hr>
@@ -476,6 +486,7 @@ include '../includes/header.php'; ?>
                             <?php  if(!empty(!$user_school_rated)): ?>
                             <button type="submit" name="review_rating" class="btn btn-primary">Submit Review</button>
                             <?php endif; ?>
+
                         </form>
                         <?php  else: ?>
                         <?php  foreach($rating_question as $question):?>
@@ -500,13 +511,16 @@ include '../includes/header.php'; ?>
                             <button type="submit" name="review_rating" class="btn btn-primary">Submit Review</button>
                         </form>
                         <?php endif;?>
+                    </div>
                 </div>
                     <!-- Reviews -->
                     <div class="rating_reviews">
                         <!-- Comments -->
                         <div class="comments_container">
                             <ul class="comments_list">
-                                <?php foreach ($schoolOverAllRating as $review):?>
+                                <?php
+                                if(!empty($schoolOverAllRating)){
+                                foreach ($schoolOverAllRating as $review):?>
                                 <li>
                                     <div class="comment_item d-flex flex-row align-items-start jutify-content-start">
                                         <div class="comment_image text-center"><div style="width: 50px; height: 50px; background: lightpink; border-radius: 25px; margin: 0 auto"></div> <small>Parent</small></div>
@@ -528,7 +542,8 @@ include '../includes/header.php'; ?>
                                         </div>
                                     </div>
                                 </li>
-                                <?php endforeach; ?>
+                                <?php endforeach;
+                                } ?>
 
                             </ul>
                             <div class="add_comment_container">
@@ -553,6 +568,10 @@ include '../includes/header.php'; ?>
                         document.getElementById('map'), {zoom: 9, center: uluru});
                     // The marker, positioned at Uluru
                     var marker = new google.maps.Marker({position: uluru, map: map});
+                }
+                function  displayQuestion(){
+                    document.getElementById("allquestion").style.display = "inline";
+
                 }
             </script>
             <!--Load the API from the specified URL
