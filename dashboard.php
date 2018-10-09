@@ -7,16 +7,14 @@
  */
 
 include 'admin365/core/init.php';
-$uid = 16;
-
+$user = new User();
 if($user->is_loggedin()){
     if($_SESSION['user_type'] == 'school'){
-        $user = new Schools();
-
+        $school_user = new Schools();
+        $uid = $_SESSION['uid'];
         $template = new Templates('templates/school_dashboard.php');
-
-        $school_id= 1;
-        $template->userinfo = $user->getUserInfo($uid);
+        $template->userinfo = $school_user->getUserInfo($uid);
+        $school_id= $template->userinfo[0]->school_profile_id;
         /**
          * Rating
          */

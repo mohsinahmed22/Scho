@@ -31,7 +31,7 @@ include '../includes/header.php'; ?>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 title-cont">
-                    <h1><?php echo $userinfo[0]->first_name . " " .  $userinfo[0]->last_name ;?> <small style="font-size:14px;">(<strong>Username:</strong> <?php echo $userinfo[0]->email ;?>)</small> <span></h1>
+                        <h1><?php echo $userinfo[0]->first_name . " " .  $userinfo[0]->last_name ;?> <small style="font-size:14px;">(<strong>Username:</strong> <?php echo $userinfo[0]->email ;?>)</small> <span></h1>
                     <div class="school-info">
                         <div class="school-address pull-left"><i class="fa fa-map-marker"></i> <a href=""><?php echo $userinfo[0]->school_address ;?>, <?php echo $userinfo[0]->school_city ;?> </a></div>
                         <div class="school-area pull-left"><a href="#map"><?php echo $userinfo[0]->school_area ;?></a></div>
