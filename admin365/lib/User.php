@@ -141,10 +141,12 @@ class User
      * @return bool
      */
     public function register($data){
+        $verify_hash = md5(rand(200,3000));
         $this->db
             ->query("INSERT INTO users 
                       (password, first_name, last_name, email, user_type, join_date, rate_us, hear_about_us, why_to_join, how_to_improve, testimonials)
                        VALUE (:password, :first_name, :last_name , :email, :user_type, NOW(), :rate_us, :hear_about_us, :why_to_join, :how_to_improve, :testimonials)");
+        $this->db->bind(':verify_hash', $verify_hash);
         $this->db->bind(':password', md5($data['password']));
         $this->db->bind(':first_name', $data['first_name']);
         $this->db->bind(':last_name', $data['last_name']);
@@ -186,8 +188,6 @@ class User
     }
 
 
-
-
     public function getUserInfo($id){
         $this->db
             ->query('select * from users
@@ -202,6 +202,8 @@ class User
             return false;
         }
     }
+
+
 
     /**
      * @param $data
@@ -431,6 +433,30 @@ class User
         }else{
             return false;
         }
+    }
+
+
+    public function confirmEmail($email, $hash)    {
+        $this->db->query("select email, verify_hash, active from users  where email = :email and verify_hash = :hash");
+        $this->db->bind(':email', $email);
+        $this->db->bind(':hash', $hash);
+        if($this->db->execute()){
+            return $this->activateUser($email, $hash);
+        }else{
+            return false;
+        }
+    }
+
+    public function activateUser($email, $hash){
+        $this->db->query("UPDATE users set active = 1 where email = :email and verify_hash = :hash");
+        $this->db->bind(':email', $email);
+        $this->db->bind(':hash', $hash);
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
 /*    public function getSchoolbranches($id){}
