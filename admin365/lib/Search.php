@@ -22,6 +22,10 @@ class Search {
 
     public function search_all_schools()
     {
+//        $query = "SELECT * FROM school_profile inner join
+//                    users as u on u.id = school_profile.user_id
+//                     where  u.active = 1";
+
         $query = "SELECT * FROM school_profile";
         $this->db->query($query);
 
@@ -35,7 +39,7 @@ class Search {
      */
     public function search_schools($area)
     {
-        $query = "SELECT * FROM school_profile  WHERE school_area = " . $area ;
+        $query = "SELECT * FROM school_profile  WHERE school_area = '$area'"  ;
         $this->db->query($query);
 
         $search = $this->db->resultset();

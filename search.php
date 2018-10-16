@@ -11,8 +11,15 @@ if(isset($_POST['keyword_srch'])){
     $search = new Search();
     if($_POST['search_type'] === 'schools'){
         $template = new Templates('templates/search_schools.php');
-        $template->schools = $search->search_all_schools();
         $template->area = $_POST['search_area'];
+        if($_POST['search_area'] == 'All Location'){
+            $template->schools = $search->search_all_schools();
+//            print_r($template->schools);
+        }else{
+            $template->schools = $search->search_schools($_POST['search_area']);
+        }
+
+
 
     }elseif ($_POST['search_type'] == 'teachers'){
 
