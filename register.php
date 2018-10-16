@@ -12,7 +12,7 @@ if(isset($_POST['login_form'])){
         if($UserLogin->login($_POST)){
             redirect('dashboard.php');
         }else{
-            redirect('index.php');
+            redirect('register.php?error=invalid');
         }
 
 }

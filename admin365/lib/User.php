@@ -124,9 +124,9 @@ class User
         $this->db->bind(':password', md5($data['password']));
         $row = $this->db->single();
 
-        if($this->db->rowCount()> 0 ){
-            $this->setUserData($row);
-            return true;
+        if($this->db->rowCount()> 0 and $row->active == 1){
+                $this->setUserData($row);
+                return true;
         }else{
             return false;
         }
@@ -144,8 +144,8 @@ class User
         $verify_hash = md5(rand(200,3000));
         $this->db
             ->query("INSERT INTO users 
-                      (password, first_name, last_name, email, user_type, join_date, rate_us, hear_about_us, why_to_join, how_to_improve, testimonials)
-                       VALUE (:password, :first_name, :last_name , :email, :user_type, NOW(), :rate_us, :hear_about_us, :why_to_join, :how_to_improve, :testimonials)");
+                      (password, first_name, last_name, email, user_type, join_date, rate_us, hear_about_us, why_to_join, how_to_improve, testimonials, verify_hash)
+                       VALUE (:password, :first_name, :last_name , :email, :user_type, NOW(), :rate_us, :hear_about_us, :why_to_join, :how_to_improve, :testimonials, :verify_hash)");
         $this->db->bind(':verify_hash', $verify_hash);
         $this->db->bind(':password', md5($data['password']));
         $this->db->bind(':first_name', $data['first_name']);
@@ -163,6 +163,7 @@ class User
             if($data['user_type'] == 'school'){
 
                 if($this->register_school($data)){
+                    $this->conformationEmailSent($data['email'], $verify_hash);
                     return true;
                 }else{
                     return false;
@@ -441,6 +442,7 @@ class User
         $this->db->bind(':email', $email);
         $this->db->bind(':hash', $hash);
         if($this->db->execute()){
+//          return true;
             return $this->activateUser($email, $hash);
         }else{
             return false;
@@ -457,6 +459,169 @@ class User
             return false;
         }
 
+    }
+
+
+    public function conformationEmailSent($email, $hash) {
+
+         redirect("/toolorb/verify.php?email=$email&&verify=$hash");
+
+        $to = $email;
+        $subject = "Please Confirm your Email Address $email at KPSG.pk";
+
+        $message = "<!doctype html>
+<html>
+<head>
+    <meta charset=\"utf-8\">
+    <title>Thank You For Registration </title>
+    
+    <style>
+    .invoice-box {
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color: #555;
+    }
+    
+    .invoice-box table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+    }
+    
+    .invoice-box table td {
+        padding: 5px;
+        vertical-align: top;
+    }
+    
+    .invoice-box table tr td:nth-child(2) {
+        text-align: right;
+    }
+    
+    .invoice-box table tr.top table td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
+    }
+    
+    .invoice-box table tr.information table td {
+        padding-bottom: 40px;
+    }
+    
+    .invoice-box table tr.heading td {
+        background: #eee;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+    }
+    
+    .invoice-box table tr.details td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.item td{
+        border-bottom: 1px solid #eee;
+    }
+    
+    .invoice-box table tr.item.last td {
+        border-bottom: none;
+    }
+    
+    .invoice-box table tr.total td:nth-child(2) {
+        border-top: 2px solid #eee;
+        font-weight: bold;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        
+        .invoice-box table tr.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+    
+    /** RTL **/
+    .rtl {
+        direction: rtl;
+        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+    
+    .rtl table {
+        text-align: right;
+    }
+    
+    .rtl table tr td:nth-child(2) {
+        text-align: left;
+    }
+    </style>
+</head>
+
+<body style='background: #eee; padding:30px 0 ;'>
+    <div class=\"invoice-box\" style='background: #fff; border:1px solid #ccc'>
+        <table cellpadding=\"5\" cellspacing=\"0\" >
+            <tr class=\"top\">
+                <td colspan=\"7\">
+                    <table width='100%'>
+                        <tr>
+                            <td class=\"title\" colspan='3'>
+                                
+                            </td>
+                            
+                            <td style='text-align: right' colspan='4'>
+                               }</strong><br>
+                                <br>
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class=\"information\">
+                <td colspan=\"7\">
+                    <table width='100%'>
+                        <tr>
+                            <td colspan='3'>
+                             
+                            </td>
+                            
+                            <td style='text-align: right' colspan='4'>
+                               
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+                      
+        </table>
+    </div>
+</body>
+</html>
+";
+
+// Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+        $headers .= 'From: <ahmed.mohsin98@gmail.com>' . "\r\n";
+        $headers .= 'Cc: contact@mohsin-ahmed.com' . "\r\n";
+
+        mail($to,$subject,$message,$headers);
     }
 
 /*    public function getSchoolbranches($id){}

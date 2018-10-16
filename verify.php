@@ -17,7 +17,7 @@ if(isset($_GET['email']) and !empty($_GET['email']) and $_GET['verify'] and !emp
     $confirm_email = $user->confirmEmail($_GET['email'], $_GET['verify']);
 
 }else{
-    $template = new Templates('templates/i.php');
+    $template = new Templates('templates/index.php');
 }
 
 
