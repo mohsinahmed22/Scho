@@ -19,8 +19,6 @@ if(isset($_POST['keyword_srch'])){
             $template->schools = $search->search_schools($_POST['search_area']);
         }
 
-
-
     }elseif ($_POST['search_type'] == 'teachers'){
 
         $template = new Templates('templates/search_teachers.php');

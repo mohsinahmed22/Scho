@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2018 at 09:01 AM
+-- Generation Time: Oct 19, 2018 at 01:17 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -57,7 +57,9 @@ INSERT INTO `page_counter` (`id`, `user_id`, `page_id`, `counter`) VALUES
 (2, 17, 2, 9),
 (3, 78, 7, 24),
 (4, 88, 8, 0),
-(5, 89, 9, 0);
+(5, 89, 9, 0),
+(6, 90, 10, 0),
+(7, 91, 11, 0);
 
 -- --------------------------------------------------------
 
@@ -178,7 +180,9 @@ INSERT INTO `school_features` (`id`, `school_profile_id`, `school_main_campus`, 
 (3, 6, NULL, NULL, NULL, 'a', 'a', 'a', 'a', NULL, NULL, 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935'),
 (4, 7, NULL, NULL, NULL, 'a', 'a', 'a', 'a', NULL, NULL, 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935'),
 (5, 8, NULL, NULL, NULL, 'a', 'a', 'a', 'a', NULL, NULL, NULL, NULL),
-(6, 9, '1', NULL, '1', 'Public', 'A', '134', 'AMI', NULL, NULL, NULL, NULL);
+(6, 9, '1', NULL, '1', 'Public', 'A', '134', 'AMI', NULL, NULL, NULL, NULL),
+(7, 10, NULL, NULL, NULL, 'a', 'aa', 'a', 'a', NULL, NULL, NULL, NULL),
+(8, 11, NULL, NULL, NULL, 's', 's', 's', 's', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -228,14 +232,16 @@ CREATE TABLE `school_profile` (
 
 INSERT INTO `school_profile` (`id`, `user_id`, `school_name`, `school_phone`, `school_email`, `school_address`, `school_fb_link`, `school_twitter_link`, `school_website_link`, `school_city`, `school_area`, `school_description`, `school_cover`, `school_avatar`) VALUES
 (1, 16, 'KPSG  - Karachi Parents School Guide ', 'aa', 'aa', '', 'aa', 'aa', 'aaa', 'karachi', 'Clifton', '2000 Test', 'aa', 'aa'),
-(2, 17, 'Arise School', 't', 'a', 'abacaksdkfksd', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa'),
-(3, 31, 'Mrs.Ahmed Montissori & Propatary', '021-31111111', 'a', 'aaaaaaaaaasdsadada', 'aaaaa', 'aaaaaa', NULL, 'karachi', 'North Nazimabad', NULL, 'aa', 'aa'),
-(4, 32, 'a', '021-3aa', 'aaa', 'a', 'a', 'a', NULL, 'karachi', 'Clifton', NULL, 'aa', 'aa'),
-(5, 76, 'a', '021-3', 'a', 'a', 'a', 'a', 'a', 'karachi', 'Clifton', 'a', 'aa', 'aa'),
+(2, 17, 'Arise School', 't', 'a', 'abacaksdkfksd', 'a', 'a', NULL, 'karachi', 'north', NULL, 'aa', 'aa'),
+(3, 31, 'Mrs.Ahmed Montissori & Propatary', '021-31111111', 'a', 'aaaaaaaaaasdsadada', 'aaaaa', 'aaaaaa', NULL, 'karachi', 'nazimabad', NULL, 'aa', 'aa'),
+(4, 32, 'a', '021-3aa', 'aaa', 'a', 'a', 'a', NULL, 'karachi', 'nazimabad', NULL, 'aa', 'aa'),
+(5, 76, 'a', '021-3', 'a', 'a', 'a', 'a', 'a', 'karachi', 'nazimabad', 'a', 'aa', 'aa'),
 (6, 77, 'a', '021-3', 'a', 'a', 'a', 'a', 'a', 'karachi', 'Clifton', 'a', 'aa', 'aa'),
 (7, 78, 'a', '021-3', 'a', 'aaa', 'a', 'a', 'a', 'karachi', 'Clifton', 'a', 'aa', 'aa'),
 (8, 88, 'a', '021-3a', 'a', 'aaa', 'a', 'a', 'a', 'karachi', 'Clifton', 'aaa', 'aa', 'aa'),
-(9, 89, 'mohsinSchool', '021-3', 'test@es.com', 'aaaa', 'aa', 'a', 'a', 'karachi', 'Clifton', 'testss', 'aa', 'aa');
+(9, 89, 'mohsinSchool', '021-3', 'test@es.com', 'aaaa', 'aa', 'a', 'a', 'karachi', 'north', 'testss', 'aa', 'aa'),
+(10, 90, 'a', '021-311', '11', 'a', '11', '11', '11', 'karachi', 'Clifton', 'adasdas', 'aa', 'aa'),
+(11, 91, 'a', '021-3', 's', 's', 's', 's', 's', 'karachi', 'north', 's', 'aa', 'aa');
 
 -- --------------------------------------------------------
 
@@ -409,88 +415,91 @@ CREATE TABLE `users` (
   `why_to_join` text,
   `how_to_improve` text,
   `testimonials` text,
-  `verify_hash` varchar(32) DEFAULT NULL
+  `verify_hash` varchar(32) DEFAULT NULL,
+  `active` int(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `profile_status`, `first_name`, `last_name`, `user_type`, `join_date`, `rate_us`, `hear_about_us`, `why_to_join`, `how_to_improve`, `testimonials`, `verify_hash`) VALUES
-(16, 'ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Shakeel', 'Siddiqui', 'school', '2018-09-19 07:10:04', NULL, NULL, NULL, NULL, NULL, NULL),
-(17, '1ahmed.mohsin98@ghmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Hammad', 'Hassan', 'school', '2018-09-19 19:24:31', NULL, NULL, NULL, NULL, NULL, NULL),
-(18, '2ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Farhan', 'Soomoro', 'teacher', '2018-09-19 19:29:59', NULL, NULL, NULL, NULL, NULL, NULL),
-(19, '3ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Faizan', 'Raza', 'teacher', '2018-09-19 19:31:04', NULL, NULL, NULL, NULL, NULL, NULL),
-(20, '4ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:32:41', NULL, NULL, NULL, NULL, NULL, NULL),
-(21, '5ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:33:14', NULL, NULL, NULL, NULL, NULL, NULL),
-(22, '6ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:33:56', NULL, NULL, NULL, NULL, NULL, NULL),
-(23, '8ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 05:31:55', NULL, NULL, NULL, NULL, NULL, NULL),
-(24, '7ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 05:33:03', NULL, NULL, NULL, NULL, NULL, NULL),
-(25, 'demo@demo.com', 'Tmt123456!', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 05:35:54', NULL, NULL, NULL, NULL, NULL, NULL),
-(26, 'aaaa', 'Tmt123456!', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 05:36:45', NULL, NULL, NULL, NULL, NULL, NULL),
-(27, 'aaaa', 'Tmt123456!', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 05:38:14', NULL, NULL, NULL, NULL, NULL, NULL),
-(28, 'aaaa', 'Tmt123456!', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 05:39:41', NULL, NULL, NULL, NULL, NULL, NULL),
-(29, 'mohsin', 'tmt123456', 'Not Approved', 'Mohsin', 'Ahmed', 'teacher', '2018-09-20 05:40:44', NULL, NULL, NULL, NULL, NULL, NULL),
-(30, 'mohsin', 'tmt123456', 'Not Approved', 'Mohsin', 'Ahmed', 'teacher', '2018-09-20 05:41:09', NULL, NULL, NULL, NULL, NULL, NULL),
-(31, 'Mohsin', 'tmt123456', 'Not Approved', 'Mohsin', 'Ahmed', 'school', '2018-09-20 11:40:10', '5', 'Website', 'I want to learning about school and other detrails.', 'aaathis is testing way to improve your slef.', 'nice effort', NULL),
-(32, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'a', 'a', 'school', '2018-09-20 11:42:26', '5', 'Website', 'a', 'a', 'a', NULL),
-(33, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'Mohsin', 'Ahmed', 'parent', '2018-09-20 11:47:46', '5', 'Website', 'a', 'a', 'a', NULL),
-(34, 'admin', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Mohsin', 'Ahmed', 'parent', '2018-09-20 11:56:56', '5', 'Website', 'a', 'a', 'a', NULL),
-(35, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 12:12:24', NULL, NULL, NULL, NULL, NULL, NULL),
-(36, 'Mohsin', '6b1c2955cc86904b12414eef7abf0a9c', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 12:14:05', '5', 'Website', 'a', 'a', 'a', NULL),
-(37, 'Mohsin', '6b1c2955cc86904b12414eef7abf0a9c', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 12:15:10', '5', 'Website', 'a', 'a', 'a', NULL),
-(38, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 12:15:21', NULL, NULL, NULL, NULL, NULL, NULL),
-(39, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 12:22:31', NULL, NULL, NULL, NULL, NULL, NULL),
-(40, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'Mohsin', 'Ahmed', 'teacher', '2018-09-20 13:46:43', '5', 'Website', 'a', 'a', 'a', NULL),
-(41, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 14:22:33', NULL, NULL, NULL, NULL, NULL, NULL),
-(42, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:23:36', '5', 'Website', 'a', 'a', 'a', NULL),
-(43, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 14:23:36', NULL, NULL, NULL, NULL, NULL, NULL),
-(44, 'asdasd', 'f9ea827850ae6457edfade5b696c206c', 'Not Approved', 'as', 'sa', 'teacher', '2018-09-20 14:25:10', '5', 'Website', 'a', 'a', 'asdasdasda', NULL),
-(45, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 14:25:10', NULL, NULL, NULL, NULL, NULL, NULL),
-(46, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:27:48', '5', 'Website', 'a', 'a', 'a', NULL),
-(47, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:31:43', '5', 'Website', 'a', 'a', 'a', NULL),
-(48, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:32:21', '5', 'Website', 'a', 'a', 'a', NULL),
-(49, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:33:11', '5', 'Website', 'a', 'a', 'a', NULL),
-(50, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:34:15', '5', 'Website', 'a', 'a', 'a', NULL),
-(51, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:38:09', '5', 'Website', 'a', 'a', 'a', NULL),
-(52, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:42:42', '5', 'Website', 'a', 'a', 'a', NULL),
-(53, 'aaa', '47bce5c74f589f4867dbd57e9ca9f808', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:44:38', '5', 'Website', 'a', 'a', 'a', NULL),
-(54, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:45:40', '5', 'Website', 'a', 'a', 'a', NULL),
-(55, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:50:49', '5', 'Website', 'a', 'aa', 'aaaaaaa', NULL),
-(56, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:53:25', '5', 'Website', 'a', 'aa', 'aaaaaaa', NULL),
-(57, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:54:05', '5', 'Website', 'a', 'aa', 'aaaaaaa', NULL),
-(58, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:01:46', NULL, NULL, NULL, NULL, NULL, NULL),
-(59, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:01:46', NULL, NULL, NULL, NULL, NULL, NULL),
-(60, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:01:59', NULL, NULL, NULL, NULL, NULL, NULL),
-(61, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:02:04', NULL, NULL, NULL, NULL, NULL, NULL),
-(62, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:02:08', NULL, NULL, NULL, NULL, NULL, NULL),
-(63, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:08', NULL, NULL, NULL, NULL, NULL, NULL),
-(64, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:16', NULL, NULL, NULL, NULL, NULL, NULL),
-(65, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL, NULL),
-(66, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL, NULL),
-(67, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL, NULL),
-(68, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL, NULL),
-(69, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL, NULL),
-(70, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:20', NULL, NULL, NULL, NULL, NULL, NULL),
-(71, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:20', NULL, NULL, NULL, NULL, NULL, NULL),
-(72, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:35:14', '5', 'Website', 'aa', 'aa', 'a', NULL),
-(73, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:36:18', '5', 'Website', 'a', 'aa', 'a', NULL),
-(74, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:36:27', '5', 'Website', 'a', 'aa', 'a', NULL),
-(75, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'aa', 'a', 'school', '2018-10-08 07:36:54', '4', 'Website', 'a', 'a', 'a', NULL),
-(76, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'aa', 'a', 'school', '2018-10-08 07:37:28', '4', 'Website', 'a', 'a', 'a', NULL),
-(77, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'aa', 'a', 'school', '2018-10-08 07:38:17', '4', 'Website', 'a', 'a', 'a', NULL),
-(78, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:42:18', '5', 'Website', 'a', 'a', 'a', NULL),
-(79, 'aa', '74b87337454200d4d33f80c4663dc5e5', 'Not Approved', 'aaa', 'aaa', 'school', '2018-10-08 10:33:52', '5', 'Website', 'a', 'a', 'a', NULL),
-(80, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:38:05', '5', 'Website', 'a', 'a', 'a', NULL),
-(81, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:38:34', '5', 'Website', 'a', 'a', 'a', NULL),
-(82, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:41:00', '5', 'Website', 'a', 'a', 'a', NULL),
-(83, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:42:30', '5', 'Website', 'a', 'a', 'a', NULL),
-(84, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:42:34', '5', 'Website', 'a', 'a', 'a', NULL),
-(85, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:42:53', '5', 'Website', 'a', 'a', 'a', NULL),
-(86, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:43:43', '5', 'Website', 'a', 'a', 'a', NULL),
-(87, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:43:50', '5', 'Website', 'a', 'a', 'a', NULL),
-(88, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:46:43', '5', 'Website', 'a', 'a', 'a', NULL),
-(89, 'ahme@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'New', 'mohsin', 'school', '2018-10-11 06:28:18', '5', 'Website', 'test', 'test', 'test', NULL);
+INSERT INTO `users` (`id`, `email`, `password`, `profile_status`, `first_name`, `last_name`, `user_type`, `join_date`, `rate_us`, `hear_about_us`, `why_to_join`, `how_to_improve`, `testimonials`, `verify_hash`, `active`) VALUES
+(16, 'ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Shakeel', 'Siddiqui', 'school', '2018-09-19 07:10:04', NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(17, '1ahmed.mohsin98@ghmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Hammad', 'Hassan', 'school', '2018-09-19 19:24:31', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(18, '2ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Farhan', 'Soomoro', 'teacher', '2018-09-19 19:29:59', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(19, '3ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Faizan', 'Raza', 'teacher', '2018-09-19 19:31:04', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(20, '4ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:32:41', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(21, '5ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:33:14', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(22, '6ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-19 19:33:56', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(23, '8ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 05:31:55', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(24, '7ahmed.mohsin98@gmail.com', 'tmt123456', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 05:33:03', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(25, 'demo@demo.com', 'Tmt123456!', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 05:35:54', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(26, 'aaaa', 'Tmt123456!', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 05:36:45', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(27, 'aaaa', 'Tmt123456!', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 05:38:14', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(28, 'aaaa', 'Tmt123456!', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 05:39:41', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(29, 'mohsin', 'tmt123456', 'Not Approved', 'Mohsin', 'Ahmed', 'teacher', '2018-09-20 05:40:44', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(30, 'mohsin', 'tmt123456', 'Not Approved', 'Mohsin', 'Ahmed', 'teacher', '2018-09-20 05:41:09', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(31, 'Mohsin', 'tmt123456', 'Not Approved', 'Mohsin', 'Ahmed', 'school', '2018-09-20 11:40:10', '5', 'Website', 'I want to learning about school and other detrails.', 'aaathis is testing way to improve your slef.', 'nice effort', NULL, 0),
+(32, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'a', 'a', 'school', '2018-09-20 11:42:26', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(33, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'Mohsin', 'Ahmed', 'parent', '2018-09-20 11:47:46', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(34, 'admin', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Mohsin', 'Ahmed', 'parent', '2018-09-20 11:56:56', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(35, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 12:12:24', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(36, 'Mohsin', '6b1c2955cc86904b12414eef7abf0a9c', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 12:14:05', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(37, 'Mohsin', '6b1c2955cc86904b12414eef7abf0a9c', 'Not Approved', 'Mohsin', 'ahmed', 'teacher', '2018-09-20 12:15:10', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(38, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 12:15:21', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(39, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 12:22:31', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(40, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'Mohsin', 'Ahmed', 'teacher', '2018-09-20 13:46:43', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(41, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 14:22:33', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(42, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:23:36', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(43, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 14:23:36', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(44, 'asdasd', 'f9ea827850ae6457edfade5b696c206c', 'Not Approved', 'as', 'sa', 'teacher', '2018-09-20 14:25:10', '5', 'Website', 'a', 'a', 'asdasdasda', NULL, 0),
+(45, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 14:25:10', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(46, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:27:48', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(47, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:31:43', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(48, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:32:21', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(49, 'demo@demo.com', 'bac15689a2d82022da1e437815e1d650', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:33:11', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(50, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:34:15', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(51, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:38:09', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(52, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:42:42', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(53, 'aaa', '47bce5c74f589f4867dbd57e9ca9f808', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:44:38', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(54, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:45:40', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(55, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:50:49', '5', 'Website', 'a', 'aa', 'aaaaaaa', NULL, 0),
+(56, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:53:25', '5', 'Website', 'a', 'aa', 'aaaaaaa', NULL, 0),
+(57, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'teacher', '2018-09-20 14:54:05', '5', 'Website', 'a', 'aa', 'aaaaaaa', NULL, 0),
+(58, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:01:46', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(59, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:01:46', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(60, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:01:59', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(61, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:02:04', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(62, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:02:08', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(63, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:08', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(64, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:16', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(65, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(66, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(67, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(68, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(69, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:19', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(70, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:20', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(71, NULL, 'd41d8cd98f00b204e9800998ecf8427e', 'Not Approved', NULL, NULL, NULL, '2018-09-20 15:03:20', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(72, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:35:14', '5', 'Website', 'aa', 'aa', 'a', NULL, 0),
+(73, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:36:18', '5', 'Website', 'a', 'aa', 'a', NULL, 0),
+(74, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:36:27', '5', 'Website', 'a', 'aa', 'a', NULL, 0),
+(75, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'aa', 'a', 'school', '2018-10-08 07:36:54', '4', 'Website', 'a', 'a', 'a', NULL, 0),
+(76, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'aa', 'a', 'school', '2018-10-08 07:37:28', '4', 'Website', 'a', 'a', 'a', NULL, 0),
+(77, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'aa', 'a', 'school', '2018-10-08 07:38:17', '4', 'Website', 'a', 'a', 'a', NULL, 0),
+(78, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 07:42:18', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(79, 'aa', '74b87337454200d4d33f80c4663dc5e5', 'Not Approved', 'aaa', 'aaa', 'school', '2018-10-08 10:33:52', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(80, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:38:05', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(81, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:38:34', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(82, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:41:00', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(83, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:42:30', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(84, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:42:34', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(85, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:42:53', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(86, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:43:43', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(87, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:43:50', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(88, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:46:43', '5', 'Website', 'a', 'a', 'a', NULL, 0),
+(89, 'ahme@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'New', 'mohsin', 'school', '2018-10-11 06:28:18', '5', 'Website', 'test', 'test', 'test', NULL, 0),
+(90, 'emailverify', '0cc175b9c0f1b6a831c399e269772661', '0', 'a', 'aaa', 'school', '2018-10-16 06:52:12', '5', 'Website', 'aaa', 'aaa', 'aaa', '58e4d44e550d0f7ee0a23d6b02d9b0db', 1),
+(91, 'aaa', '4124bc0a9335c27f086f24ba207a4912', '0', 'a', 'a', 'school', '2018-10-16 07:36:36', '5', 'Website', 's', 's', 's', 'effc299a1addb07e7089f9b269c31f2f', 1);
 
 -- --------------------------------------------------------
 
@@ -629,7 +638,7 @@ ALTER TABLE `downloads`
 -- AUTO_INCREMENT for table `page_counter`
 --
 ALTER TABLE `page_counter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `parents_profile`
 --
@@ -654,7 +663,7 @@ ALTER TABLE `school_branches`
 -- AUTO_INCREMENT for table `school_features`
 --
 ALTER TABLE `school_features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `school_jobs`
 --
@@ -664,7 +673,7 @@ ALTER TABLE `school_jobs`
 -- AUTO_INCREMENT for table `school_profile`
 --
 ALTER TABLE `school_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `school_rating`
 --
@@ -694,7 +703,7 @@ ALTER TABLE `tutors_profile`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 --
 -- AUTO_INCREMENT for table `users_type`
 --
