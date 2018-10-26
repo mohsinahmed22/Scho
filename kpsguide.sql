@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2018 at 01:17 PM
+-- Generation Time: Oct 26, 2018 at 08:54 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -118,19 +118,20 @@ CREATE TABLE `review` (
   `overall_rating` varchar(255) DEFAULT NULL,
   `overall_message` text,
   `review_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `school_profile_id` int(11) DEFAULT NULL
+  `school_profile_id` int(11) DEFAULT NULL,
+  `tutor_profile_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `review`
 --
 
-INSERT INTO `review` (`id`, `user_id`, `overall_rating`, `overall_message`, `review_date`, `school_profile_id`) VALUES
-(1, 18, '5', 'this is good review for school let test finally', '2018-09-28 10:56:48', 1),
-(15, 19, '3', '1111', '2018-09-28 11:47:43', 1),
-(16, 20, '4', 'this is good review for school let test finally', '2018-09-28 11:47:43', 1),
-(17, 17, '1', 'testing', '2018-09-28 11:47:43', 1),
-(18, 16, '5', 'testing', '2018-09-28 11:47:43', 1);
+INSERT INTO `review` (`id`, `user_id`, `overall_rating`, `overall_message`, `review_date`, `school_profile_id`, `tutor_profile_id`) VALUES
+(1, 18, '5', 'this is good review for school let test finally', '2018-09-28 10:56:48', 1, NULL),
+(15, 19, '3', '1111', '2018-09-28 11:47:43', 1, NULL),
+(16, 20, '4', 'this is good review for school let test finally', '2018-09-28 11:47:43', 1, NULL),
+(17, 17, '1', 'testing', '2018-09-28 11:47:43', 1, NULL),
+(18, 16, '5', 'testing', '2018-09-28 11:47:43', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -398,6 +399,34 @@ INSERT INTO `tutors_profile` (`id`, `user_id`, `tutor_name`, `tutor_job_status`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tutors_rating`
+--
+
+CREATE TABLE `tutors_rating` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `tutor_profile_id` int(11) DEFAULT NULL,
+  `review_id` int(11) DEFAULT NULL,
+  `tutor_raitng_question_id` int(11) DEFAULT NULL,
+  `tutor_rating_value` int(11) DEFAULT NULL,
+  `tutor_rating_why_this` text,
+  `tutor_rating_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tutors_rating_question`
+--
+
+CREATE TABLE `tutors_rating_question` (
+  `id` int(11) NOT NULL,
+  `tutor_rating_question` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -614,6 +643,18 @@ ALTER TABLE `tutors_profile`
   ADD KEY `tutors_profile_users_id_fk` (`user_id`);
 
 --
+-- Indexes for table `tutors_rating`
+--
+ALTER TABLE `tutors_rating`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tutors_rating_question`
+--
+ALTER TABLE `tutors_rating_question`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -699,6 +740,16 @@ ALTER TABLE `settings`
 --
 ALTER TABLE `tutors_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `tutors_rating`
+--
+ALTER TABLE `tutors_rating`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tutors_rating_question`
+--
+ALTER TABLE `tutors_rating_question`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --

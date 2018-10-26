@@ -55,6 +55,26 @@ class Rating
         }
     }
 
+
+    /**ss
+     * @param $id
+     * @return array|bool
+     */
+    public function getTeacherating($id)
+    {
+        $this->db
+            ->query('select * from tutors_rating 
+                                 where tutor_profile_id = ' . $id);
+
+        $results = $this->db->resultset();
+        if ($results) {
+            return $results;
+        } else {
+            return false;
+        }
+    }
+
+
     public function addAllRating($data)
     {
         $data['review_id'] = $this->addOverAllRating($data);
@@ -91,6 +111,17 @@ class Rating
         }
     }
 
+    public function selectTeacherInfo($id){
+        $this->db->query('select * from review
+                                inner join users profile on review.user_id = profile.id 
+                                where tutor_profile_id = ' . $id);
+        $results = $this->db->resultset();
+        if ($results) {
+            return $results;
+        } else {
+            return false;
+        }
+    }
 
 
     public function addOverAllRating($data){
@@ -114,7 +145,7 @@ class Rating
     public function addRating($data){
         $this->db
             ->query(
-                " INSERT INTO school_rating ( 
+                "INSERT INTO school_rating ( 
                   user_id,
                   review_id,
                   school_profile_id,
@@ -178,6 +209,10 @@ class Rating
         }
 
     }
+
+
+
+
 
 
 

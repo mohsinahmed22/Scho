@@ -16,13 +16,13 @@ if(isset($_POST['login_form'])){
         }
 
 }
-if(isset($_GET['school'])){
+if(isset($_GET['type']) AND $_GET['type'] == 'school'){
     $template = new Templates('templates/register.php');
-}elseif(isset($_GET['teachers'])){
+}elseif(isset($_GET['type']) AND $_GET['type'] == 'teacher'){
     $template = new Templates('templates/register_teacher.php');
-}elseif(isset($_GET['parenting'])){
+}elseif(isset($_GET['type']) AND $_GET['type'] == 'parents'){
     $template = new Templates('templates/register_parents.php');
-}elseif(isset($_POST['submit'])){
+}elseif(!isset($_GET['type']) AND isset($_POST['submit'])){
     if($_POST['user_type'] == 'school'){
         $school = new Schools();
         if($school->register($_POST)){

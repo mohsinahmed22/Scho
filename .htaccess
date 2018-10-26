@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteBase /toolorb
+RewriteRule ^login$ register.php
+RewriteRule ^register/([0-9a-zA-Z]+)$ register.php?type={R:1}
+

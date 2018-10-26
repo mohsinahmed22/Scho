@@ -26,7 +26,21 @@ if($user->is_loggedin()){
         $template->overAllRatingCount = count($template->schoolOverAllRating);
 
     }elseif($_SESSION['user_type'] == 'teacher'){
+        $teacher_user = new Teachers();
+        $uid = $_SESSION['uid'];
         $template = new Templates('templates/teacher_dashboard.php');
+        $template->userinfo = $teacher_user->getUserTeacherInfo($uid);
+        $teacher_id = $template->userinfo[0]->id;
+        /**
+         * Rating
+         */
+        $rating = new  Rating();
+        $template->allReviews = $rating->selectTeacherInfo($teacher_id);
+        $template->teacherRating = $rating->getTeacherating($teacher_id);
+        $template->teacherOverAllRating = $rating->selectOverAllRating($teacher_id);
+        $template->calculateRatingbar = $rating->calculateRating($teacher_id);
+        $template->overAllRatingCount = count($template->teacherOverAllRating);
+
     }else{
         $template = new Templates('templates/parent_dashboard.php');
     }

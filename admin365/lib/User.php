@@ -624,8 +624,30 @@ class User
         mail($to,$subject,$message,$headers);
     }
 
-/*    public function getSchoolbranches($id){}
 
-    public function getSchooljobs($id){}*/
+
+
+    public function getUserTeacherInfo($id){
+        $this->db
+            ->query('select * from users
+                            inner join tutors_profile profile on users.id = profile.user_id 
+/*                            inner join school_features features on features.school_profile_id = profile.id*/ 
+                            where users.id = ' . $id );
+        $results = $this->db->resultset();
+
+        if($results){
+            return $results;
+        }else{
+            return false;
+        }
+    }
+
+
+
+
+
+    /*    public function getSchoolbranches($id){}
+
+        public function getSchooljobs($id){}*/
 
 }

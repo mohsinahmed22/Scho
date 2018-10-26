@@ -45,9 +45,9 @@ include '../includes/header.php'; ?>
                                         </div>
                                     </form>
                                     <hr/>
-                                    <a href="register.php?school" class="btnReg regSchool">Register as School</a>
-                                    <a href="register.php?teachers" class="btnReg regTeacher">Register as Teacher</a>
-                                    <a href="register.php?parenting" class="btnReg regParent">Register as Parent</a>
+                                    <a href="register/school" class="btnReg regSchool">Register as School</a>
+                                    <a href="register/teacher" class="btnReg regTeacher">Register as Teacher</a>
+                                    <a href="register/parents" class="btnReg regParent">Register as Parent</a>
 
                                 </div>
                                 <div class="col-sm-6 info-login">
