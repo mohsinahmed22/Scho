@@ -1,5 +1,13 @@
-RewriteEngine on
+RewriteEngine On
 RewriteBase /toolorb
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . /index.php [L]
 RewriteRule ^login$ register.php
-RewriteRule ^register/([0-9a-zA-Z]+)$ register.php?type={R:1}
-
+RewriteRule ^register/([a-z]+)?$ register.php?type=$1
+RewriteRule ^([a-z]+)?/dashboard$ dashboard.php?type=$1
+#RewriteRule ^register/[a-zA-Z+]$ register.php?type=$1
+#RewriteEngine on
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^register/([^/]*)$ register.php?type=$1 [NC]

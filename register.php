@@ -10,7 +10,7 @@ include 'admin365/core/init.php';
 if(isset($_POST['login_form'])){
         $UserLogin = new User();
         if($UserLogin->login($_POST)){
-            redirect('dashboard.php');
+            redirect( $_SESSION['user_type'] . '/dashboard' );
         }else{
             redirect('register.php?error=invalid');
         }

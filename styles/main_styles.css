@@ -317,12 +317,14 @@ section
 .top_bar_login
 {
 	height: 100%;
+	background: #d40023;
+	padding: 10px 10px 0;
+	color: #fff;
 }
 .login_button
 {
-	width: 160px;
+	width: 180px;
 	height: 100%;
-	background: #d40023;
 	text-align: center;
 }
 .login_button a

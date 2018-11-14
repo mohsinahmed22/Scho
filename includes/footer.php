@@ -76,8 +76,8 @@
                             <div class="footer_section footer_mobile">
                                 <div class="footer_title">Mobile</div>
                                 <div class="footer_mobile_content">
-                                    <div class="footer_image"><a href="#"><img src="images/mobile_1.png" alt=""></a></div>
-                                    <div class="footer_image"><a href="#"><img src="images/mobile_2.png" alt=""></a></div>
+                                    <div class="footer_image"><a href="#"><img src="/toolorb/images/mobile_1.png" alt=""></a></div>
+                                    <div class="footer_image"><a href="#"><img src="/toolorb/images/mobile_2.png" alt=""></a></div>
                                 </div>
                             </div>
 
@@ -108,22 +108,22 @@
 </footer>
 </div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="admin365/assets/src/bootstrap-wysiwyg.js"></script>
-<script src="js/custom.js"></script>
+<script src="/toolorb/js/jquery-3.2.1.min.js"></script>
+<script src="/toolorb/styles/bootstrap4/popper.js"></script>
+<script src="/toolorb/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/toolorb/plugins/greensock/TweenMax.min.js"></script>
+<script src="/toolorb/plugins/greensock/TimelineMax.min.js"></script>
+<script src="/toolorb/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="/toolorb/plugins/greensock/animation.gsap.min.js"></script>
+<script src="/toolorb/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="/toolorb/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/toolorb/plugins/easing/easing.js"></script>
+<script src="/toolorb/plugins/parallax-js-master/parallax.min.js"></script>
+<!-- <script src="/toolorb/admin365/assets/src/bootstrap-wysiwyg.js"></script> -->
+<script src="/toolorb/js/custom.js"></script>
 
 <!--<script src="js/jquery-3.0.0.js" type="text/javascript"></script>-->
-<script src="js/jquery.barrating.min.js" type="text/javascript"></script>
+<script src="/toolorb/js/jquery.barrating.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function() {
         $('.rating').barrating({

@@ -81,7 +81,7 @@ include '../includes/header.php'; ?>
                                                 <p><strong>Area/Zone:</strong></p>
                                                 <select name="tutor_area" class="form-control">
                                                     <option value="All Location">All Location</option>
-                                                    <option value="Clifton">Clifton</option>
+                                                        <option value="Clifton">Clifton</option>
                                                     <option value="DHA">DHA</option>
                                                     <option value="FB Area">FB Area</option>
                                                     <option value="Nazimabad">Nazimabad</option>

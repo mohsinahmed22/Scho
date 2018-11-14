@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <title>KPSG - Karachi Parents School Guide</title>
-    <base href="/">
     <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="KSPG Karachi Parents School Guide | Search and Register Your Self">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
-    <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
-    <link rel="stylesheet" type="text/css" href="/styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
-    <link href='/styles/fontawesome-stars.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/toolorb/styles/bootstrap4/bootstrap.min.css">
+    <link href="/toolorb/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/toolorb/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/toolorb/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="/toolorb/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="/toolorb/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="/toolorb/styles/responsive.css">
+    <link href='/toolorb/styles/fontawesome-stars.css' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
@@ -40,7 +40,18 @@
                                     </li>
                                 </ul>
                                 <div class="top_bar_login ml-auto">
-                                    <div class="login_button"><a href="#">Register or Login</a></div>
+
+
+                                        <?php if(!isset($_SESSION['user_type'])):?>
+                                        <div class="login_button">
+                                            <a href="login"><i class="fa fa-sign-in"></i> Register or Login</a>
+                                        </div>
+                                        <?php else: ?>
+                                            Welcome <?php  echo $_SESSION['first_name'] ?>  <?php  echo $_SESSION['last_name'] ?>
+                                             | <a href="logout" style="color:#fff;"><i class="fa fa-sign-out"></i> Logout</a>
+
+                                        <?php endif; ?>
+
                                 </div>
                             </div>
                         </div>
