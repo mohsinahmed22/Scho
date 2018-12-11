@@ -21,7 +21,10 @@ class Pages
         $this->db = new Database();
     }
 
-
+    /**
+     * @param $data
+     * @return bool|string
+     */
     public function CreatePage($data){
         $this->db->query("INSERT INTO pages (page_title, page_description, page_url, page_tags, meta_title, meta_description, meta_keyword) values (
 page_title, page_description, page_url, page_tags, meta_title, meta_description, meta_keyword) ");
@@ -47,6 +50,10 @@ page_title, page_description, page_url, page_tags, meta_title, meta_description,
 
     }
 
+    /**
+     * @param $page_id
+     * @return bool
+     */
     public function DeletePage($page_id){
         $this->db->query('DELETE FROM pages where id = :page_id');
 
@@ -57,11 +64,12 @@ page_title, page_description, page_url, page_tags, meta_title, meta_description,
         }else{
             return false;
         }
-
-
     }
 
-
+    /**
+     * @param $data
+     * @return bool
+     */
     public function EditPage($data){
         $this->db->query(
             "UPDATE pages set 
@@ -97,6 +105,9 @@ page_title, page_description, page_url, page_tags, meta_title, meta_description,
 
     }
 
+    /**
+     * @return array|bool
+     */
     public function SelectAllPage(){
         $this->db->query('select * from pages');
 

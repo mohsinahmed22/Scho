@@ -23,7 +23,10 @@ class Posts
     }
 
 
-
+    /**
+     * @param $data
+     * @return bool|string
+     */
     public function CreatePosts($data){
         $this->db->query('INSERT INTO posts (user_id, post_title, post_description, posts_tags, post_url, meta_description,meta_keyword,meta_title) values 
                             (:user_id, :post_title, :post_description, :posts_tags, :post_url, :meta_description, :meta_keyword, :meta_title)');
@@ -45,6 +48,10 @@ class Posts
 
     }
 
+    /**
+     * @param $post_id
+     * @return bool
+     */
     public function DeletePosts($post_id){
         $this->db->query('DELETE FROM posts where id = :post_id');
 
@@ -58,7 +65,10 @@ class Posts
 
     }
 
-
+    /**
+     * @param $data
+     * @return bool
+     */
     public function EditPosts($data){
         $this->db->query(
             "UPDATE posts set 
@@ -94,6 +104,10 @@ class Posts
 
     }
 
+
+    /**
+     * @return array|bool
+     */
     public function SelectAllPosts(){
         $this->db->query('select * from posts');
 
@@ -104,7 +118,10 @@ class Posts
         }
     }
 
-
+    /**
+     * @param $post_id
+     * @return array|bool
+     */
     public function SelectPostsById($post_id){
 
         $this->db->query('select * from posts where id= :post_id');
