@@ -121,6 +121,18 @@ page_title, page_description, page_url, page_tags, meta_title, meta_description,
     }
 
 
+    public function SelectPageByUrl($page_url){
+        $this->db->query("select * from pages where page_url = :page_url and page_is_active = 1 and page_status = 'published' ");
+        $this->db->bind(":page_url", $page_url);
+
+        if($results = $this->db->resultset()){
+            return $results;
+        }else{
+            return false;
+        }
+
+    }
+
     public function SelectPageById($page_id){
         $this->db->query('select * from pages where id= :page_id');
 

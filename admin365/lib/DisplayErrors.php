@@ -6,7 +6,7 @@
  * Time: 3:51 PM
  */
 
-class DisplayErrors extends Exception
+class DisplayErrors
 {
 
 //    Error Message
@@ -52,7 +52,7 @@ class DisplayErrors extends Exception
      * @param $msg
      * @param $MsgType
      */
-    public function DisplayMessage($msg, $MsgType){
+    public function DisplayMessage($msg, $MsgType = "Error"){
         if($MsgType == 'Success'){
             return $this->ShowSuccess($msg);
         }else{
