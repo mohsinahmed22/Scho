@@ -124,7 +124,7 @@ class Posts
      */
     public function SelectPostsById($post_id){
 
-        $this->db->query('select * from posts where id= :post_id');
+        $this->db->query("select * from posts where id= :post_id and post_is_active = 1 and posts_status = 'published'");
 
         $this->db->bind(":post_id", $post_id);
 
