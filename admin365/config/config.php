@@ -11,3 +11,4 @@ define("SITE_TITLE", "Welcome to KPSG - Karachi Parents School Guide ");
 define ('BASE_URI', 'http://'.$_SERVER['SERVER_NAME'].'/kpsg/');
 //Paths
 define ('BASE_ADMIN_IMAGE_URI', BASE_URI . 'admin365/images/');
+

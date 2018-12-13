@@ -34,7 +34,7 @@ include '../includes/header.php'; ?>
     </div>
     <div class="kpsg-page">
         <?php //print_r($school)?><?php //echo  $school->?>
-        <form id="regForm" action=" edit_account.php" method="post">
+        <form id="regForm" action=" <?php echo BASE_URI ?><?php echo $_GET['type'] ?>/edit/account" method="post">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 sch-message">

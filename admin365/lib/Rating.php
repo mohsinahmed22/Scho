@@ -97,6 +97,15 @@ class Rating
         } else {
             return false;
         }
+    }  public function selectOverAllRatingTutor($id){
+        $this->db->query('select * from review 
+                                 where tutor_profile_id = ' . $id);
+        $results = $this->db->resultset();
+        if ($results) {
+            return $results;
+        } else {
+            return false;
+        }
     }
 
     public function selectUserInfo($id){

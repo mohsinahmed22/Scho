@@ -24,7 +24,7 @@ include '../includes/header.php'; ?>
                     <div class="register-box">
                         <div class="row">
                             <div class="col-sm-12">
-                                <form id="regForm" action="register.php" method="post" enctype="multipart/form-data">
+                                <form id="regForm" action="<?php echo BASE_URI ?>login"  method="post" enctype="multipart/form-data">
                                     <h2>Teacher Registration:</h2>
                                     <!-- One "tab" for each step in the form: -->
 
@@ -234,6 +234,7 @@ include '../includes/header.php'; ?>
                                         <div style="float:right;">
                                             <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-primary">Previous</button>
                                             <button type="button" id="nextBtn" onclick="nextPrev(1)" class="btn btn-primary">Next</button>
+                                            <button type="submit" id="submit" class="btn btn-primary" style="display: none" name="submit">Submit</button>
                                         </div>
                                     </div>
                                     <!-- Circles which indicates the steps of the form: -->
@@ -261,7 +262,8 @@ include '../includes/header.php'; ?>
                                             document.getElementById("prevBtn").style.display = "inline";
                                         }
                                         if (n == (x.length - 1)) {
-                                            document.getElementById("nextBtn").innerHTML = "Submit";
+                                            document.getElementById("nextBtn").style.display = "none";
+                                            document.getElementById("submit").style.display = "inline";
                                         } else {
                                             document.getElementById("nextBtn").innerHTML = "Next";
                                         }

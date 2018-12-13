@@ -29,7 +29,7 @@ if(isset($_GET['type']) AND $_GET['type'] == 'school'){
             $uid = $school->register_user_id();
         }
     }elseif($_POST['user_type'] == 'teacher'){
-        $teacher = new Teachers();
+        $teacher = new User();
         if($teacher->register($_POST)){
             $uid = $teacher->register_user_id();
         }

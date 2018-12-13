@@ -1,13 +1,30 @@
 RewriteEngine On
-RewriteBase /toolorb
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteRule . /index.php [L]
+RewriteBase /kpsg
+
+#Login & Register
 RewriteRule ^login$ register.php
 RewriteRule ^register/([a-z]+)?$ register.php?type=$1
+RewriteRule ^logout$ logout.php
+
+# Verifying
+RewriteRule ^verify$ verify.php
+RewriteRule ^verify/([a-zA-Z0-9]+)?/([a-zA-Z0-9]+)?$ verify.php?email=$1&&verify=$2
+
+#Dasboard
 RewriteRule ^([a-z]+)?/dashboard$ dashboard.php?type=$1
-#RewriteRule ^register/[a-zA-Z+]$ register.php?type=$1
-#RewriteEngine on
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteRule ^register/([^/]*)$ register.php?type=$1 [NC]
+RewriteRule ^([a-z]+)?/edit/account$ edit_account.php?type=$1
+RewriteRule ^([a-z]+)?/edit/profile$ edit_profile.php?type=$1
+RewriteRule ^([a-z]+)?/jobs$ jobs.php?type=$1
+
+
+#School
+RewriteRule ^([a-z]+)?/branches$ branches.php?type=$1
+RewriteRule ^([a-z]+)?/teachers$ edit_school_teacher.php?type=$1
+RewriteRule ^([a-z]+)?/teachers/([0-9]+)?/([0-9]+)$ edit_school_teacher.php?type=$1&&uid=$2&&tid=$3
+RewriteRule ^([a-z]+)?/teachers/delete/([0-9]+)?$ edit_school_teacher.php?type=$1&&delete=$2
+
+#Tutor
+RewriteRule ^([a-z]+)?/([a-z]+)?/([a-z]+)$ add_tutor_info.php?type=$1&&action_type=$2&&atc=$3
+RewriteRule ^([a-z]+)?/([a-z]+)?/([a-z]+)?/([0-9]+)$ add_tutor_info.php?type=$1&&action_type=$2&&atc=$3&&qid=$4
+RewriteRule ^([a-z]+)?/([a-z]+)?/([a-z]+)?/([0-9]+)$ delete_info.php?type=$1&&action_type=$2&&atc=$3&&qid=$4
+

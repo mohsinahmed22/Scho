@@ -43,7 +43,7 @@ include '../includes/header.php'; ?>
 
                 </div>
                 <div class="col-sm-4 sch-bar">
-                    <a href="#" class="btn btn-primary pull-right">Add Teacher</a>
+<!--                    <a href="#" class="btn btn-primary pull-right">Add Teacher</a>-->
                 </div>
             </div>
             <div class="row school-main" >
@@ -71,7 +71,7 @@ include '../includes/header.php'; ?>
                                         <td><?php echo $teacher->tutor_name; ?></td>
                                         <td><?php echo $teacher->tutor_designation; ?></td>
                                         <td><a href="tutorProfile.php?id=<?php echo $teacher->tutor_profile_id; ?>">View Profile</a></td>
-                                        <td><a href="edit_school_teacher.php?delete=<?php echo $teacher->stid; ?>">Delete</a></td>
+                                        <td><a href="<?php echo BASE_URI ?><?php echo $_GET['type'] ?>/teachers/delete/<?php echo $teacher->stid; ?>">Delete</a></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 <?php else:?>
@@ -88,18 +88,18 @@ include '../includes/header.php'; ?>
                 </div>
                 <div class="col-sm-3">
                     <p>Kindly search from your teacher profiles and add to your school</p>
-                    <p><strong>To add New Teacher profile:<br/> <a href="#addTeacher">Add New Teacher</a></strong></p>
+                    <p><strong>To add New Teacher to school profile:<br/> search teacher below or invite them via email address <a href="#">Invite Teacher</a></strong></p>
                 </div>
             </div>
             <hr>
-            <div class="row school-main" >
+            <div class="row school-main">
                 <div class="col-sm-2" >
                     <div class="head">
                         <h4>Search Teacher</h4>
                     </div>
                 </div>
-                <div class="col-sm-7">
-                    <form action="edit_school_teacher.php" method="post">
+                <div class="col-sm-7" >
+                    <form action="<?php echo BASE_URI ?><?php echo $_GET['type'] ?>/teachers" method="post">
                     <div class="row">
                         <div class="col"><input placeholder="Search Teacher.. ex: Name, Phone, email" name="search_teachers" type="text" class="form-control">
                             <p><small>Search from our large teachers library, help parents to rate your school teachers.</small></p>
@@ -151,13 +151,13 @@ include '../includes/header.php'; ?>
                                                             if($add_tid == $s->tid):
                                                         echo "Teached Already Added";
                                                         else:?>
-                                                            <a href="edit_school_teacher.php?uid=<?php echo $s->user_id ?>&&tid=<?php echo $s->tid ?>">Add Teacher</a>
+                                                            <a href="<?php echo BASE_URI ?><?php echo $_GET['type'] ?>/teachers/<?php echo $s->user_id ?>/<?php echo $s->tid ?>">Add Teacher</a>
                                                     <?php endif;
                                                     }else{?>
-                                                         <a href="edit_school_teacher.php?uid=<?php echo $s->user_id ?>&&tid=<?php echo $s->tid ?>">Add Teacher</a>
+                                                         <a href="<?php echo BASE_URI ?><?php echo $_GET['type'] ?>/teachers/<?php echo $s->user_id ?>/<?php echo $s->tid ?>">Add Teacher</a>
                                                     <?php }?>
                                                 <?php else: ?>
-                                                    <a href="edit_school_teacher.php?uid=<?php echo $s->user_id ?>&&tid=<?php echo $s->tid ?>">Add Teacher</a>
+                                                    <a href="<?php echo BASE_URI ?><?php echo $_GET['type'] ?>/teachers/<?php echo $s->user_id ?>/<?php echo $s->tid ?>">Add Teacher</a>
                                                 <?php endif; ?>
 
                                             </td>

@@ -34,7 +34,7 @@ include '../includes/header.php'; ?>
 
     </div>
     <div class="kpsg-page">
-        <form id="regForm" action="edit_school.php" method="post">
+        <form id="regForm" action="<?php echo BASE_URI ?><?php echo $_GET['type'] ?>/edit/profile" method="post">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 sch-message">
@@ -250,7 +250,7 @@ include '../includes/header.php'; ?>
 
             <div class="row">
                 <div class="col">
-                    <input type="hidden" value="1" name="sid">
+                    <input type="hidden" value="<?php  echo $userinfo[0]->school_profile_id ?>" name="sid">
 
                     <hr/>
                     <button type="submit" name="update_UserSchool" class="btn btn-primary">Update School Profile</button>

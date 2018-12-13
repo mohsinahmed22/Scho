@@ -24,7 +24,7 @@ include '../includes/header.php'; ?>
                     <div class="register-box">
                         <div class="row">
                             <div class="col-sm-12">
-                                <form id="regForm" action="register.php" method="post">
+                                <form id="regForm" action="<?php echo BASE_URI?>login" method="post">
                                     <h2>School Registration:</h2>
                                     <!-- One "tab" for each step in the form: -->
                                     <div class="tab school_account_info"><h4>Account Information:</h4>
@@ -238,7 +238,7 @@ include '../includes/header.php'; ?>
                                         <div style="float:right;">
                                             <button type="button" id="prevBtn" class="btn btn-primary" onclick="nextPrev(-1)">Previous</button>
                                             <button type="button" id="nextBtn" class="btn btn-primary" onclick="nextPrev(1)">Next</button>
-                                            <button type="submit" id="submit" class="btn btn-primary" style="display: none" name="submit">ubmit</button>
+                                            <button type="submit" id="submit" class="btn btn-primary" style="display: none" name="submit">Submit</button>
                                         </div>
                                     </div>
                                     <!-- Circles which indicates the steps of the form: -->

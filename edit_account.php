@@ -11,9 +11,9 @@ include 'admin365/core/init.php';
 $template = new Templates('templates/edit_account_info.php');
 
 $user = new User();
-$uid = 16;
-$school_id= 1;
-$template->userinfo = $user->getUserInfo($uid);
+$uid = $_SESSION['uid'];
+$user_type = $_SESSION['user_type'];
+$template->userinfo = $user->getUserInfo($uid, $user_type);
 
 if(isset($_POST['update_UserAccount'])){
     $UserInfo = $user->UpdateAccountInfo($_POST, $uid);

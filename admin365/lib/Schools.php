@@ -24,7 +24,7 @@ class Schools extends User{
 
 
     public function AddteacherToSchool($tutor_id, $school_id, $user_id){
-        $this->db->query("INSERT INTO school_teachers
+        $this->db->query("INSERT INTO school_teachers 
                                 (user_id, school_profile_id, tutor_profile_id) values (:uid, :sid, :tid)");
         $this->db->bind(":uid", $user_id);
         $this->db->bind(":tid", $tutor_id);

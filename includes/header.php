@@ -7,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="KSPG Karachi Parents School Guide | Search and Register Your Self">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/toolorb/styles/bootstrap4/bootstrap.min.css">
-    <link href="/toolorb/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="/toolorb/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="/toolorb/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="/toolorb/plugins/OwlCarousel2-2.2.1/animate.css">
-    <link rel="stylesheet" type="text/css" href="/toolorb/styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="/toolorb/styles/responsive.css">
-    <link href='/toolorb/styles/fontawesome-stars.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URI?>styles/bootstrap4/bootstrap.min.css">
+    <link href="<?php echo BASE_URI?>plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URI?>plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URI?>plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URI?>plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URI?>styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URI?>styles/responsive.css">
+    <link href='<?php echo BASE_URI?>styles/fontawesome-stars.css' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
@@ -44,11 +44,12 @@
 
                                         <?php if(!isset($_SESSION['user_type'])):?>
                                         <div class="login_button">
-                                            <a href="login"><i class="fa fa-sign-in"></i> Register or Login</a>
+                                            <a href="<?php echo BASE_URI?>login"><i class="fa fa-user"></i> Register</a> |
+                                            <a href="<?php echo BASE_URI?>login"><i class="fa fa-sign-in"></i> Login</a>
                                         </div>
                                         <?php else: ?>
                                             Welcome <?php  echo $_SESSION['first_name'] ?>  <?php  echo $_SESSION['last_name'] ?>
-                                             | <a href="logout" style="color:#fff;"><i class="fa fa-sign-out"></i> Logout</a>
+                                             | <a href="<?php echo BASE_URI ?>logout" style="color:#fff;"><i class="fa fa-sign-out"></i> Logout</a>
 
                                         <?php endif; ?>
 
@@ -65,13 +66,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="logo_container">
-                                <a href="#">
-                                    <div class="logo_text"><span></span></div>
+                        <div class="header_content d-flex flex-row align-items-center justify-content-start row">
+                            <div class="logo_container col-sm-3">
+                                <a href="<?php echo BASE_URI?>">
+                                    <div class="logo_text "><span><img src="<?php echo BASE_URI?>images/kpsg-logo.png " alt="Karachi Parents Schools Guide" width="65%" /></span></div>
                                 </a>
                             </div>
-                            <nav class="main_nav_contaner ml-auto">
+                            <nav class="main_nav_contaner ml-auto col-sm-9 pull-right text-right">
                                 <ul class="main_nav">
                                     <li><a href="about.html">Schools</a></li>
                                     <li><a href="about.html">Jobs</a></li>
