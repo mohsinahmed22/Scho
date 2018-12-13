@@ -13,5 +13,3 @@ create table pages
   page_is_active   int(1)       null
 )
   engine = InnoDB;
-
-

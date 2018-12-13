@@ -117,9 +117,11 @@
 <script src="/toolorb/plugins/greensock/animation.gsap.min.js"></script>
 <script src="/toolorb/plugins/greensock/ScrollToPlugin.min.js"></script>
 <script src="/toolorb/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/toolorb/plugins/masonry/masonry.js"></script>
 <script src="/toolorb/plugins/easing/easing.js"></script>
 <script src="/toolorb/plugins/parallax-js-master/parallax.min.js"></script>
 <!-- <script src="/toolorb/admin365/assets/src/bootstrap-wysiwyg.js"></script> -->
+<script src="/toolorb/js/blog.js"></script>
 <script src="/toolorb/js/custom.js"></script>
 
 <!--<script src="js/jquery-3.0.0.js" type="text/javascript"></script>-->

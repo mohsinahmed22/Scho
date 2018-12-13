@@ -6,7 +6,7 @@
  * Time: 12:22 PM
  */
 
-class Posts
+class Blog
 {
 
     /**
@@ -109,7 +109,7 @@ class Posts
      * @return array|bool
      */
     public function SelectAllPosts(){
-        $this->db->query('select * from posts');
+        $this->db->query('select * from posts inner join users u on posts.user_id = u.id');
 
         if($results = $this->db->resultset()){
             return $results;
@@ -135,4 +135,38 @@ class Posts
         }
 
     }
+
+
+    public function SelectPostCategories(){
+        $this->db->query("select * from posts_category");
+
+        if($results = $this->db->resultset()){
+            return $results;
+        }else{
+            return false;
+        }
+    }
+
+
+
+    /**
+     * @param $post_id
+     * @return array|bool
+     */
+    public function SelectPostsByCategory($category_id){
+
+        $this->db->query("select * from posts inner join posts_category pc on posts.post_category = pc.id  where pc.id= :category_id and posts.post_is_active = 1 and posts.posts_status = 'published'");
+
+        $this->db->bind(":category_id", $category_id);
+
+        if($results = $this->db->resultset()){
+            return $results;
+        }else{
+            return false;
+        }
+
+    }
+
 }
+
+
