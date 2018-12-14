@@ -12,9 +12,11 @@
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URI?>plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URI?>plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URI?>plugins/OwlCarousel2-2.2.1/animate.css">
+    <?php echo (isset($headcss))? $headcss : ""; ?>
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URI?>styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URI?>styles/responsive.css">
     <link href='<?php echo BASE_URI?>styles/fontawesome-stars.css' rel='stylesheet' type='text/css'>
+
 
 </head>
 <body>

@@ -122,9 +122,27 @@ class Blog
      * @param $post_id
      * @return array|bool
      */
+    public function SelectPostsByUrl($post_url){
+
+        $this->db->query("select * from posts where post_url= :post_url and post_is_active = 1 and posts_status = 'published'");
+
+        $this->db->bind(":post_url", $post_url);
+
+        if($results = $this->db->resultset()){
+            return $results;
+        }else{
+            return false;
+        }
+
+    }
+
+    /**
+     * @param $post_id
+     * @return array|bool
+     */
     public function SelectPostsById($post_id){
 
-        $this->db->query("select * from posts where id= :post_id and post_is_active = 1 and posts_status = 'published'");
+        $this->db->query("select * from posts where post_id= :post_id and post_is_active = 1 and posts_status = 'published'");
 
         $this->db->bind(":post_id", $post_id);
 
@@ -135,7 +153,6 @@ class Blog
         }
 
     }
-
 
     public function SelectPostCategories(){
         $this->db->query("select * from posts_category");

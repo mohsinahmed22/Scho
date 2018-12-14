@@ -9,9 +9,10 @@
 include 'admin365/core/init.php';
 
 $posts = new Blog();
-if(isset($_GET['post_id'])):
+if(isset($_GET['postid']) AND isset($_GET['posturl'])):
     $template = new Templates('templates/single_post.php');
-    $displayPost = $posts->SelectPostsById($_GET['post_id']);
+//    $displayPost = $posts->SelectPostsById($_GET['post_id']);
+    $displayPost = $posts->SelectPostsByUrl($_GET['posturl']);
     if(!empty($displayPost)):
         $user = new User();
         $template->userDetails = $user->getUser($displayPost[0]->user_id);
@@ -29,7 +30,7 @@ elseif(isset($_GET['posts_category'])):
 
 elseif(isset($_GET['posts_tags'])):
     $template = new Templates('templates/posts.php');
-    $template->headcss = "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog_responsive.css\">";
+    $template-> headcss= "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog_responsive.css\">";
     $displayAllPosts = $posts->SelectPostsByTags($_GET['posts_tags']);
 
 else:
