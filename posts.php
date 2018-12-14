@@ -22,16 +22,29 @@ if(isset($_GET['postid']) AND isset($_GET['posturl'])):
     else:
         redirect(BASE_URI ."blog");
     endif;
-elseif(isset($_GET['posts_category'])):
+elseif(isset($_GET['caturl'])):
+    $displayAllPosts = $posts->SelectPostsByCategory($_GET['catid']);
     $template = new Templates('templates/posts.php');
-    $template->headcss = "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog_responsive.css\">";
-    $displayAllPosts = $posts->SelectPostsByCategory($_GET['post_id']);
+    $template->headcss = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI . "styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI ."styles/blog_responsive.css\">";
+    if(!empty($displayAllPosts)):
+        $template->displayAllPosts = $displayAllPosts;
+
+    else:
+        redirect("404.php");
+    endif;
 
 
 elseif(isset($_GET['posts_tags'])):
     $template = new Templates('templates/posts.php');
     $template-> headcss= "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog_responsive.css\">";
     $displayAllPosts = $posts->SelectPostsByTags($_GET['posts_tags']);
+    if(!empty($displayAllPosts)):
+        $template->displayAllPosts = $displayAllPosts;
+
+    else:
+        redirect("404.php");
+    endif;
+
 
 else:
     $displayAllPosts = $posts->SelectAllPosts();

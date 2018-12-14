@@ -23,13 +23,12 @@ include '../includes/header.php'; ?>
         </div>
     </div>
     <div class="blog">
-        <?php print_r($displayAllPosts)?>
+        <?php // print_r($displayAllPosts)?>
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="blog_post_container">
-
-                        <?php foreach ($displayAllPosts as $posts):?>
+                            <?php foreach ($displayAllPosts as $posts):?>
                         <!-- Blog Post -->
                         <div class="blog_post trans_200">
                             <div class="blog_post_image"><a href="<?php echo BASE_URI ?>blog/posts/<?php echo $posts->id ?>/<?php echo $posts->post_url ?>"><img src="<?php echo BASE_URI ?>images/blog/<?php echo (!empty($posts->post_featured_img))? $posts->post_featured_img : 'dumy_img.jpg'?>" alt=""></a></div>
@@ -42,7 +41,7 @@ include '../includes/header.php'; ?>
                                     </ul>
                                 </div>
                                 <div class="blog_post_text">
-                                    <p><?php echo substr($posts->post_description,0,30)  ?></p>
+                                    <p><?php echo substr($posts->post_description,0,130)  ?></p>
                                 </div>
                             </div>
                         </div>

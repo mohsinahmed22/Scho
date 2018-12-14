@@ -39,6 +39,7 @@ include '../includes/header.php'; ?>
                                 <li><strong>By:</strong> <?php echo $userDetails->first_name; ?> <?php echo $userDetails->last_name; ?></li>
                             </ul>
                         </div>
+                        <img src="<?php echo BASE_URI ?>images/blog/<?php echo (!empty($displayPost[0]->post_featured_img))? $displayPost[0]->post_featured_img : 'dumy_img.jpg'?>" alt="">
                         <br>
                         <?php echo $displayPost[0]->post_description?>
                     </div>
@@ -59,9 +60,7 @@ include '../includes/header.php'; ?>
 
                 <!-- Blog Sidebar -->
                 <div class="col-lg-4">
-
                     <?php include '../includes/blogsidebar.php'?>
-
                 </div>
             </div>
         </div>

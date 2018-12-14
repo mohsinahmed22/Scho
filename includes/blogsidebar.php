@@ -20,7 +20,7 @@
         <div class="sidebar_categories">
             <ul class="categories_list">
                 <?php foreach ($PostsCategories as $category):?>
-                <li><a href="posts_category.php?id=<?php echo $category->id?>" class="clearfix"><?php echo $category->category_title?><span>()</span></a></li>
+                <li><a href="<?php echo BASE_URI?>blog/<?php echo $category->category_url?>/<?php echo $category->id?>" class="clearfix"><?php echo $category->category_title?><span>()</span></a></li>
                 <?php endforeach;?>
             </ul>
         </div>

@@ -119,9 +119,9 @@
 <script src="<?php echo BASE_URI?>plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="<?php echo BASE_URI?>plugins/easing/easing.js"></script>
 <script src="<?php echo BASE_URI?>plugins/parallax-js-master/parallax.min.js"></script>
-<!-- <script src="<?php echo BASE_URI?>admin365/assets/src/bootstrap-wysiwyg.js"></script> -->
-<script src="plugins/masonry/masonry.js"></script>
-<script src="js/blog.js"></script>
+<!-- <script src="<?php // echo BASE_URI?>admin365/assets/src/bootstrap-wysiwyg.js"></script> -->
+<script src="<?php echo BASE_URI?>plugins/masonry/masonry.js"></script>
+<script src="<?php echo BASE_URI?>js/blog.js"></script>
 <script src="<?php echo BASE_URI?>js/custom.js"></script>
 
 <!--<script src="js/jquery-3.0.0.js" type="text/javascript"></script>-->

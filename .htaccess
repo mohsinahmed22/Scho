@@ -1,7 +1,5 @@
 RewriteEngine On
-RewriteBase /kpsg
-RewriteRule ^([^_]*)_([^_]*_.*) $1-$2 [N]
-RewriteRule ^([^_]*)_([^_]*)$ /$1-$2 [L,R=301]
+RewriteBase /toolorb
 #Login & Register
 RewriteRule ^login$ register.php
 RewriteRule ^register/([a-z]+)?$ register.php?type=$1
@@ -32,4 +30,6 @@ RewriteRule ^([a-z]+)?/([a-z]+)?/([a-z]+)?/([0-9]+)$ delete_info.php?type=$1&&ac
 
 #post
 RewriteRule ^blog$ posts.php
-RewriteRule ^blog/posts/([0-9]+)?/([a-zA-Z0-9]+)$ single_post.php?postid=$1&&posturl=$2 [N,DPI]
+RewriteRule ^blog/posts/([0-9]+)?/([a-zA-Z0-9]+)$ single_post.php?postid=$1&&posturl=$2
+RewriteRule ^blog/([a-zA-Z0-9]+)?/([0-9]+)$ posts.php?caturl=$1&&catid=$2
+RewriteRule ^blog/posts/tags/([a-zA-Z0-9]+)?$ posts.php?post_tags=$1

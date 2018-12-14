@@ -172,7 +172,10 @@ class Blog
      */
     public function SelectPostsByCategory($category_id){
 
-        $this->db->query("select * from posts inner join posts_category pc on posts.post_category = pc.id  where pc.id= :category_id and posts.post_is_active = 1 and posts.posts_status = 'published'");
+        $this->db->query("select * from posts 
+                                inner join posts_category pc on posts.post_category = pc.id 
+                                inner join users u on posts.user_id = u.id  
+                                where pc.id= :category_id and posts.post_is_active = 1 and posts.posts_status = 'published'");
 
         $this->db->bind(":category_id", $category_id);
 
@@ -183,7 +186,23 @@ class Blog
         }
 
     }
+    /**
+     * @param $post_id
+     * @return array|bool
+     */
+    public function SelectPostsByTags($post_tags){
 
+        $this->db->query("select * from posts where posts_tags like %:post_tags%");
+
+        $this->db->bind(":post_tags", $post_tags);
+
+        if($results = $this->db->resultset()){
+            return $results;
+        }else{
+            return false;
+        }
+
+    }
 }
 
 
