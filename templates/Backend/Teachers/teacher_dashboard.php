@@ -27,7 +27,7 @@ include '../includes/header.php'; ?>
     .review_rating_bars {padding-left: 0;}
 </style>
 <div class="home kpsg-schools">
-    <?php  include "../includes/login_user_head.php"?>
+    <?php include "../includes/login_user_head.php" ?>
     <div class="breadcrumb">
         <div class="container">
             <div class="row">
@@ -47,7 +47,7 @@ include '../includes/header.php'; ?>
         <div class="container">
             <div class="row">
                 <div class="col-sm-8">
-                    <h4>School Reviews</h4>
+                    <h4>Your Reviews</h4>
                     <hr>
                     <?php //print_r($allReviews); ?>
                     <table class="table table-striped table-hover table-bordered table-responsive " width="100%">
@@ -79,7 +79,7 @@ include '../includes/header.php'; ?>
 
                 </div>
                 <div class="col-sm-4">
-                    <h4>School Rating</h4>
+                    <h4>Your Rating</h4>
                     <hr>
                     <div class="review_rating_container">
                         <div class="review_rating">

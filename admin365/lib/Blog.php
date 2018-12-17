@@ -24,6 +24,35 @@ class Blog
 
 
     /**
+     * @return array|bool
+     */
+    public function TagsSelection(){
+        $this->db->query("select * from tags");
+        $results = $this->db->resultset();
+
+        if($results){
+            return $results;
+        }else{
+            return false;
+        }
+    }
+
+
+    public function selectTag($tagId)
+    {
+        $this->db->query("select * from tags where id = :tagId");
+
+        $this->db->bind(":tagId", $tagId);
+
+        if($results = $this->db->resultset()){
+            return $results;
+        }else{
+            return false;
+        }
+    }
+
+
+    /**
      * @param $data
      * @return bool|string
      */
@@ -203,6 +232,11 @@ class Blog
         }
 
     }
+
+
+
+
+
 }
 
 

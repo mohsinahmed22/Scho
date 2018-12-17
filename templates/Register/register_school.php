@@ -6,7 +6,7 @@
  * Date: 9/13/2018
  * Time: 11:43 AM
  */
-include '../includes/header.php'; ?>
+include '../../includes/header.php'; ?>
 <div class="kpsg-register">
     <div class="register-bg">
         <div class="register-heading">
@@ -226,5 +226,5 @@ include '../includes/header.php'; ?>
 
     </div>
 </div>
-<?php include '../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>
 

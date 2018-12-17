@@ -17,11 +17,11 @@ if(isset($_POST['login_form'])){
 
 }
 if(isset($_GET['type']) AND $_GET['type'] == 'school'){
-    $template = new Templates('templates/register.php');
+    $template = new Templates('templates/Register/register.php');
 }elseif(isset($_GET['type']) AND $_GET['type'] == 'teacher'){
-    $template = new Templates('templates/register_teacher.php');
+    $template = new Templates('templates/Register/register_teacher.php');
 }elseif(isset($_GET['type']) AND $_GET['type'] == 'parents'){
-    $template = new Templates('templates/register_parents.php');
+    $template = new Templates('templates/Register/register_parents.php');
 }elseif(!isset($_GET['type']) AND isset($_POST['submit'])){
     if($_POST['user_type'] == 'school'){
         $school = new Schools();
@@ -40,12 +40,12 @@ if(isset($_GET['type']) AND $_GET['type'] == 'school'){
         }
 
     }
-    $template = new Templates('templates/thankyou.php');
+    $template = new Templates('templates/Register/thankyou.php');
 
 
 
 }else{
-    $template = new Templates('templates/login.php');
+    $template = new Templates('templates/Login/login.php');
 }
 
 

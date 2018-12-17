@@ -19,7 +19,7 @@ if($user->is_loggedin()){
     if($_SESSION['user_type'] == 'school'){
         $school_user = new Schools();
 
-        $template = new Templates('templates/school_dashboard.php');
+        $template = new Templates('templates/Backend/Schools/school_dashboard.php');
         $template->userinfo = $school_user->getUserInfo($uid,$user_type);
         $school_id= $template->userinfo[0]->school_profile_id;
         /**
@@ -35,7 +35,7 @@ if($user->is_loggedin()){
     }elseif($_SESSION['user_type'] == 'teacher'){
         $teacher_user = new Teachers();
 
-        $template = new Templates('templates/teacher_dashboard.php');
+        $template = new Templates('templates/Backend/Teachers/teacher_dashboard.php');
         $template->userinfo = $teacher_user->getUserTeacherInfo($uid);
         $teacher_id = $template->userinfo[0]->id;
         /**
@@ -49,7 +49,7 @@ if($user->is_loggedin()){
         $template->overAllRatingCount = count($template->teacherOverAllRating);
 
     }else{
-        $template = new Templates('templates/parent_dashboard.php');
+        $template = new Templates('templates/Backend/Parents/parent_dashboard.php');
     }
 
 

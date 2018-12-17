@@ -22,6 +22,7 @@ include '../includes/header.php'; ?>
             </div>
         </div>
     </div>
+<?php // var_dump($tg);?>
     <div class="blog">
         <div class="container">
             <div class="row">
@@ -50,7 +51,7 @@ include '../includes/header.php'; ?>
                                 <?php
                                 $tags= explode(',', $displayPost[0]->posts_tags);
                                 foreach ($tags as $tag):?>
-                                    <li class="list-inline" style="display: inline;"><a href="#"><?php echo $tag?></a>, </li>
+                                    <li class="list-inline" style="display: inline;"><a href="<?php echo BASE_URI?>^blog/posts/tags/<?php echo $tag->tags_url?>"><?php echo $tag?></a>, </li>
                                 <?php endforeach;?>
                             </ul>
                         </div>

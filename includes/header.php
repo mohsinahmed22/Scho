@@ -34,11 +34,11 @@
                                     <li><div class="question">Have any questions?</div></li>
                                     <li>
                                         <i class="fa fa-phone" aria-hidden="true"></i>
-                                        <div>001-1234-88888</div>
+                                        <div> <?php  echo PORTAL_PHONE ?></div>
                                     </li>
                                     <li>
                                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                        <div>info@kpsg.pk</div>
+                                        <div> <?php  echo PORTAL_EMAIL?></div>
                                     </li>
                                 </ul>
                                 <div class="top_bar_login ml-auto">

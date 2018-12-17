@@ -15,10 +15,11 @@ if(isset($_GET['postid']) AND isset($_GET['posturl'])):
     $displayPost = $posts->SelectPostsByUrl($_GET['posturl']);
     if(!empty($displayPost)):
         $user = new User();
-        $template->userDetails = $user->getUser($displayPost[0]->user_id);
+                $template->userDetails = $user->getUser($displayPost[0]->user_id);
         $template->PostsCategories = $posts->SelectPostCategories();
         $template->displayPost = $displayPost;
-        $template->headcss = "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog_single.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog_single_responsive.css\">";
+        #$template->tg = $posts->TagsSelection();
+        $template->headcss = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI . "styles/blog_single.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI . "styles/blog_single_responsive.css\">";
     else:
         redirect(BASE_URI ."blog");
     endif;
@@ -36,7 +37,7 @@ elseif(isset($_GET['caturl'])):
 
 elseif(isset($_GET['posts_tags'])):
     $template = new Templates('templates/posts.php');
-    $template-> headcss= "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog_responsive.css\">";
+    $template->headcss = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI . "styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI ."styles/blog_responsive.css\">";
     $displayAllPosts = $posts->SelectPostsByTags($_GET['posts_tags']);
     if(!empty($displayAllPosts)):
         $template->displayAllPosts = $displayAllPosts;
@@ -49,7 +50,7 @@ elseif(isset($_GET['posts_tags'])):
 else:
     $displayAllPosts = $posts->SelectAllPosts();
     $template = new Templates('templates/posts.php');
-    $template->headcss = "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"styles/blog_responsive.css\">";
+    $template->headcss = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI . "styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI ."styles/blog_responsive.css\">";
     if(!empty($displayAllPosts)):
         $template->displayAllPosts = $displayAllPosts;
     else:

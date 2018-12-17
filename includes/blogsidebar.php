@@ -20,24 +20,24 @@
         <div class="sidebar_categories">
             <ul class="categories_list">
                 <?php foreach ($PostsCategories as $category):?>
-                <li><a href="<?php echo BASE_URI?>blog/<?php echo $category->category_url?>/<?php echo $category->id?>" class="clearfix"><?php echo $category->category_title?><span>()</span></a></li>
+                <li><a href="<?php echo BASE_URI?>blog/<?php echo $category->category_url?>/<?php echo $category->id?>" class="clearfix"><?php echo $category->category_title?><span>()</span></a><hr/>
+                </li>
                 <?php endforeach;?>
             </ul>
         </div>
     </div>
     <br/>
     <!-- Tags -->
-    <div class="sidebar_section">
+    <div class="sidebar_section" style="display: none;">
         <div class="sidebar_section_title"><h4>Tags</h4>
             <hr/></div>
-        <div class="sidebar_tags">
+        <div class="sidebar_tags hide">
             <ul class="tags_list">
-                <li><a href="#">creative</a></li>
-                <li><a href="#">unique</a></li>
-                <li><a href="#">photography</a></li>
-                <li><a href="#">ideas</a></li>
-                <li><a href="#">wordpress</a></li>
-                <li><a href="#">startup</a></li>
+
+                <?php //  print_r($PostsTags)?>
+                <?php foreach ($PTags as $t):?>
+                    <li><a href="<?php echo BASE_URI?>^blog/posts/tags/<?php echo $t->id?>/<?php echo $t->tags_url?>" class="clearfix"><?php echo $t->tags?><span>()</span></a></li>
+                <?php endforeach;?>
             </ul>
         </div>
     </div>

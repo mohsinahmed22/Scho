@@ -6,7 +6,7 @@
  * Date: 9/13/2018
  * Time: 11:43 AM
  */
-include '../includes/header.php'; ?>
+include '../../includes/header.php'; ?>
 <div class="kpsg-register">
     <div class="register-bg">
         <div class="register-heading">
@@ -24,9 +24,10 @@ include '../includes/header.php'; ?>
                     <div class="register-box">
                         <div class="row">
                             <div class="col-sm-12">
-                                <form id="regForm" action="<?php echo BASE_URI ?>login" method="post">
-                                    <h2>Parents Registration:</h2>
+                                <form id="regForm" action="<?php echo BASE_URI ?>login"  method="post" enctype="multipart/form-data">
+                                    <h2>Teacher Registration:</h2>
                                     <!-- One "tab" for each step in the form: -->
+
                                     <div class="tab school_account_info"><h4>Account Information:</h4>
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-6">
@@ -40,8 +41,9 @@ include '../includes/header.php'; ?>
                                                 <p><small></small></p>
                                             </div>
                                         </div>
-                                        <hr/>
-                                        <h4>Parent Information:</h4>
+                                        <input name="user_type" value="teacher" type="hidden">
+                                    </div>
+                                    <div class="tab school_info"><h4>Teacher Information:</h4>
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-6">
                                                 <p><strong>First Name:</strong></p>
@@ -57,11 +59,11 @@ include '../includes/header.php'; ?>
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-6">
                                                 <p><strong>Age:</strong></p>
-                                                <input placeholder="Age" oninput="this.className = 'form-control '" name="parents_age" class="form-control">
+                                                <input placeholder="Age" oninput="this.className = 'form-control '" name="tutor_age" class="form-control">
                                             </div>
                                             <div class="col-xs-12 col-sm-6">
                                                 <p><strong>Gender:</strong></p>
-                                                <select name="parents_gender" class="form-control">
+                                                <select name="tutor_gender" class="form-control">
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                 </select>
@@ -71,15 +73,15 @@ include '../includes/header.php'; ?>
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-6">
                                                 <p><strong>City:</strong></p>
-                                                <select name="parents_city"  class="form-control">
+                                                <select name="tutor_city"  class="form-control">
                                                     <option value="karachi">Karachi</option>
                                                 </select>
                                             </div>
                                             <div class="col-xs-12 col-sm-6">
                                                 <p><strong>Area/Zone:</strong></p>
-                                                <select name="parents_area" class="form-control">
+                                                <select name="tutor_area" class="form-control">
                                                     <option value="All Location">All Location</option>
-                                                    <option value="Clifton">Clifton</option>
+                                                        <option value="Clifton">Clifton</option>
                                                     <option value="DHA">DHA</option>
                                                     <option value="FB Area">FB Area</option>
                                                     <option value="Nazimabad">Nazimabad</option>
@@ -93,29 +95,91 @@ include '../includes/header.php'; ?>
                                         </div>
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-6">
-                                                <p><strong>Mobile:</strong></p>
-                                                <input placeholder="Phone Number..." oninput="this.className = 'form-control '" name="parents_phone" class="form-control">
+                                                <p><strong>Current Address:</strong></p>
+                                                <input placeholder="Current Address..." oninput="this.className = 'form-control '" name="tutor_address" class="form-control">
                                                 <p><small></small></p>
                                             </div>
                                             <div class="col-xs-12 col-sm-6">
-                                                <p><strong>Facebook Profile:</strong></p>
-                                                <input placeholder="Facebook Profile..." oninput="this.className = 'form-control '" name="parents_facebook_link" class="form-control">
-                                                <p><small>Example: <strong>https://www.facebook.com/karachiparentsguide/</strong></small></p>
+                                                <p><strong>Mobile:</strong></p>
+                                                <input placeholder="Phone Number..." oninput="this.className = 'form-control '" name="tutor_phone" class="form-control">
+                                                <p><small></small></p>
                                             </div>
+                                        </div>
 
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <p><strong>About Urself:</strong></p>
+                                                <textarea placeholder="About description..." oninput="this.className = 'form-control '" name="tutor_description" class="form-control"></textarea>
+                                                <p><small></small></p>
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <p><strong>About Family:</strong></p>
-                                                <textarea placeholder="About description..." oninput="this.className = 'form-control '" name="parents_decription" class="form-control"></textarea>
+                                                <p><strong>CNIC Card:</strong></p>
+                                                <input placeholder="ex: 00000-0000000-1" oninput="this.className = 'form-control '" name="tutor_cnic" class="form-control">
+                                                <p><small>Your CNIC number is used only for verification of your identity and to avoid duplicate profiles. It is not shown anywhere on our website and is not shared with any third party at all. Without verification of your CNIC number, your profile will be shown as an unverified and you may be not be able to receive any home, Quran or online tuition from us. Students do not prefer to hire an unverified tutor.</small></p>
                                             </div>
                                         </div>
-                                        <input name="user_type" value="parent" type="hidden">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <p><strong>Facebook Profile:</strong></p>
+                                                <input placeholder="Facebook Profile..." oninput="this.className = 'form-control '" name="tutor_facebook_link" class="form-control">
+                                                <p><small>Example: <strong>https://www.facebook.com/karachiparentsguide/</strong></small></p>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6">
+                                                <p><strong>Linkedin Profile:</strong></p>
+                                                <input placeholder="Linkedin Profile..." oninput="this.className = 'form-control '" name="tutor_linkedin" class="form-control">
+                                                <p><small>Example: <strong>https://www.linkedin.com/</strong></small></p>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <div class="tab school_address">
+                                        <h4>Teacher Experience:</h4>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p><strong>Are you on job?</strong></p>
+                                                <span class="chck-box-format">
+                                                        <input oninput="this.className = ''" name="tutor_job_status" type="radio" class="checkbox-inline" value="Yes"> <label><strong>Yes </strong></label>
+                                                        <input oninput="this.className = ''" name="tutor_job_status" type="radio" class="checkbox-inline" value="No"  checked> <label><strong>No </strong></label>
+                                                        </span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p><strong>Where do you want to teach?:</strong></p>
+                                                <span class="chck-box-format">
+                                                    <input oninput="this.className = ''" name="tutor_where_to_teach[]" type="checkbox" class="checkbox-inline" value="At Student Place"> <label><strong>At Student Place </strong></label>
+                                                    <input oninput="this.className = ''" name="tutor_where_to_teach[]" type="checkbox" value="At Your Place"> <label><strong>At Your Place </strong></label>
+                                                    <input oninput="this.className = ''" name="tutor_where_to_teach[]" type="checkbox" value="Academy"> <label><strong>Academy</strong></label>
+                                                    <input oninput="this.className = ''" name="tutor_where_to_teach[]" type="checkbox" value="School"> <label><strong>School</strong></label></p>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <p><strong>Available Timing for Tuition? (Optional)</strong></p>
+                                                <input placeholder="Available Timings..." oninput="this.className = 'form-control'" name="tutor_tuition_timing" class="form-control">
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6">
+                                                <p><strong>How much experience you have?</strong></p>
+                                                <input placeholder="Experience.." oninput="this.className = 'form-control'" name="tutor_experience" class="form-control">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p><strong>Upload CV?</strong></p>
+                                                <input type="file" required name="tutor_cv" class="form-control">
+                                            </div>
+                                        </div>
 
+
+                                    </div>
                                     <div class="tab school_survey">
                                         <h4>Survey:</h4>
                                         <p>Please answer the following question. </p>
+
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-6">
                                                 <p><strong>Q1: How you hear about us?</strong></p>
@@ -168,13 +232,15 @@ include '../includes/header.php'; ?>
 
                                     <div style="overflow:auto;">
                                         <div style="float:right;">
-                                            <button type="button" id="prevBtn" class="btn btn-primary" onclick="nextPrev(-1)">Previous</button>
-                                            <button type="button" id="nextBtn" class="btn btn-primary" onclick="nextPrev(1)">Next</button>
+                                            <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-primary">Previous</button>
+                                            <button type="button" id="nextBtn" onclick="nextPrev(1)" class="btn btn-primary">Next</button>
                                             <button type="submit" id="submit" class="btn btn-primary" style="display: none" name="submit">Submit</button>
                                         </div>
                                     </div>
                                     <!-- Circles which indicates the steps of the form: -->
                                     <div style="text-align:center;margin-top:40px;">
+                                        <span class="step"></span>
+                                        <span class="step"></span>
                                         <span class="step"></span>
                                         <span class="step"></span>
 
@@ -201,7 +267,7 @@ include '../includes/header.php'; ?>
                                         } else {
                                             document.getElementById("nextBtn").innerHTML = "Next";
                                         }
-                                        //... and run a function tha0t will display the correct step indicator:
+                                        //... and run a function that will display the correct step indicator:
                                         fixStepIndicator(n)
                                     }
 
@@ -276,5 +342,5 @@ include '../includes/header.php'; ?>
 
     </div>
 </div>
-<?php include '../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>
 

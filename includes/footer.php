@@ -10,7 +10,6 @@
                     <div class="row">
 
                         <div class="col-lg-3 footer_col">
-
                             <!-- Footer About -->
                             <div class="footer_section footer_about">
                                 <div class="footer_logo_container">
@@ -40,8 +39,8 @@
                                 <div class="footer_title">Contact Us</div>
                                 <div class="footer_contact_info">
                                     <ul>
-                                        <li>Email: kpsguide@gmail.com</li>
-                                        <li>Phone:  +(92) 000 000 0000</li>
+                                        <li>Email: <?php  echo PORTAL_EMAIL?></li>
+                                        <li>Phone:  +(92) <?php  echo PORTAL_PHONE ?></li>
                                         <li>None</li>
                                     </ul>
                                 </div>
@@ -56,14 +55,14 @@
                                 <div class="footer_title">Contact Us</div>
                                 <div class="footer_links_container">
                                     <ul>
-                                        <li><a href="index.php">Home</a></li>
-                                        <li><a href="about.php">About</a></li>
-                                        <li><a href="contact.php">Contact</a></li>
-                                        <li><a href="blog.php">Blog</a></li>
-                                        <li><a href="schools.php">Schools</a></li>
-                                        <li><a href="downloads.php">Downloads</a></li>
-                                        <li><a href="teachers.php">Teachers</a></li>
-                                        <li><a href="jobs.php">School Jobs</a></li>
+                                        <li><a href="<?php echo BASE_URI?>">Home</a></li>
+                                        <li><a href="<?php echo BASE_URI?>aboutus">About</a></li>
+                                        <li><a href="<?php echo BASE_URI?>contact">Contact</a></li>
+                                        <li><a href="<?php echo BASE_URI?>blog">Blog</a></li>
+                                        <li><a href="<?php echo BASE_URI?>schools">Schools</a></li>
+                                        <li><a href="<?php echo BASE_URI?>downloads">Downloads</a></li>
+                                        <li><a href="<?php echo BASE_URI?>teachers">Teachers</a></li>
+                                        <li><a href="<?php echo BASE_URI?>jobs">School Jobs</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -92,7 +91,7 @@
             <div class="col">
                 <div class="copyright d-flex flex-lg-row flex-column align-items-center justify-content-start">
                     <div class="cr_text"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved.
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
                     <div class="ml-lg-auto cr_links">
                         <ul class="cr_list">
