@@ -8,7 +8,7 @@
 
 include 'admin365/core/init.php';
 
-$template = new Templates('templates/edit_account_info.php');
+$template = new Templates('templates/Backend/edit_account_info.php');
 
 $user = new User();
 $uid = $_SESSION['uid'];

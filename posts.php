@@ -10,7 +10,7 @@ include 'admin365/core/init.php';
 
 $posts = new Blog();
 if(isset($_GET['postid']) AND isset($_GET['posturl'])):
-    $template = new Templates('templates/single_post.php');
+    $template = new Templates('templates/Blog/single_post.php');
 //    $displayPost = $posts->SelectPostsById($_GET['post_id']);
     $displayPost = $posts->SelectPostsByUrl($_GET['posturl']);
     if(!empty($displayPost)):
@@ -25,7 +25,7 @@ if(isset($_GET['postid']) AND isset($_GET['posturl'])):
     endif;
 elseif(isset($_GET['caturl'])):
     $displayAllPosts = $posts->SelectPostsByCategory($_GET['catid']);
-    $template = new Templates('templates/posts.php');
+    $template = new Templates('templates/Blog/posts.php');
     $template->headcss = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI . "styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI ."styles/blog_responsive.css\">";
     if(!empty($displayAllPosts)):
         $template->displayAllPosts = $displayAllPosts;
@@ -36,7 +36,7 @@ elseif(isset($_GET['caturl'])):
 
 
 elseif(isset($_GET['posts_tags'])):
-    $template = new Templates('templates/posts.php');
+    $template = new Templates('templates/Blog/posts.php');
     $template->headcss = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI . "styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI ."styles/blog_responsive.css\">";
     $displayAllPosts = $posts->SelectPostsByTags($_GET['posts_tags']);
     if(!empty($displayAllPosts)):
@@ -49,7 +49,7 @@ elseif(isset($_GET['posts_tags'])):
 
 else:
     $displayAllPosts = $posts->SelectAllPosts();
-    $template = new Templates('templates/posts.php');
+    $template = new Templates('templates/Blog/posts.php');
     $template->headcss = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI . "styles/blog.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"" . BASE_URI ."styles/blog_responsive.css\">";
     if(!empty($displayAllPosts)):
         $template->displayAllPosts = $displayAllPosts;

@@ -18,12 +18,12 @@ if(isset($_SESSION['uid'])){
 
 
 if($user_type == "school"):
-    $template = new Templates('templates/edit_school_info.php');
+    $template = new Templates('templates/Backend/Schools/edit_school_info.php');
 elseif($user_type == "teacher"):
-    $template = new Templates('templates/edit_teacher_profile_info.php');
+    $template = new Templates('templates/Backend/Teachers/edit_teacher_profile_info.php');
 
 else:
-    $template = new Templates('templates/edit_school_info.php');
+    $template = new Templates('templates/Backend/Parents/edit_school_info.php');
 endif;
 
 

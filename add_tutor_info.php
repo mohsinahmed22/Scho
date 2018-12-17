@@ -18,7 +18,7 @@ if(isset($_SESSION['uid'])){
 
 
 if($user->is_loggedin()){
-    $template = new Templates('templates/add_qualification.php');
+    $template = new Templates('templates/Backend/Teachers/add_qualification.php');
 
    $template->userinfo = $user->getUserInfo($uid, $user_type);
     if(isset($_GET['qid']) && $_GET['action_type'] == 'qualification'){

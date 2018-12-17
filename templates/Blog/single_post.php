@@ -6,7 +6,7 @@
  * Time: 12:56 PM
  */
 
-include '../includes/header.php'; ?>
+include '../../includes/header.php'; ?>
 <div class="home  kpsg-schools">
     <div class="breadcrumb">
         <div class="container">
@@ -61,7 +61,7 @@ include '../includes/header.php'; ?>
 
                 <!-- Blog Sidebar -->
                 <div class="col-lg-4">
-                    <?php include '../includes/blogsidebar.php'?>
+                    <?php include '../../includes/blogsidebar.php' ?>
                 </div>
             </div>
         </div>
@@ -73,4 +73,4 @@ include '../includes/header.php'; ?>
 </style>
 
 
-<?php include '../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>

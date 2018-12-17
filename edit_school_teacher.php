@@ -8,7 +8,7 @@
 
 include 'admin365/core/init.php';
 
-$template = new Templates('templates/edit_teacher_info.php');
+$template = new Templates('templates/Backend/Schools/edit_teacher_info.php');
 if(isset($_SESSION['uid'])){
     $uid = $_SESSION['uid'];
     $user_type = $_SESSION['user_type'];

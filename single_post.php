@@ -10,7 +10,7 @@ include 'admin365/core/init.php';
 
 $posts = new Blog();
 if(isset($_GET['postid']) AND isset($_GET['posturl'])):
-    $template = new Templates('templates/single_post.php');
+    $template = new Templates('templates/Blog/single_post.php');
 //    $displayPost = $posts->SelectPostsById($_GET['post_id']);
     $displayPost = $posts->SelectPostsByUrl($_GET['posturl']);
     if(!empty($displayPost)):

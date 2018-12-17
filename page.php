@@ -7,7 +7,7 @@
  */
 
 include 'admin365/core/init.php';
-$template = new Templates('templates/page.php');
+$template = new Templates('templates/Pages/page.php');
 
 $page = new Pages();
 $displayPage = $page->SelectPageByUrl($_GET['page_url']);

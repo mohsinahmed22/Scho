@@ -7,7 +7,7 @@
  */
 include 'admin365/core/init.php';
 
-$template = new Templates('templates/school_home.php');
+$template = new Templates('templates/Schools/school_home.php');
 
 /**
  * School Profile

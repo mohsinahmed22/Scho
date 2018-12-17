@@ -5,7 +5,7 @@
  * Date: 9/21/2018
  * Time: 11:38 AM
  */
-include '../includes/header.php'; ?>
+include '../../../includes/header.php'; ?>
 <style>
     /* Note: Try to remove the following lines to see the effect of CSS positioning */
     .affix {
@@ -17,7 +17,7 @@ include '../includes/header.php'; ?>
         z-index: 10;}
 </style>
 <div class="home kpsg-schools">
-    <?php  include "../includes/login_user_head.php"?>
+    <?php include "../../../includes/login_user_head.php" ?>
     <div class="breadcrumb">
         <div class="container">
             <div class="row">
@@ -261,7 +261,7 @@ include '../includes/header.php'; ?>
     </div>
 </div>
 
-    <?php  include "../includes/footer.php";?>
+    <?php  include "../../../includes/footer.php";?>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
