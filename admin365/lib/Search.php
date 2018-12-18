@@ -28,6 +28,7 @@ class Search {
 
         $query = "SELECT * FROM school_profile 
                   inner  join  users u on u.id = school_profile.user_id  
+                  inner join school_features uf on school_profile.id = uf.school_profile_id 
                   where u.active = 1";
         $this->db->query($query);
 
@@ -43,6 +44,7 @@ class Search {
     {
         $query = "SELECT * FROM school_profile scp
                   inner join users u on u.id = scp.user_id 
+                  inner join school_features uf on scp.id = uf.school_profile_id  
                   WHERE scp.school_area = '$area' and u.active = 1"  ;
         $this->db->query($query);
 
@@ -120,4 +122,13 @@ class Search {
         }
 
     }
+
+
+    public function Pagination(){
+        $pagination = new Paginator();
+    }
+
+
+
+
 }

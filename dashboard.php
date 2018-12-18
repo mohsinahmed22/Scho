@@ -22,9 +22,8 @@ if($user->is_loggedin()){
         $template = new Templates('templates/Backend/Schools/school_dashboard.php');
         $template->userinfo = $school_user->getUserInfo($uid,$user_type);
         $school_id= $template->userinfo[0]->school_profile_id;
-        /**
-         * Rating
-         */
+
+        /*** Rating  */
         $rating = new  Rating();
         $template->allReviews = $rating->selectUserInfo($school_id);
         $template->schoolRating = $rating->getSchoolrating($school_id);
@@ -38,27 +37,22 @@ if($user->is_loggedin()){
         $template = new Templates('templates/Backend/Teachers/teacher_dashboard.php');
         $template->userinfo = $teacher_user->getUserTeacherInfo($uid);
         $teacher_id = $template->userinfo[0]->id;
-        /**
-         * Rating
-         */
+
+        /*** Rating  */
         $rating = new  Rating();
         $template->allReviews = $rating->selectTeacherInfo($teacher_id);
         $template->teacherRating = $rating->getTeacherating($teacher_id);
         $template->teacherOverAllRating = $rating->selectOverAllRatingTutor($teacher_id);
         $template->calculateRatingbar = $rating->calculateRating($teacher_id);
         $template->overAllRatingCount = count($template->teacherOverAllRating);
-
     }else{
         $template = new Templates('templates/Backend/Parents/parent_dashboard.php');
     }
-
 
 }else{
     redirect('register.php');
 
 }
-
-
 
 
 echo $template;

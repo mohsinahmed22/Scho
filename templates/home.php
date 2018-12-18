@@ -23,12 +23,12 @@ include '../includes/header.php'; ?>
                                 <div class="home_slider_title"></div>
                                 <div class="home_slider_subtitle"></div>
                                 <div class="home_slider_form_container">
-                                    <form action="search.php" id="home_search_form_1" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between" method="post">
+                                    <form action="<?php echo BASE_URI ?>search" id="home_search_form_1" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between" method="post">
                                         <div class="d-flex flex-row align-items-center justify-content-start">
                                             <select name="search_type" id="search_type" class="dropdown_item_select home_search_input"  onchange="update_value(this.options[selectBox.selectedIndex].title);">
                                                 <option title="schools" value="schools">Schools</option>
-                                                <option title="parenting" value="parenting">Parenting</option>
                                                 <option title="teachers" value="teachers">Teachers</option>
+                                                <option title="parenting" value="parenting">Parenting</option>
                                             </select>
                                             <select name="search_area" id="search_area" class="dropdown_item_select home_search_input">
                                                 <option>All Location</option>

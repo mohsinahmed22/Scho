@@ -5,7 +5,7 @@
  * Date: 9/11/2018
  * Time: 2:54 PM
  */
-include '../includes/header.php'; ?>
+include '../../includes/header.php'; ?>
     <div class="search home tutors">
         <div class="top_header">
             <div class="container">
@@ -50,37 +50,43 @@ include '../includes/header.php'; ?>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-8 search-results-section">
-                        <table width="100%" class="table-search-section table table table-responsive table-bordered table-hover table-striped">
+                    <?php // print_r($tutors) ?>
+                    <div class="col-sm-12 search-results-section clearfix">
+                        <table width="100%" class="table-search-section table table table-responsive table-bordered table-hover table-striped pull-left">
                             <thead>
                             <tr class="text-center center-block">
-                                <th width="15%"></th>
-                                <th width="35%">Teachers</th>
-                                <th width="10%">Area</th>
-                                <th width="10%">Job Status</th>
-                                <th width="10%">Tuition Availability</th>
-s                            </tr>
+                                <th width="7%"></th>
+                                <th width="15%">Teachers</th>
+                                <th width="2%">Gender</th>
+                                <th width="5%">Age</th>
+                                <th width="7%">Area</th>
+                                <th width="5%">Job Status</th>
+                                <th width="10%">Can Teach</th>
+                                <th width="5%">Tuition Availability</th>
+                                <th width="10%">Action</th>
+                            </tr>
                             </thead>
                             <tbody>
+
                             <?php foreach ($tutors as $tutor):?>
                                 <tr class="">
                                     <td><?php echo $tutor->tutor_avatar ;?></td>
-                                    <td><h2><?php echo $tutor->tutor_name;?></h2>
-                                        <?php echo $tutor->tutor_description?>
-                                    </td>
+                                    <td><?php echo $tutor->tutor_name;?></td>
+                                    <td><?php echo $tutor->tutor_age;?></td>
+                                    <td><?php echo $tutor->tutor_gender;?></td>
                                     <td><?php echo $tutor->tutor_area ;?></td>
-                                    <td><?php echo $tutor->job_status ;?></td>
-                                    <td><?php echo $tutor->tutor_tuition_avail;?></td>
+                                    <td><?php echo $tutor->tutor_job_status ;?></td>
+                                    <td><?php echo $tutor->tutor_where_to_teach ;?></td>
+                                    <td><?php echo $tutor->tutor_tuition_timing;?></td>
+                                    <td><a href="teacher/profile/<?php echo strtolower($tutor->tutor_city) ?>/<?php echo strtolower($tutor->tutor_area)?>/<?php echo $tutor->id ?><?php //echo strtolower(urlencode($school->school_name)) ?>">View Profile</a></td>
                                 </tr>
                             <?php endforeach;?>
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm-4">
-
-                    </div>
 
                 </div>
+                <div class="clearfix"></div>
             </div>
         </div>
 
@@ -89,4 +95,4 @@ s                            </tr>
 
 
 
-<?php  include "../includes/footer.php";?>
+<?php  include "../../includes/footer.php";?>

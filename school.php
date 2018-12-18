@@ -12,17 +12,15 @@ $template = new Templates('templates/Schools/school_home.php');
 /**
  * School Profile
  */
-$user = new Schools();
-$school_id = $_GET['school'];
+$user = new User()  ;
+$school_id = $_GET['id'];
 $template->school = $user->getSchool($school_id);
-$uid = 18;
-$suid =$template->school[0]->user_id;
+$suid = $template->school[0]->user_id;
 page_counter($suid, $school_id);
 
 
-/**
- * School Rating Never Rated before
- */
+
+/** * School Rating Never Rated before */
 $rating = new Rating();
 $template->rating_question = $rating->select_all_rating_questions();
 $template->schoolRating = $rating->getSchoolrating($school_id);
@@ -33,18 +31,20 @@ $template->overAllRatingCount = count($template->schoolOverAllRating);
 $template->teachers = $user->getSchoolteachers($school_id);
 
 
-/*
- * Checking user Have rated before
- */
+/** * Checking user Have rated before */
 
-if($rating->checkUserRating($uid,$school_id)){
-    $template->user_school_rated = $rating->checkUserRating($uid,$school_id);
+if(isset($_SESSION['uid'])){
+    $uid = $_SESSION['uid'];
+    if($rating->checkUserRating($uid,$school_id)){
+        $template->user_school_rated = $rating->checkUserRating($uid,$school_id);
+    }
 }
+
 
 /**
  * Facebook Page
  */
-if(!empty($template->school[0]->fb_pageid)){
+/*if(!empty($template->school[0]->fb_pageid)){
     $fb_page_id = $template->school[0]->fb_pageid;
     $template->profile_photo_src = "https://graph.facebook.com/{$fb_page_id}/picture?type=square&&height=200";
     $access_token = $template->school[0]->fb_page_acesskey;
@@ -56,7 +56,7 @@ if(!empty($template->school[0]->fb_pageid)){
     $template->obj = $obj;
     $template->fb_page_id = $fb_page_id;
     $template->fd_count = count($obj['data']);
-}
+}*/
 
 /**
  * Submitting Ratings

@@ -5,7 +5,7 @@
  * Date: 9/11/2018
  * Time: 2:54 PM
  */
-include '../includes/header.php'; ?>
+include '../../includes/header.php'; ?>
 <div class="search home">
     <div class="top_header">
         <div class="container">
@@ -74,7 +74,7 @@ include '../includes/header.php'; ?>
                                 <td><?php echo $school->school_grade ;?></td>
                                 <td><?php echo $school->school_enrolled_students ;?></td>
                                 <td><?php ?></td>
-                                <td><a href="profile.php?id=<?php echo $school->id ?>">View Profile</a></td>
+                                <td><a href="school/profile/<?php echo strtolower($school->school_city) ?>/<?php echo strtolower($school->school_area) ?>/<?php echo $school->school_profile_id ?><?php //echo strtolower(urlencode($school->school_name)) ?>">View Profile</a></td>
                             </tr>
                             <?php endforeach;?>
                         </tbody>
@@ -86,5 +86,5 @@ include '../includes/header.php'; ?>
     </div>
 
 </div>
-<?php  include "../includes/footer.php";?>
+<?php  include "../../includes/footer.php";?>
 
