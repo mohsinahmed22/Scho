@@ -821,7 +821,6 @@ class User
         $this->db
             ->query('select * from users
                             inner join tutors_profile profile on users.id = profile.user_id
-                            inner join school_features features on features.school_profile_id = profile.id
                             where profile.id = ' . $id );
         $results = $this->db->resultset();
 

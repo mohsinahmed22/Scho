@@ -779,7 +779,8 @@ section
 .home
 {
 	width: 100%;
-	height: 850px;
+	min-height: 850px;
+	height: 100%;
 }
 .home_slider_container
 {
@@ -2040,7 +2041,7 @@ section
 /*********************************
 15. Page Layout
 *********************************/
-.search, .kpsg-register, .kpsg-schools {width: 100%; margin-top: 130px; }
+.search, .kpsg-register, .kpsg-schools, .kpsg-teacher {width: 100%; margin-top: 130px; }
 .top_header { background:#15314E; color: #ccc; padding: 20px 0 0; min-height: 120px; width: 100%; }
 .top_header h1 {color:#fff; font-size:34px; }
 .top_header_sub {background: #0d2034; min-height: 60px; padding: 15px 0; color: #ccc;}
@@ -2061,14 +2062,14 @@ a:hover, a:active{ transition: color .2s; text-decoration: underline;}
 /*********************************
 16. School Layout
 *********************************/
-.school-info 	{margin:10px 0; float: left;}
-.school-info div:first-child{margin-left: 0;}
-.school-info div:last-child{border-right: none;}
-.school-info div {margin: 0 7px; min-height: 30px;padding: 5px 17px 5px 0; border-right: 1px dotted  #727272;}
-.school-info div a:link, .school-info div a:visited {color:#ccc;}
-.school-info div a:hover, .school-info div a:active {color:#a1e373;}
+.school-info, .teacher-info 	{margin:10px 0; float: left;}
+.school-info div:first-child, .teacher-info div:first-child{margin-left: 0;}
+.school-info div:last-child,  .teacher-info div:last-child{border-right: none;}
+.school-info div, .teacher-info div {margin: 0 7px; min-height: 30px;padding: 5px 17px 5px 0; border-right: 1px dotted  #727272;}
+.school-info div a:link, .school-info div a:visited, .teacher-info div a:link, .teacher-info div a:visited {color:#ccc;}
+.school-info div a:hover, .school-info div a:active, .teacher-info div a:hover, .teacher-info div a:active {color:#a1e373;}
 h1 span a:link,h1 span a:visited  {font-size:16px; font-weight: 300;  }
-.school-info-bar { min-height: 80px; padding: 20px 0 ;}
+.school-info-bar, .teacher-info-bar { min-height: 80px; padding: 20px 0 ;}
 .kpsg-rating-bar, .kpsg-review-bar  {border-right: 1px dotted #727272;}
 .kpsg-ratings-ico {background: #ffc80a; color:#15314E; font-size: 30px; min-height: 40px;padding: 10px;	border-radius: 60px;	width: 65px; font-weight: bold; letter-spacing: -4px; margin-right: 20px;margin-right: 20px;margin-top: 10px;}
 .kpsg-ratings-ico small{font-size:16px; letter-spacing: -2px;margin-left: 3px;}
@@ -2179,7 +2180,7 @@ html{scroll-behavior: smooth;       }
 .btnReg:hover{color:#fff;}
 .btnReg span {font-size:12px;  text-transform: capitalize; line-height: 1px; font-weight: lighter;}
 .info-login p{font-size:16px; margin-bottom: 20px;}
-.school-main {padding-top:50px;}
+.school-main, .teacher-main {padding-top:50px;}
 
 
 .container-info{background: #F6F9FA;
@@ -2439,3 +2440,7 @@ html{ scroll-behavior: smooth;}
 
 /* Blog */
 .blog h1 {padding:15px 0 ; font-size: 26px;}
+
+
+
+.kpsg-page-teacher {height: 700px;}
