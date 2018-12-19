@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2018 at 02:15 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 7.0.13
+-- Generation Time: Dec 19, 2018 at 04:56 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.1.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -38,6 +40,25 @@ CREATE TABLE `downloads` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` int(11) NOT NULL,
+  `page_title` varchar(255) DEFAULT NULL,
+  `page_description` text,
+  `page_url` varchar(255) DEFAULT NULL,
+  `page_tags` text,
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_description` text,
+  `meta_keyword` text,
+  `page_status` varchar(255) DEFAULT NULL,
+  `page_is_active` int(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `page_counter`
 --
 
@@ -59,7 +80,9 @@ INSERT INTO `page_counter` (`id`, `user_id`, `page_id`, `counter`) VALUES
 (4, 88, 8, 0),
 (5, 89, 9, 0),
 (6, 90, 10, 0),
-(7, 91, 11, 0);
+(7, 91, 11, 0),
+(8, 92, 12, 0),
+(9, 93, 13, 0);
 
 -- --------------------------------------------------------
 
@@ -86,7 +109,8 @@ CREATE TABLE `parents_profile` (
 
 INSERT INTO `parents_profile` (`id`, `user_id`, `parents_name`, `parents_phone`, `parents_facebook_link`, `parents_gender`, `parents_city`, `parents_area`, `parents_description`, `parents_age`) VALUES
 (1, 33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 34, NULL, '0331', '1111', 'Male', 'karachi', 'All Location', NULL, '36');
+(2, 34, NULL, '0331', '1111', 'Male', 'karachi', 'All Location', NULL, '36'),
+(3, 104, NULL, '00303030303', 'https://www.facebook.com/karachiparentsguide/', 'Female', 'karachi', 'Clifton', NULL, '24');
 
 -- --------------------------------------------------------
 
@@ -97,13 +121,63 @@ INSERT INTO `parents_profile` (`id`, `user_id`, `parents_name`, `parents_phone`,
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `school_profile_id` int(11) DEFAULT NULL,
-  `school_branches_id` int(11) DEFAULT NULL,
-  `tutor_profile_id` int(11) DEFAULT NULL,
-  `posts_title` varchar(255) DEFAULT NULL,
-  `posts_description` text,
+  `post_title` varchar(255) DEFAULT NULL,
+  `post_description` text,
   `posts_tags` text,
-  `posts_status` int(11) DEFAULT NULL
+  `posts_status` varchar(255) DEFAULT 'Unpublished',
+  `post_is_active` int(1) DEFAULT '0',
+  `post_url` varchar(255) DEFAULT NULL,
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_description` text,
+  `meta_keyword` varchar(255) DEFAULT NULL,
+  `post_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `post_category` int(11) DEFAULT NULL,
+  `post_featured_img` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `post_title`, `post_description`, `posts_tags`, `posts_status`, `post_is_active`, `post_url`, `meta_title`, `meta_description`, `meta_keyword`, `post_date`, `post_category`, `post_featured_img`) VALUES
+(1, 16, '‘I Kept Thinking of Antioch’: Long Before #MeToo', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', 'schools, montessori', 'published', 1, 'test', NULL, NULL, NULL, '2018-12-13 18:09:27', 1, NULL),
+(2, 16, 'With Changing Students and Times', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', 'schools, montessori', 'published', 1, 'i-kept-thinking-of-antioch1\r\n\r\n', NULL, NULL, NULL, '2018-12-13 18:09:27', 2, NULL),
+(3, 16, 'Law Schools Debate a Contentious Testing Alternative', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', 'schools, montessori', 'published', 1, 'i-kept-thinking-of-antioch2\r\n\r\n', NULL, NULL, NULL, '2018-12-13 18:09:27', 3, NULL),
+(4, 16, 'Here’s What You Need to Know About Online Testing', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', 'schools, montessori', 'published', 1, 'i-kept-thinking-of-4\r\n\r\n', NULL, NULL, NULL, '2018-12-13 18:09:27', 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts_category`
+--
+
+CREATE TABLE `posts_category` (
+  `id` int(11) NOT NULL,
+  `category_title` varchar(255) DEFAULT NULL,
+  `category_url` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `posts_category`
+--
+
+INSERT INTO `posts_category` (`id`, `category_title`, `category_url`) VALUES
+(1, 'Montessori', 'montessori'),
+(2, 'Kindergarden', 'kindergarden'),
+(3, 'Schools', 'schools'),
+(4, 'kids', 'kids'),
+(5, 'ADHD', 'adhd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts_tags`
+--
+
+CREATE TABLE `posts_tags` (
+  `id` int(11) NOT NULL,
+  `tags_id` int(11) DEFAULT NULL,
+  `posts_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -131,7 +205,8 @@ INSERT INTO `review` (`id`, `user_id`, `overall_rating`, `overall_message`, `rev
 (15, 19, '3', '1111', '2018-09-28 11:47:43', 1, NULL),
 (16, 20, '4', 'this is good review for school let test finally', '2018-09-28 11:47:43', 1, NULL),
 (17, 17, '1', 'testing', '2018-09-28 11:47:43', 1, NULL),
-(18, 16, '5', 'testing', '2018-09-28 11:47:43', 1, NULL);
+(18, 16, '5', 'testing', '2018-09-28 11:47:43', 1, NULL),
+(19, 16, '3', 'testing', '2018-09-28 11:47:43', NULL, 13);
 
 -- --------------------------------------------------------
 
@@ -176,14 +251,16 @@ CREATE TABLE `school_features` (
 --
 
 INSERT INTO `school_features` (`id`, `school_profile_id`, `school_main_campus`, `school_special_child`, `school_branches`, `school_type`, `school_grade`, `school_enrolled_students`, `school_mont_system`, `map_latitute`, `map_longtitute`, `fb_page_acesskey`, `fb_pageid`) VALUES
-(1, 1, '0', '0', '0', 'Public', '1-10', '200', 'Yes ', '123', '35', 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935'),
+(1, 1, '0', '0', '0', 'Montessori', 'Montessori', '10', 'Yes', '', '', '', ''),
 (2, 2, '0', '0', '0', 'Public', '1-10', '200', 'Yes ', '123', '35', 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935'),
 (3, 6, NULL, NULL, NULL, 'a', 'a', 'a', 'a', NULL, NULL, 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935'),
 (4, 7, NULL, NULL, NULL, 'a', 'a', 'a', 'a', NULL, NULL, 'EAAPjhadQgkoBANW5XRDa0JsxvPZCfUpNlZBVk0lGbjLx7wICZCBvepvmqkijSEJb32fhYTyLkAL0paXYpXeybQxfFTBQoTZBD6TpRtgMHKEKf6GlwIUQWMJ2ZBrsIfOkAbCt3eSbIufwyDeF0Kq6V0hAZCNEJyVahq2tHQVDId2wZDZD', '1992138387503935'),
 (5, 8, NULL, NULL, NULL, 'a', 'a', 'a', 'a', NULL, NULL, NULL, NULL),
 (6, 9, '1', NULL, '1', 'Public', 'A', '134', 'AMI', NULL, NULL, NULL, NULL),
 (7, 10, NULL, NULL, NULL, 'a', 'aa', 'a', 'a', NULL, NULL, NULL, NULL),
-(8, 11, NULL, NULL, NULL, 's', 's', 's', 's', NULL, NULL, NULL, NULL);
+(8, 11, NULL, NULL, NULL, 's', 's', 's', 's', NULL, NULL, NULL, NULL),
+(9, 12, '0', '0', '0', 'Montessori', 'Montessori', '10', 'Yes', '', '', '', ''),
+(10, 13, '1', NULL, NULL, 'Montessori', 'Montessori', '10', 'Yes', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -232,7 +309,7 @@ CREATE TABLE `school_profile` (
 --
 
 INSERT INTO `school_profile` (`id`, `user_id`, `school_name`, `school_phone`, `school_email`, `school_address`, `school_fb_link`, `school_twitter_link`, `school_website_link`, `school_city`, `school_area`, `school_description`, `school_cover`, `school_avatar`) VALUES
-(1, 16, 'KPSG  - Karachi Parents School Guide ', 'aa', 'aa', '', 'aa', 'aa', 'aaa', 'karachi', 'Clifton', '2000 Test', 'aa', 'aa'),
+(1, 16, 'Karachi Parents School Guide - Testinga', '021-3111111', 'kpsguide@gmail.com', '', 'https://www.kpsguide.pk', 'https://www.kpsguide.pk', 'https://www.kpsguide.pk', 'karachi', 'Clifton', 'This is testing Profile', 'aa', 'aa'),
 (2, 17, 'Arise School', 't', 'a', 'abacaksdkfksd', 'a', 'a', NULL, 'karachi', 'north', NULL, 'aa', 'aa'),
 (3, 31, 'Mrs.Ahmed Montissori & Propatary', '021-31111111', 'a', 'aaaaaaaaaasdsadada', 'aaaaa', 'aaaaaa', NULL, 'karachi', 'nazimabad', NULL, 'aa', 'aa'),
 (4, 32, 'a', '021-3aa', 'aaa', 'a', 'a', 'a', NULL, 'karachi', 'nazimabad', NULL, 'aa', 'aa'),
@@ -242,7 +319,9 @@ INSERT INTO `school_profile` (`id`, `user_id`, `school_name`, `school_phone`, `s
 (8, 88, 'a', '021-3a', 'a', 'aaa', 'a', 'a', 'a', 'karachi', 'Clifton', 'aaa', 'aa', 'aa'),
 (9, 89, 'mohsinSchool', '021-3', 'test@es.com', 'aaaa', 'aa', 'a', 'a', 'karachi', 'north', 'testss', 'aa', 'aa'),
 (10, 90, 'a', '021-311', '11', 'a', '11', '11', '11', 'karachi', 'Clifton', 'adasdas', 'aa', 'aa'),
-(11, 91, 'a', '021-3', 's', 's', 's', 's', 's', 'karachi', 'north', 's', 'aa', 'aa');
+(11, 91, 'a', '021-3', 's', 's', 's', 's', 's', 'karachi', 'north', 's', 'aa', 'aa'),
+(12, 92, 'Karachi Parents School Guide - Tes', '021-3111111', 'kpsguide@gmail.com', '', 'https://www.kpsguide.pk', 'https://www.kpsguide.pk', 'https://www.kpsguide.pk', 'karachi', 'Clifton', 'This is testing Profile', 'aa', 'aa'),
+(13, 93, 'Karachi Parents School Guide - Testing', '021-3111111', 'kpsguide@gmail.com', 'C117, Block C', 'https://www.kpsguide.pk', 'https://www.kpsguide.pk', 'https://www.kpsguide.pk', 'karachi', 'North Nazimabad', 'This is testing Profile', 'aa', 'aa');
 
 -- --------------------------------------------------------
 
@@ -325,7 +404,8 @@ CREATE TABLE `school_teachers` (
 
 INSERT INTO `school_teachers` (`id`, `user_id`, `school_profile_id`, `tutor_profile_id`, `tutor_designation`) VALUES
 (1, 30, 1, '1', 'Montessori Directress'),
-(2, 36, 1, '2', 'Maths Teacher');
+(2, 36, 1, '2', 'Maths Teacher'),
+(5, 57, 12, '12', NULL);
 
 -- --------------------------------------------------------
 
@@ -353,6 +433,51 @@ INSERT INTO `settings` (`id`, `setting_name`, `setting_value`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `id` int(11) NOT NULL,
+  `tags` varchar(255) DEFAULT NULL,
+  `tags_url` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tutors_experience`
+--
+
+CREATE TABLE `tutors_experience` (
+  `id` int(11) NOT NULL,
+  `tutors_profile_id` int(11) DEFAULT NULL,
+  `tutors_experience_job_title` varchar(255) DEFAULT NULL,
+  `tutors_experience_job_company` varchar(255) DEFAULT NULL,
+  `tutors_experience_job_date` varchar(255) NOT NULL,
+  `tutors_experience_on_job` varchar(255) DEFAULT 'No',
+  `tutors_experience_job_description` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tutors_experience`
+--
+
+INSERT INTO `tutors_experience` (`id`, `tutors_profile_id`, `tutors_experience_job_title`, `tutors_experience_job_company`, `tutors_experience_job_date`, `tutors_experience_on_job`, `tutors_experience_job_description`) VALUES
+(1, NULL, NULL, NULL, '2018-12-09 15:47:09', NULL, NULL),
+(2, 13, 'Maths Teacher', 'The Educators', '2014', 'Yes', 'testing Experienceaa'),
+(3, NULL, NULL, NULL, '2018-12-09 16:26:32', NULL, NULL),
+(4, NULL, NULL, NULL, '2018-12-09 16:26:40', NULL, NULL),
+(5, NULL, NULL, NULL, '2018-12-09 16:27:10', NULL, NULL),
+(6, NULL, NULL, NULL, '2018-12-09 16:27:19', NULL, NULL),
+(7, NULL, NULL, NULL, '2018-12-09 16:29:10', NULL, NULL),
+(8, NULL, 'Urdu Teacher ', 'The City School', '2016', 'No', 'JOb Description'),
+(9, NULL, 'Urdu Teacher ', 'The City School', '2016', 'Yes', 'testing '),
+(10, NULL, 'Urdu Teacher ', 'The City School', '2016', 'Yes', 'testing '),
+(11, 13, 'Urdu Teacher ', 'The City School', '2016', 'No', 'Testing Addition');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tutors_profile`
 --
 
@@ -375,26 +500,52 @@ CREATE TABLE `tutors_profile` (
   `tutor_experience` varchar(255) DEFAULT NULL,
   `tutor_tuition_timing` varchar(255) DEFAULT NULL,
   `tutor_cnic` varchar(255) DEFAULT NULL,
-  `tutor_resume` varchar(255) DEFAULT NULL
+  `tutor_resume` varchar(255) DEFAULT NULL,
+  `tutor_address` varchar(255) DEFAULT NULL,
+  `map_latitute` text,
+  `map_longtitute` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tutors_profile`
 --
 
-INSERT INTO `tutors_profile` (`id`, `user_id`, `tutor_name`, `tutor_job_status`, `tutor_city`, `tutor_facebook_link`, `tutor_linkedin`, `tutor_description`, `tutor_cover`, `tutor_avatar`, `tutor_area`, `tutor_phone`, `tutor_where_to_teach`, `tutor_gender`, `tutor_age`, `tutor_experience`, `tutor_tuition_timing`, `tutor_cnic`, `tutor_resume`) VALUES
-(1, 30, 'Umar Khan', 'Yes', 'karachi', 'aa', 'aaaaa', 'aaaa', NULL, NULL, 'All Location', '03313644820', 'No', 'Male', NULL, NULL, NULL, NULL, NULL),
-(2, 36, 'Hammad Hassan', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'All Location', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL),
-(3, 37, 'Samrah', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'All Location', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL),
-(4, 40, 'Mohsin Ahmed', 'No', 'karachi', 'aa', 'aa', 'testing', NULL, NULL, 'All Location', '03313644820', 'At Your Place, Academy, School', 'Male', 36, 'aaa', 'aa', '0000000000000', NULL),
-(5, 46, 'farhan', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL),
-(6, 47, 'obaid', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL),
-(7, 48, 'sumaria', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL),
-(8, 52, 'ayesha', 'No', 'karachi', 'aa', 'aaaa', 'aa', NULL, NULL, 'All Location', 'aa', 'At Student Place, At Your Place', 'Male', 0, 'aaaa', 'aaa', 'a', 'IN_000380194051.pdf'),
-(9, 54, 'fazil', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, School', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051(1).pdf'),
-(10, 55, 'asif', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf'),
-(11, 56, 'sommoro', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf'),
-(12, 57, 'faizan', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf');
+INSERT INTO `tutors_profile` (`id`, `user_id`, `tutor_name`, `tutor_job_status`, `tutor_city`, `tutor_facebook_link`, `tutor_linkedin`, `tutor_description`, `tutor_cover`, `tutor_avatar`, `tutor_area`, `tutor_phone`, `tutor_where_to_teach`, `tutor_gender`, `tutor_age`, `tutor_experience`, `tutor_tuition_timing`, `tutor_cnic`, `tutor_resume`, `tutor_address`, `map_latitute`, `map_longtitute`) VALUES
+(1, 30, 'Umar Khan', 'Yes', 'karachi', 'aa', 'aaaaa', 'aaaa', NULL, NULL, 'All Location', '03313644820', 'No', 'Male', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 36, 'Hammad Hassan', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'All Location', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL, NULL, NULL, NULL),
+(3, 37, 'Samrah', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'All Location', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL, NULL, NULL, NULL),
+(4, 40, 'Mohsin Ahmed', 'No', 'karachi', 'aa', 'aa', 'testing', NULL, NULL, 'All Location', '03313644820', 'At Your Place, Academy, School', 'Male', 36, 'aaa', 'aa', '0000000000000', NULL, NULL, NULL, NULL),
+(5, 46, 'farhan', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL, NULL, NULL, NULL),
+(6, 47, 'obaid', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL, NULL, NULL, NULL),
+(7, 48, 'sumaria', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL, NULL, NULL, NULL),
+(8, 52, 'ayesha', 'No', 'karachi', 'aa', 'aaaa', 'aa', NULL, NULL, 'All Location', 'aa', 'At Student Place, At Your Place', 'Male', 0, 'aaaa', 'aaa', 'a', 'IN_000380194051.pdf', NULL, NULL, NULL),
+(9, 54, 'fazil', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, School', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051(1).pdf', NULL, NULL, NULL),
+(10, 55, 'asif', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf', NULL, NULL, NULL),
+(11, 56, 'sommoro', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf', NULL, NULL, NULL),
+(12, 57, 'faizan', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf', NULL, NULL, NULL),
+(13, 102, 'mohsin ahmed', 'No', 'karachi', 'a', 'a', 'mohsintesting', NULL, NULL, 'All Location', '03313644829', 'At Your Place, Academy', 'Male', 24, 'a', 'aa', '11111110', '2JmC5lRa_400x400.jpg', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tutors_qualification`
+--
+
+CREATE TABLE `tutors_qualification` (
+  `id` int(11) NOT NULL,
+  `tutors_profile_id` int(11) DEFAULT NULL,
+  `tutors_qualification_title` varchar(255) DEFAULT NULL,
+  `tutors_qualification_year` varchar(255) DEFAULT NULL,
+  `tutors_qualification_description` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tutors_qualification`
+--
+
+INSERT INTO `tutors_qualification` (`id`, `tutors_profile_id`, `tutors_qualification_title`, `tutors_qualification_year`, `tutors_qualification_description`) VALUES
+(1, 13, 'Bsc', '2007', 'Tewsting Qualification'),
+(2, 13, 'Intermedate', '2008', 'Testing Another Qualification');
 
 -- --------------------------------------------------------
 
@@ -427,6 +578,17 @@ CREATE TABLE `tutors_rating_question` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tutor_tutions`
+--
+
+CREATE TABLE `tutor_tutions` (
+  `id` int(11) NOT NULL,
+  `tutor_profile_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -453,7 +615,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `profile_status`, `first_name`, `last_name`, `user_type`, `join_date`, `rate_us`, `hear_about_us`, `why_to_join`, `how_to_improve`, `testimonials`, `verify_hash`, `active`) VALUES
-(16, 'ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Shakeel', 'Siddiqui', 'school', '2018-09-19 07:10:04', NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(16, 'ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Na', 'Ahmed', 'school', '2018-09-19 07:10:04', NULL, NULL, NULL, NULL, NULL, NULL, 1),
 (17, '1ahmed.mohsin98@ghmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Hammad', 'Hassan', 'school', '2018-09-19 19:24:31', NULL, NULL, NULL, NULL, NULL, NULL, 0),
 (18, '2ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Farhan', 'Soomoro', 'teacher', '2018-09-19 19:29:59', NULL, NULL, NULL, NULL, NULL, NULL, 0),
 (19, '3ahmed.mohsin98@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'Faizan', 'Raza', 'teacher', '2018-09-19 19:31:04', NULL, NULL, NULL, NULL, NULL, NULL, 0),
@@ -528,7 +690,20 @@ INSERT INTO `users` (`id`, `email`, `password`, `profile_status`, `first_name`, 
 (88, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Not Approved', 'a', 'a', 'school', '2018-10-08 10:46:43', '5', 'Website', 'a', 'a', 'a', NULL, 0),
 (89, 'ahme@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 'Not Approved', 'New', 'mohsin', 'school', '2018-10-11 06:28:18', '5', 'Website', 'test', 'test', 'test', NULL, 0),
 (90, 'emailverify', '0cc175b9c0f1b6a831c399e269772661', '0', 'a', 'aaa', 'school', '2018-10-16 06:52:12', '5', 'Website', 'aaa', 'aaa', 'aaa', '58e4d44e550d0f7ee0a23d6b02d9b0db', 1),
-(91, 'aaa', '4124bc0a9335c27f086f24ba207a4912', '0', 'a', 'a', 'school', '2018-10-16 07:36:36', '5', 'Website', 's', 's', 's', 'effc299a1addb07e7089f9b269c31f2f', 1);
+(91, 'aaa', '4124bc0a9335c27f086f24ba207a4912', '0', 'a', 'a', 'school', '2018-10-16 07:36:36', '5', 'Website', 's', 's', 's', 'effc299a1addb07e7089f9b269c31f2f', 1),
+(92, 'moahmed0331@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'Nabiaa', 'Mohsin', 'school', '2018-11-25 08:52:08', '5', 'Website', 'a', 'a', 'a', '8a1e808b55fde9455cb3d8857ed88389', 1),
+(93, 'moahmed0301@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'Nabia', 'Mohsin', 'school', '2018-11-25 09:20:15', '5', 'Website', 'a', 'a', 'a', 'a516a87cfcaef229b342c437fe2b95f7', 0),
+(94, 'kpsgui@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'Nabia', 'Moshin', 'teacher', '2018-11-25 17:54:47', '5', 'Website', 'a', 'a', 'a', 'cd14821dab219ea06e2fd1a2df2e3582', 0),
+(95, 'kpsgui@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'Nabia', 'Moshin', 'teacher', '2018-11-25 17:56:50', '5', 'Website', 'a', 'a', 'a', '7810ccd41bf26faaa2c4e1f20db70a71', 0),
+(96, 'kpsgui@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'Nabia', 'Moshin', 'teacher', '2018-11-25 18:00:04', '5', 'Website', 'a', 'a', 'a', 'a34bacf839b923770b2c360eefa26748', 0),
+(97, 'kpsgaui@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'Nabia', 'Moshin', 'teacher', '2018-11-25 18:00:25', '5', 'Website', 'a', 'a', 'a', '1ec3e7af38e33222bde173fecaef6bfa', 0),
+(98, 'aaa@demo.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'a', 'a', 'teacher', '2018-11-25 18:01:14', '5', 'Website', 'a', 'a', 'a', 'ae5e3ce40e0404a45ecacaaf05e5f735', 0),
+(99, 'aaa@demo.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'a', 'a', 'teacher', '2018-11-25 18:06:05', '5', 'Website', 'a', 'a', 'a', '42853a61b26fef79e2ae788d97356799', 0),
+(100, 'adm@demo.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'mohsin', 'ahmed', 'teacher', '2018-11-25 18:07:33', '5', 'Website', 'a', 'a', 'a', '3dd9424294b0292b6e89ea2bba2e1144', 0),
+(101, 'ad@am.in', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'a', 'a', 'teacher', '2018-11-25 18:16:21', '5', 'Website', 'a', 'a', 'a', '1bb91f73e9d31ea2830a5e73ce3ed328', 0),
+(102, 'moahmed0aa332@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'mohsin', 'ahmed', 'teacher', '2018-12-01 10:59:09', '5', 'Website', 'a', 'a', 'a', '044a23cadb567653eb51d4eb40acaa88', 1),
+(103, 'moahmed0aaaaaa333@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'nabia', 'mohsin', 'parent', '2018-12-10 18:23:46', '5', 'Website', 'a', 'a', 'a', 'ab233b682ec355648e7891e66c54191b', 0),
+(104, 'moahmed0333@gmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', '0', 'nabia', 'mohsin', 'parent', '2018-12-10 18:27:10', '5', 'Website', 'a', 'a', 'a', '7d2b92b6726c241134dae6cd3fb8c182', 1);
 
 -- --------------------------------------------------------
 
@@ -554,6 +729,12 @@ ALTER TABLE `downloads`
   ADD KEY `downloads_users_id_fk` (`user_id`);
 
 --
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `page_counter`
 --
 ALTER TABLE `page_counter`
@@ -570,11 +751,19 @@ ALTER TABLE `parents_profile`
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `posts_users_id_fk` (`user_id`),
-  ADD KEY `posts_school_profile_id_fk` (`school_profile_id`),
-  ADD KEY `posts_school_branches_id_fk` (`school_branches_id`),
-  ADD KEY `posts_tutors_profile_id_fk` (`tutor_profile_id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts_category`
+--
+ALTER TABLE `posts_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts_tags`
+--
+ALTER TABLE `posts_tags`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `review`
@@ -636,11 +825,29 @@ ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tutors_experience`
+--
+ALTER TABLE `tutors_experience`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tutors_profile`
 --
 ALTER TABLE `tutors_profile`
   ADD PRIMARY KEY (`id`),
   ADD KEY `tutors_profile_users_id_fk` (`user_id`);
+
+--
+-- Indexes for table `tutors_qualification`
+--
+ALTER TABLE `tutors_qualification`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tutors_rating`
@@ -652,6 +859,12 @@ ALTER TABLE `tutors_rating`
 -- Indexes for table `tutors_rating_question`
 --
 ALTER TABLE `tutors_rating_question`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tutor_tutions`
+--
+ALTER TABLE `tutor_tutions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -675,91 +888,151 @@ ALTER TABLE `users_type`
 --
 ALTER TABLE `downloads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `page_counter`
 --
 ALTER TABLE `page_counter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `parents_profile`
 --
 ALTER TABLE `parents_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `posts_category`
+--
+ALTER TABLE `posts_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `posts_tags`
+--
+ALTER TABLE `posts_tags`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- AUTO_INCREMENT for table `school_branches`
 --
 ALTER TABLE `school_branches`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `school_features`
 --
 ALTER TABLE `school_features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `school_jobs`
 --
 ALTER TABLE `school_jobs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `school_profile`
 --
 ALTER TABLE `school_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `school_rating`
 --
 ALTER TABLE `school_rating`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
+
 --
 -- AUTO_INCREMENT for table `school_rating_questions`
 --
 ALTER TABLE `school_rating_questions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `school_teachers`
 --
 ALTER TABLE `school_teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tutors_experience`
+--
+ALTER TABLE `tutors_experience`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `tutors_profile`
 --
 ALTER TABLE `tutors_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `tutors_qualification`
+--
+ALTER TABLE `tutors_qualification`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `tutors_rating`
 --
 ALTER TABLE `tutors_rating`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tutors_rating_question`
 --
 ALTER TABLE `tutors_rating_question`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tutor_tutions`
+--
+ALTER TABLE `tutor_tutions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+
 --
 -- AUTO_INCREMENT for table `users_type`
 --
 ALTER TABLE `users_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Constraints for dumped tables
 --
@@ -801,6 +1074,7 @@ ALTER TABLE `school_profile`
 --
 ALTER TABLE `tutors_profile`
   ADD CONSTRAINT `tutors_profile_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

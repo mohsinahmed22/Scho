@@ -31,7 +31,7 @@ elseif(isset($_GET['caturl'])):
         $template->displayAllPosts = $displayAllPosts;
 
     else:
-        redirect("404.php");
+        redirect(BASE_URI . "blog/not-found");
     endif;
 
 

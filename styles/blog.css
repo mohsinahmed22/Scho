@@ -317,15 +317,15 @@ section
 {
 	width: 160px;
 	height: 100%;
-	background: #f3f3f3;
+	/*background: #f3f3f3;*/
 	text-align: center;
 }
 .login_button a
 {
-	display: block;
+	display: inline-block;
 	font-size: 14px;
 	font-weight: 500;
-	line-height: 40px;
+	/*line-height: 40px;*/
 	color: #384158;
 }
 
