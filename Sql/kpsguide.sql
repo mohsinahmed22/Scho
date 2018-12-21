@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2018 at 04:56 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.1.13
+-- Generation Time: Dec 21, 2018 at 09:02 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,10 +29,59 @@ SET time_zone = "+00:00";
 CREATE TABLE `downloads` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `posts_id` int(11) DEFAULT NULL,
   `download_title` varchar(255) DEFAULT NULL,
   `download_file` varchar(255) DEFAULT NULL,
   `download_tags` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` int(11) NOT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `job_title` varchar(255) DEFAULT NULL,
+  `job_description` text,
+  `job_salary` float(8,2) DEFAULT NULL,
+  `job_active` int(1) DEFAULT NULL,
+  `job_created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `job_closed_date` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `school_id`, `job_title`, `job_description`, `job_salary`, `job_active`, `job_created_date`, `job_closed_date`) VALUES
+(1, 1, 'Montessori Directress', 'Responsiblities', 10000.00, 1, '2018-12-20 07:14:34', '2018-12-20 02:13:48'),
+(2, 2, 'Maths Teacher', 'Responsiblities', 12000.00, 0, '2018-12-20 07:14:34', '2018-12-26 02:13:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs_categoies`
+--
+
+CREATE TABLE `jobs_categoies` (
+  `id` int(11) NOT NULL,
+  `job_category_title` varchar(255) DEFAULT NULL,
+  `job_category_url` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_applied`
+--
+
+CREATE TABLE `job_applied` (
+  `id` int(11) NOT NULL,
+  `job_id` int(11) DEFAULT NULL,
+  `tutor_id` int(11) DEFAULT NULL,
+  `applied_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -511,19 +558,19 @@ CREATE TABLE `tutors_profile` (
 --
 
 INSERT INTO `tutors_profile` (`id`, `user_id`, `tutor_name`, `tutor_job_status`, `tutor_city`, `tutor_facebook_link`, `tutor_linkedin`, `tutor_description`, `tutor_cover`, `tutor_avatar`, `tutor_area`, `tutor_phone`, `tutor_where_to_teach`, `tutor_gender`, `tutor_age`, `tutor_experience`, `tutor_tuition_timing`, `tutor_cnic`, `tutor_resume`, `tutor_address`, `map_latitute`, `map_longtitute`) VALUES
-(1, 30, 'Umar Khan', 'Yes', 'karachi', 'aa', 'aaaaa', 'aaaa', NULL, NULL, 'All Location', '03313644820', 'No', 'Male', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 36, 'Hammad Hassan', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'All Location', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL, NULL, NULL, NULL),
-(3, 37, 'Samrah', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'All Location', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL, NULL, NULL, NULL),
-(4, 40, 'Mohsin Ahmed', 'No', 'karachi', 'aa', 'aa', 'testing', NULL, NULL, 'All Location', '03313644820', 'At Your Place, Academy, School', 'Male', 36, 'aaa', 'aa', '0000000000000', NULL, NULL, NULL, NULL),
-(5, 46, 'farhan', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL, NULL, NULL, NULL),
-(6, 47, 'obaid', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL, NULL, NULL, NULL),
-(7, 48, 'sumaria', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL, NULL, NULL, NULL),
-(8, 52, 'ayesha', 'No', 'karachi', 'aa', 'aaaa', 'aa', NULL, NULL, 'All Location', 'aa', 'At Student Place, At Your Place', 'Male', 0, 'aaaa', 'aaa', 'a', 'IN_000380194051.pdf', NULL, NULL, NULL),
-(9, 54, 'fazil', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, School', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051(1).pdf', NULL, NULL, NULL),
-(10, 55, 'asif', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf', NULL, NULL, NULL),
-(11, 56, 'sommoro', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf', NULL, NULL, NULL),
-(12, 57, 'faizan', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'All Location', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf', NULL, NULL, NULL),
-(13, 102, 'mohsin ahmed', 'No', 'karachi', 'a', 'a', 'mohsintesting', NULL, NULL, 'All Location', '03313644829', 'At Your Place, Academy', 'Male', 24, 'a', 'aa', '11111110', '2JmC5lRa_400x400.jpg', NULL, NULL, NULL);
+(1, 30, 'Umar Khan', 'Yes', 'karachi', 'aa', 'aaaaa', 'aaaa', NULL, NULL, 'North', '03313644820', 'No', 'Male', NULL, NULL, NULL, NULL, NULL, 'Block c', NULL, NULL),
+(2, 36, 'Hammad Hassan', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'North', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL, 'Block c', NULL, NULL),
+(3, 37, 'Samrah', 'No', 'karachi', 'aaa', 'aaaa', 'autoparkway', NULL, NULL, 'Clifton', '920331396666', 'Array', 'Female', 36, 'aaa', 'aa', '0000000000000000', NULL, 'Block c', NULL, NULL),
+(4, 40, 'Mohsin Ahmed', 'No', 'karachi', 'aa', 'aa', 'testing', NULL, NULL, 'Clifton', '03313644820', 'At Your Place, Academy, School', 'Male', 36, 'aaa', 'aa', '0000000000000', NULL, 'Block c', NULL, NULL),
+(5, 46, 'farhan', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'Clifton', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL, 'Block c', NULL, NULL),
+(6, 47, 'obaid', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'Clifton', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL, 'Block c', NULL, NULL),
+(7, 48, 'sumaria', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'DHA', 'a', 'At Student Place, At Your Place, Academy, School', 'Male', 0, 'a', 'a', 'a', NULL, 'Block c', NULL, NULL),
+(8, 52, 'ayesha', 'No', 'karachi', 'aa', 'aaaa', 'aa', NULL, NULL, 'DHA', 'aa', 'At Student Place, At Your Place', 'Male', 0, 'aaaa', 'aaa', 'a', 'IN_000380194051.pdf', 'Block c', NULL, NULL),
+(9, 54, 'fazil', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'DHA', 'a', 'At Student Place, At Your Place, School', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051(1).pdf', 'Block c', NULL, NULL),
+(10, 55, 'asif', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'Malir', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf', 'Block c', NULL, NULL),
+(11, 56, 'sommoro', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'Malir', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf', 'Block c', NULL, NULL),
+(12, 57, 'faizan', 'No', 'karachi', 'a', 'a', 'a', NULL, NULL, 'Malir', 'a', 'At Student Place, At Your Place, Academy', 'Male', 0, 'a', 'a', 'a', 'IN_000380194051.pdf', 'Block c', NULL, NULL),
+(13, 102, 'mohsin ahmed', 'No', 'karachi', 'a', 'a', 'mohsintesting', NULL, NULL, 'DHA', '03313644829', 'At Your Place, Academy', 'Male', 24, 'a', 'aa', '11111110', '2JmC5lRa_400x400.jpg', 'Block c', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -725,8 +772,26 @@ CREATE TABLE `users_type` (
 --
 ALTER TABLE `downloads`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `downloads_posts_id_fk` (`posts_id`),
   ADD KEY `downloads_users_id_fk` (`user_id`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `jobs_categoies`
+--
+ALTER TABLE `jobs_categoies`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `job_applied`
+--
+ALTER TABLE `job_applied`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `job_applied_tutor_id_uindex` (`tutor_id`);
 
 --
 -- Indexes for table `pages`
@@ -888,151 +953,141 @@ ALTER TABLE `users_type`
 --
 ALTER TABLE `downloads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
+--
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `jobs_categoies`
+--
+ALTER TABLE `jobs_categoies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `job_applied`
+--
+ALTER TABLE `job_applied`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `page_counter`
 --
 ALTER TABLE `page_counter`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
 --
 -- AUTO_INCREMENT for table `parents_profile`
 --
 ALTER TABLE `parents_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `posts_category`
 --
 ALTER TABLE `posts_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `posts_tags`
 --
 ALTER TABLE `posts_tags`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
 --
 -- AUTO_INCREMENT for table `school_branches`
 --
 ALTER TABLE `school_branches`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `school_features`
 --
 ALTER TABLE `school_features`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `school_jobs`
 --
 ALTER TABLE `school_jobs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `school_profile`
 --
 ALTER TABLE `school_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
 --
 -- AUTO_INCREMENT for table `school_rating`
 --
 ALTER TABLE `school_rating`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
-
 --
 -- AUTO_INCREMENT for table `school_rating_questions`
 --
 ALTER TABLE `school_rating_questions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `school_teachers`
 --
 ALTER TABLE `school_teachers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tutors_experience`
 --
 ALTER TABLE `tutors_experience`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
 -- AUTO_INCREMENT for table `tutors_profile`
 --
 ALTER TABLE `tutors_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
 --
 -- AUTO_INCREMENT for table `tutors_qualification`
 --
 ALTER TABLE `tutors_qualification`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `tutors_rating`
 --
 ALTER TABLE `tutors_rating`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tutors_rating_question`
 --
 ALTER TABLE `tutors_rating_question`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tutor_tutions`
 --
 ALTER TABLE `tutor_tutions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
-
 --
 -- AUTO_INCREMENT for table `users_type`
 --
 ALTER TABLE `users_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- Constraints for dumped tables
 --
@@ -1041,7 +1096,6 @@ ALTER TABLE `users_type`
 -- Constraints for table `downloads`
 --
 ALTER TABLE `downloads`
-  ADD CONSTRAINT `downloads_posts_id_fk` FOREIGN KEY (`posts_id`) REFERENCES `posts` (`id`),
   ADD CONSTRAINT `downloads_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
@@ -1074,7 +1128,6 @@ ALTER TABLE `school_profile`
 --
 ALTER TABLE `tutors_profile`
   ADD CONSTRAINT `tutors_profile_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
